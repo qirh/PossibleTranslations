@@ -1,0 +1,242 @@
+html {
+    position: relative;
+    min-height: 100%;
+    height: 100%;
+}
+body {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin: 1rem 1rem 1rem 1rem;
+    height: 100%;
+}
+.cuerpo {
+    margin: 0rem 0rem 3rem 0rem;
+}
+#header_title, #section_title, #languages {
+    display: inline;
+}
+#dropdown {
+    display: none;
+}
+#cv, #cv_frame {
+    height: 100%;
+    width: 100%;
+}
+a {
+    border-bottom: none !important;
+}
+.available-link {
+    color: rgb(79, 175, 78) !important; /* 4FAF4E   */
+}
+.curr-link {
+    color: rgb(0, 110, 211) !important; /* 006ED3   */
+}
+.un-available-link {
+    pointer-events: none;
+    cursor: default;
+    color: rgb(119, 119, 119) !important;
+}
+h1, h2, th {
+    font-family: 'Merriweather Sans', monospace;
+    margin-bottom: 1.25rem;
+}
+th {
+    font-weight:bold;
+}
+h1 {
+    font-size: 2rem;
+}
+h2 {
+    font-size: 1.5rem;
+}
+p, ul, td, a {
+    font-family: Muli, monospace;
+    font-size: 1rem;
+}
+p, ul, td{
+    margin-bottom: 1rem;
+}
+.links {
+    display: inline;
+}
+.tiptext {
+    cursor:pointer;
+}
+section {
+    margin-bottom: 2rem;
+}
+.popup {
+    display:none;
+    position:absolute;
+    border:1px solid #000;
+    -ms-transform: scale(0.4);
+    -moz-transform: scale(0.4);
+    -o-transform: scale(0.4);
+    -webkit-transform: scale(0.4);
+    transform: scale(0.4);
+    -ms-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+.tech {
+    width:500px;
+    height:800px;
+}
+.tech2 {
+    width:800px;
+    height:600px;
+}
+.travel {
+    width:1000px;
+    height:750px;
+}
+.books {
+    width:800px;
+    height:900px;
+}
+.bike {
+    width:700px;
+    height:850px;
+}
+.bike2 {
+    width:850px;
+    height:800px;
+}
+.row-icon {
+    text-align: center;
+}
+.table thead th {
+    border-top: 0px;
+}
+.last-row {
+    border-bottom: 1px solid #eceeef;
+}
+
+/* Mobile */
+@media only screen and (max-width: 599px) {
+    #dropdown {
+        float: right;
+        margin-right: 2rem;
+        vertical-align: middle;
+        display: inline;
+    }
+    thead {
+        display: none;
+    }
+    .col-name {
+        width: 10%;
+    }
+    .col-desc {
+        width: 85%;
+    }
+    .col-link {
+        width: 2.5%;
+    }
+    .row-icon-img {
+        width: 20px;
+        height: 20px;
+    }
+    .icons {
+        width: 15px;
+        height: 15px;
+    }
+    /*  Collapse table  */
+    .table td, .table th {
+        border: none;
+    }
+    .last-row {
+        border-bottom: none;
+    }
+    .table tr {
+        display: table;  width:100%;
+    }
+    .table .row-name, .table .row-desc {
+        display: table-row;
+    }
+    .p-name {
+        font-weight: bold;
+    }
+    .anchor-git:after {
+        content: ' GitHub';
+    }
+    .anchor-website:after {
+        content: ' Website';
+    }
+    .row-website.dead {
+        display: none;
+    }
+    tr {
+        margin-bottom: 1.5rem;
+    }
+    .cell {
+        margin-bottom: 1rem;
+    }
+    .row-git {
+        float: left;
+        margin-left: 2rem;
+    }
+    .row-website {
+        float: right;
+        margin-right: 2rem;
+    }
+    .cuerpo {
+        margin: 0rem;
+    }
+    #header_projects {
+        margin-bottom: 2rem;
+    }
+}
+/* Tablets */
+@media only screen and (min-width: 600px) {
+    thead {
+        display: table-header-group;
+    }
+    .col-name {
+        width: 15%;
+    }
+    .col-desc {
+        width: 80%;
+    }
+    .col-link {
+        width: 2.5%;
+    }
+    .row-icon-img {
+        width: 25px;
+        height: 25px;
+    }
+    .icons {
+        width: 20px;
+        height: 20px;
+    }
+    h1, h2, th {
+        margin-bottom: 1.75rem;
+    }
+}
+/* Desktop */
+@media only screen and (min-width: 768px) {
+    thead {
+        display: table-header-group;
+    }
+    .col-name {
+        width: 20%;
+    }
+    .col-desc {
+        width: 75%;
+    }
+    .col-link {
+        width: 2.5%;
+    }
+    .row-icon-img {
+        width: 30px;
+        height: 30px;
+    }
+    .icons {
+        width: 20px;
+        height: 20px;
+    }
+    p, ul, td {
+        margin-bottom: 1.5rem;
+    }
+}
