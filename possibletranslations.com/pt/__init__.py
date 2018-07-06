@@ -7,7 +7,7 @@ app.url_map.strict_slashes = False
 
 @app.errorhandler(404)
 def error_page(error1=None, error2=None, error3=None):
-    return render_template('/404.html')
+    return render_template('/404.html', title="404")
 
 
 @app.route('/')

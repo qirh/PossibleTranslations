@@ -1,39 +1,14 @@
-/*
- *
- *  Air Horner
- *  Copyright 2015 Google Inc. All rights reserved.
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      https://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License
- *
- */
+const version = "0.7";
+const cacheName = 'pt-${version}';
 
-const version = "0.8.5";
-const cacheName = 'saleh-${version}';
 self.addEventListener('install', e => {
+  console.log('ServiceWorker registerd');
   const timeStamp = Date.now();
   e.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
-        '/templates/en/layout.html?timestamp=${timeStamp}',
-          '/templates/en/index.html?timestamp=${timeStamp}',
-          '/static/icons/github.svg',
-          '/static/icons/website.svg',
-          '/static/photos/bike.jpg',
-          '/static/photos/bike2.jpg',
-          '/static/photos/moi-moustache.jpg',
-          '/static/photos/moi-sans-moustache.jpg',
-          '/static/photos/tech.jpg',
-          '/static/photos/travel.jpg'
+        '/templates/404.html?timestamp=${timeStamp}',
+        '/templates/index.html?timestamp=${timeStamp}',
       ])
           .then(() => self.skipWaiting());
     })

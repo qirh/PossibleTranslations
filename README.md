@@ -5,6 +5,7 @@
 1. ~~Register Domain~~ [possibletranslations.com](possibletranslations.com)
 2. Set up flask (sql-alchemy + flask api)
 3. Create HTML
+4. React
 
 **Not so important:**
 1. Serve HTTPS Domain (let's encrypt)
