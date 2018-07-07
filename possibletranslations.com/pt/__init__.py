@@ -7,8 +7,6 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-app.config.from_object(os.environ['APP_SETTINGS'])
-print(os.environ['APP_SETTINGS'])
 
 def detectLang(string):
     DetectorFactory.seed = 0
