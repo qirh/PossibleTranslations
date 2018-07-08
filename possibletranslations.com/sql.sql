@@ -1,0 +1,1 @@
+CREATE TABLE flask_db.words (word_id BIGINT AUTO_INCREMENT, word VARCHAR(5000) NULL, language VARCHAR(1000) NULL, PRIMARY KEY (word_id));
