@@ -1,5 +1,5 @@
 from flask import Flask
-from __init__ import db
+from pt.__init__ import db
 
 
 class Word(db.Model):

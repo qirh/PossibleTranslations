@@ -2,15 +2,31 @@
 # -*- coding: utf-8 -*-
 
 from textblob import TextBlob
-from langdetect import detect, detect_langs, DetectorFactory
+from langdetect import detect_langs, DetectorFactory
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+
+try:
+    print("1")
+    from pt.config import Development
+except ImportError:
+    print("2")
+    from .config import Development
+except ImportError:
+    print("3")
+    import config
+except ImportError:
+    print("4")
+    import config
+
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-
-app.config.from_object('config.Development')
+app.config.from_object('pt.config.Development')
 db = SQLAlchemy(app)
+migrate = Migrate(app, db)
+
 
 def get_langs(word):
 
@@ -23,15 +39,10 @@ def get_langs(word):
     else:
         languages = TextBlob + langdetect[0:2]
     """
+    first_lang = TextBlob(word).detect_language().__str__()
+    langs = [w.lang.__str__() for w in detect_langs(word)]
 
-    first_lang = TextBlob(word).detect_language()
-    print("first_lang:")
-
-    langs = detect_langs(word)
-    langs = [w.lang.__str__() for w in langs]
-
-    if(first_lang.__str__() != langs[0]):
-        print("1")
+    if(first_lang != langs[0]):
         langs.insert(0, first_lang.__str__())
 
     # pad list if there are less than 3 elems
