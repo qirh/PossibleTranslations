@@ -4,9 +4,14 @@
 import os
 from langdetect import detect, DetectorFactory
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
+
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 def detectLang(string):
     DetectorFactory.seed = 0
