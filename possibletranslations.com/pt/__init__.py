@@ -7,18 +7,16 @@ from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-try:
-    from pt.config import Development
-except ImportError and ModuleNotFoundError:
-    try:
-        from .config import Development
-    except ImportError and ModuleNotFoundError:
-        from config import Development
+
 
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-app.config.from_object('pt.config.Development')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.db'
+app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
@@ -34,6 +32,9 @@ def get_langs(word):
     else:
         languages = TextBlob + langdetect[0:2]
     """
+    if(len(word) < 3):
+        return list()
+
     first_lang = TextBlob(word).detect_language().__str__()
     langs = [w.lang.__str__() for w in detect_langs(word)]
 
@@ -59,6 +60,7 @@ def index():
     DetectorFactory.seed = 0
     if request.form:
         print(get_langs(request.form["word"]))
+        
 
     return render_template('/index.html')
 
