@@ -3,6 +3,8 @@ from pt.__init__ import db
 
 
 class Word(db.Model):
+    __tablename__ = 'words'
+
     word_id = db.Column(db.Integer, primary_key=True)
     word = db.Column(db.String(5000), index=True, unique=True)
     lang_1 = db.Column(db.String(2))

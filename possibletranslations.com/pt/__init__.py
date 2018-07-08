@@ -8,17 +8,12 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
 try:
-    print("1")
     from pt.config import Development
-except ImportError:
-    print("2")
-    from .config import Development
-except ImportError:
-    print("3")
-    import config
-except ImportError:
-    print("4")
-    import config
+except ImportError and ModuleNotFoundError:
+    try:
+        from .config import Development
+    except ImportError and ModuleNotFoundError:
+        from config import Development
 
 
 app = Flask(__name__)
