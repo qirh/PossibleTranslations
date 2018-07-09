@@ -36,10 +36,10 @@ class WordTranslations(db.Model):
 
     word_id = db.Column(db.Integer, primary_key=True)
     word = db.Column(db.String(5000), nullable=False)
-    target_lang = db.Column(db.String(2), nullable=False)
-    lang_1 = db.Column(db.String(2), nullable=False)
-    lang_2 = db.Column(db.String(2))
-    lang_3 = db.Column(db.String(2))
+    target_lang = db.Column(db.String(20), nullable=False)
+    lang_1 = db.Column(db.String(20), nullable=False)
+    lang_2 = db.Column(db.String(20))
+    lang_3 = db.Column(db.String(20))
     translation_1 = db.Column(db.String(5000), nullable=False)
     translation_2 = db.Column(db.String(5000))
     translation_3 = db.Column(db.String(5000))
@@ -56,7 +56,7 @@ class WordTranslations(db.Model):
         self.translation_3 = translation_3
 
     def __repr__(self):
-        return '<Word: {}. lang_1: {}. translation_1: {}>'.format(self.word, self.lang_1, self.translation_1)
+        return '<Word: {}. target_lang: {}. lang_1: {}. translation_1: {}>'.format(self.word, self.target_lang, self.lang_1, self.translation_1)
 
     def serialize(self):
         return {
@@ -71,6 +71,10 @@ class WordTranslations(db.Model):
             'translation_3': self.translation_3,
         }
 
+def drop():
+    db.reflect()
+    db.drop_all()
+    
 db.create_all()
 db.session.commit()
 
@@ -115,10 +119,13 @@ def get_translations(langs, word, target_lang):
 
     for i in range(len(langs)):
         if langs[i] == None:
+            print("0")
             translations.append(None)
-        elif langs[i] == 'en':
+        elif langs[i] == target_lang:
+            print("1")
             translations.append(word)
         else:
+            print("ok")
             translations.append(translate_client.translate(word, source_language=langs[i], target_language=target_lang)['translatedText'])
 
     return dict(zip(langs, translations))
@@ -153,6 +160,7 @@ def index():
         w = WordTranslations(word, target_lang, langs[0], translations[langs[0]], langs[1], translations[langs[1]], langs[2], translations[langs[2]])
 
         try:
+            print(w)
             db.session.add(w)
             db.session.commit()
         except exc.IntegrityError:
@@ -161,7 +169,6 @@ def index():
             print("!!!!!!!!!!!!!!")
             db.session().rollback()
     words = WordTranslations.query.all()
-    print(words)
     return render_template('/index.html', words=words, langs=client)
 
 @app.route('/button', methods=["GET", "POST"])
