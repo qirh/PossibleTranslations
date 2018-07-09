@@ -2,7 +2,7 @@
 
 {% block body %}
     <section id="index">
-        <h1 style="display: inline">Possible Translations</h1>
+        <h1>Possible Translations</h1>
 
         <form method="POST" action="/">
 
@@ -22,9 +22,35 @@
 
     <section id="button">
         <h1>Words</h1>
-        {% for word in words %}
-            <p>({{word.lang_1}}) '{{word.word | safe}}'. Translation in ({{word.target_lang | safe}}) '{{word.translation_1 | safe}}' </p>
-        {% endfor %}
+
+    </section>
+
+    <section id="table">
+        <table style="width:100%">
+            <tr>
+                <th>Sentence</th>
+                <th>Target lang</th>
+                <th>Detected Lang(1)</th>
+                <th>Translation(1)</th>
+                <th>Detected Lang(2)</th>
+                <th>Translation(2)</th>
+                <th>Detected Lang(3)</th>
+                <th>Translation(3)</th>
+            </tr>
+
+            {% for word in words %}
+                <tr>
+                    <td>{{ word.word }}</td>
+                    <td>{{ word.target_lang }}</td>
+                    <td>{{ word.lang_1 }}</td>
+                    <td>{{ word.translation_1 }}</td>
+                    <td>{{ word.lang_2 }}</td>
+                    <td>{{ word.translation_2 }}</td>
+                    <td>{{ word.lang_3 }}</td>
+                    <td>{{ word.translation_3 }}</td>
+                </tr>
+            {% endfor %}
+        </table>
     </section>
 
     <script>
