@@ -9,9 +9,6 @@ body {
     margin: 1rem 1rem 1rem 1rem;
     height: 100%;
 }
-a {
-    border-bottom: none !important;
-}
 h1, h2, th {
     font-family: Junge, monospace;
     margin-bottom: 1.25rem;
@@ -21,6 +18,7 @@ th {
 }
 h1 {
     font-size: 2rem;
+    margin-bottom: 1rem;
 }
 h2 {
     font-size: 1.5rem;
@@ -29,11 +27,14 @@ p, ul, td, a {
     font-family: Junge, monospace;
     font-size: 1rem;
 }
-p, ul, td{
+p, ul, td {
     margin-bottom: 1rem;
 }
 section {
     margin-bottom: 2rem;
+}
+table, th, td {
+    border: 1px solid black;
 }
 
 
