@@ -169,7 +169,7 @@ def index():
             print("!!!!!!!!!!!!!!")
             db.session().rollback()
     words = WordTranslations.query.all()
-    return render_template('/index.html', words=words, langs=client)
+    return render_template('/index.html', title="Possible Translations", words=words, langs=client)
 
 
 @app.route ('/api/<int:id>', methods=['GET'])

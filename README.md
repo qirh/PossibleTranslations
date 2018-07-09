@@ -10,7 +10,10 @@
 **Not so important:**
 1. Serve HTTPS Domain (let's encrypt)
 2. Make pretty HTML
-3. Angular/React?
+
+**To Do:**
+1. Remote db
+2. Mobile first
 
 ## Old readme
 API that queries a bunch of language translators and return multiple results, will be helpful to translate words that might have multiple meanings.
