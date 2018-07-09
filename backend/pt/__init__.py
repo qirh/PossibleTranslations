@@ -20,7 +20,7 @@ POSTGRES = {
     'port': '5432',
 }
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@localhost:5432/words_db' % POSTGRES
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@172.0.0.1:5432/words_db' % POSTGRES
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.db'
 app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -74,7 +74,7 @@ class WordTranslations(db.Model):
 def drop():
     db.reflect()
     db.drop_all()
-    
+
 db.create_all()
 db.session.commit()
 
@@ -171,11 +171,6 @@ def index():
     words = WordTranslations.query.all()
     return render_template('/index.html', words=words, langs=client)
 
-@app.route('/button', methods=["GET", "POST"])
-@app.route('/button/', methods=["GET", "POST"])
-def button():
-    print(WordTranslations.query.all())
-    return redirect('/')
 
 @app.route ('/api/<int:id>', methods=['GET'])
 def get_word(id):
