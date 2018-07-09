@@ -4,16 +4,15 @@
 **Important:**
 1. ~~Register Domain~~ [possibletranslations.com](possibletranslations.com)
 2. ~~Set up flask (sql-alchemy + flask api)~~
-3. Create HTML
-4. React
+3. ~~Create HTML~~
+4. Write Unit Tests
+5. Replace local db with Remote
+6. Implement front end (React)
+7. Make sure it's mobile responsive
 
 **Not so important:**
 1. Serve HTTPS Domain (let's encrypt)
-2. Make pretty HTML
-
-**To Do:**
-1. Remote db
-2. Mobile first
+2. Add support for other translator (bing?)
 
 ## Old readme
 API that queries a bunch of language translators and return multiple results, will be helpful to translate words that might have multiple meanings.
