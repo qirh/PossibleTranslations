@@ -11,7 +11,7 @@
             <select id="dropdown" name="target">
                 <option disabled selected value="en"> -- Target Language -- </option>
                 {% for lang in langs %}
-                    <option value="{{lang.language}}">{{lang.name}}</option>
+                    <option value="{{lang.language | safe}}">{{lang.name}}</option>
                 {% endfor %}
             </select>
 
@@ -28,7 +28,7 @@
     <section id="button">
         <h1>Words</h1>
         {% for word in words %}
-            <p>({{word.lang_1}}) '{{word.word}}'. Translation in ({{word.target_lang}}) '{{word.translation_1}}' </p>
+            <p>({{word.lang_1}}) '{{word.word | safe}}'. Translation in ({{word.target_lang | safe}}) '{{word.translation_1 | safe}}' </p>
         {% endfor %}
     </section>
 
