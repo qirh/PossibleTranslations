@@ -29,7 +29,7 @@ class WordTranslations(db.Model):
     __table_args__ = (db.UniqueConstraint('word', 'target_lang'),)
 
     word_id = db.Column(db.Integer, primary_key=True)
-    word = db.Column(db.String(5000), index=True, unique=True, nullable=False)
+    word = db.Column(db.String(5000), nullable=False)
     target_lang = db.Column(db.String(2), nullable=False)
     lang_1 = db.Column(db.String(2), nullable=False)
     lang_2 = db.Column(db.String(2))
