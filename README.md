@@ -3,7 +3,7 @@
 ## Old readme
 **Important:**
 1. ~~Register Domain~~ [possibletranslations.com](possibletranslations.com)
-2. Set up flask (sql-alchemy + flask api)
+2. ~~Set up flask (sql-alchemy + flask api)~~
 3. Create HTML
 4. React
 
