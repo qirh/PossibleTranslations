@@ -30,11 +30,17 @@ p, ul, td, a {
 p, ul, td {
     margin-bottom: 1rem;
 }
+th {
+    padding-left: 0.5rem;
+}
+td {
+    padding-left: 1rem;
+}
 section {
     margin-bottom: 2rem;
 }
 table, th, td {
-    border: 1px solid black;
+    border: 0.5px solid black;
 }
 
 

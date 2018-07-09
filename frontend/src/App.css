@@ -1,28 +1,36 @@
-.App {
+.donors-app {
   text-align: center;
+  font-family: Roboto;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.donors-header {
+  margin-top: 0;
+	height: 70px;
+	background-color: #244253;
+  color: #FFFFFF;
+  font-size: 16px;
+	font-weight: bold;
+	line-height: 19px;
+	text-align: center;
+  line-height: 70px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.donors-table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+.donors-table th, td {
   padding: 20px;
-  color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.donors-header-row {
+  opacity: 0.54;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.donors-row {
+	line-height: 14px;
+  border-bottom: 0.5px solid #979797;
 }
