@@ -5,16 +5,23 @@ from flask import Flask, request, render_template, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from sqlalchemy import exc
-
-
 from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
 
-
 app = Flask(__name__)
 app.url_map.strict_slashes = False
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.db'
+
+POSTGRES = {
+    'user': 'sal7',
+    'pw': '400700we@',
+    'db': 'words_db',
+    'host': 'localhost',
+    'port': '5432',
+}
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@localhost:5432/words_db' % POSTGRES
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.db'
 app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
@@ -63,7 +70,6 @@ class WordTranslations(db.Model):
             'translation_2': self.translation_2,
             'translation_3': self.translation_3,
         }
-
 
 db.create_all()
 db.session.commit()
@@ -155,6 +161,7 @@ def index():
             print("!!!!!!!!!!!!!!")
             db.session().rollback()
     words = WordTranslations.query.all()
+    print(words)
     return render_template('/index.html', words=words, langs=client)
 
 @app.route('/button', methods=["GET", "POST"])
