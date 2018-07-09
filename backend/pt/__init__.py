@@ -12,7 +12,7 @@ from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
 
 
-app = Flask(__name__, static_folder = "./dist/static", template_folder = "./dist")
+app = Flask(__name__)
 app.url_map.strict_slashes = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.db'
 app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
@@ -125,9 +125,6 @@ def error_page(error1=None, error2=None, error3=None):
     return render_template('/404.html', title="404")
 
 @app.route("/", methods=["GET", "POST"])
-def vue():
-    return render_template('/index.html')
-
 @app.route("/index", methods=["GET", "POST"])
 def index():
 
