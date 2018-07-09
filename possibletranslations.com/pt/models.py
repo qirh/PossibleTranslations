@@ -1,6 +1,8 @@
 from flask import Flask
-from __init__ import db
+from flask_sqlalchemy import SQLAlchemy
+#from pt.__init__ import db
 
+db = SQLAlchemy()
 
 class Word(db.Model):
     __tablename__ = 'words'
@@ -25,4 +27,4 @@ class Word(db.Model):
         self.translation_3 = translation_3
 
     def __repr__(self):
-        return '<Word: {}>'.format(self.word)
+        return '<Word: {}. lang_1: {}. translation_1: {}>'.format(self.word, self.lang_1, self.translation_1)

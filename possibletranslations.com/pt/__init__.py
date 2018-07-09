@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-
-from textblob import TextBlob
-from langdetect import detect_langs, DetectorFactory
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+
+from textblob import TextBlob
+from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
 
 
@@ -21,7 +21,6 @@ migrate = Migrate(app, db)
 TARGET = 'en'
 
 from pt.models import *
-
 
 def get_langs(word):
 
@@ -64,6 +63,8 @@ def get_translations(langs, word):
     for i in range(len(langs)):
         if langs[i] == None:
             translations.append(None)
+        elif langs[i] == 'en':
+            translations.append(word)
         else:
             translations.append(translate_client.translate(word, source_language=langs[i], target_language=TARGET)['translatedText'])
 
@@ -91,4 +92,3 @@ def index():
 @app.route('/<name>')
 def hello_name(name):
     return "Hello {}!".format(name)
-
