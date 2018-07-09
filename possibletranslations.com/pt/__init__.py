@@ -1,9 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from sqlalchemy import exc
+from sqlalchemy.schema import UniqueConstraint
+
 
 from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
@@ -20,7 +23,40 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 TARGET = 'en'
 
+# models
+class WordTranslations(db.Model):
+    __tablename__ = 'words'
+    __table_args__ = (db.UniqueConstraint('word', 'target_lang'),)
 
+    word_id = db.Column(db.Integer, primary_key=True)
+    word = db.Column(db.String(5000), index=True, unique=True, nullable=False)
+    target_lang = db.Column(db.String(2), nullable=False)
+    lang_1 = db.Column(db.String(2), nullable=False)
+    lang_2 = db.Column(db.String(2))
+    lang_3 = db.Column(db.String(2))
+    translation_1 = db.Column(db.String(5000), nullable=False)
+    translation_2 = db.Column(db.String(5000))
+    translation_2 = db.Column(db.String(5000))
+
+
+    def __init__(self, word, target_lang, lang_1, translation_1, lang_2=None, translation_2=None, lang_3=None, translation_3=None):
+        self.word = word
+        self.target_lang = target_lang
+        self.lang_1 = lang_1
+        self.lang_2 = lang_2
+        self.lang_3 = lang_3
+        self.translation_1 = translation_1
+        self.translation_2 = translation_2
+        self.translation_3 = translation_3
+
+    def __repr__(self):
+        return '<Word: {}. lang_1: {}. translation_1: {}>'.format(self.word, self.lang_1, self.translation_1)
+
+
+db.create_all()
+db.session.commit()
+
+# controller
 def get_langs(word):
 
     """
@@ -33,7 +69,7 @@ def get_langs(word):
         languages = TextBlob + langdetect[0:2]
     """
     if(len(word) < 3):
-        return list()
+        return [None for i in range(3)]
 
     first_lang = TextBlob(word).detect_language().__str__()
     langs = [w.lang.__str__() for w in detect_langs(word)]
@@ -51,7 +87,7 @@ def get_langs(word):
     return langs
 
 
-def get_translations(langs, word):
+def get_translations(langs, word, target_lang):
 
     """
     returns a list of the 3 string pairs [lang: translation]
@@ -65,11 +101,13 @@ def get_translations(langs, word):
         elif langs[i] == 'en':
             translations.append(word)
         else:
-            translations.append(translate_client.translate(word, source_language=langs[i], target_language=TARGET)['translatedText'])
+            translations.append(translate_client.translate(word, source_language=langs[i], target_language=target_lang)['translatedText'])
 
     return dict(zip(langs, translations))
 
 
+
+# Views
 @app.errorhandler(404)
 def error_page(error1=None, error2=None, error3=None):
     return render_template('/404.html', title="404")
@@ -77,50 +115,39 @@ def error_page(error1=None, error2=None, error3=None):
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+
+    client = translate.Client()
+    client = client.get_languages()
+
     DetectorFactory.seed = 0
     if request.form:
-        langs = get_langs(request.form["word"])
-        translations = get_translations(langs, request.form["word"])
+        target_lang = TARGET
+        word = request.form.get("word")
 
-        w = Word(request.form["word"], langs[0], translations[langs[0]], langs[1], translations[langs[1]], langs[2], translations[langs[2]])
-        print(translations)
-        print(w.word_id)
-        print(w)
-        db.session.add(w)
-        db.session.commit()
-    print("------------------")
-    words = Word.query.all()
-    print(words)
-    print("------------------")
-    return render_template('/index.html')
+        print(request.form)
+        print(request.form.get("target"))
+        if(request.form.get("target") != None):
+            target_lang = request.form["target"]
 
-@app.route('/<name>')
-def hello_name(name):
-    return "Hello {}!".format(name)
+        langs = get_langs(word)
+        translations = get_translations(langs, word, target_lang)
 
+        w = WordTranslations(word, target_lang, langs[0], translations[langs[0]], langs[1], translations[langs[1]], langs[2], translations[langs[2]])
 
+        try:
+            db.session.add(w)
+            db.session.commit()
+        except exc.IntegrityError:
+            print("!!!!!!!!!!!!!!")
+            print("exc.IntegrityError")
+            print("!!!!!!!!!!!!!!")
+            db.session().rollback()
+    words = WordTranslations.query.all()
+    return render_template('/index.html', words=words, langs=client)
 
-class Word(db.Model):
-    __tablename__ = 'words'
+@app.route('/button', methods=["GET", "POST"])
+@app.route('/button/', methods=["GET", "POST"])
+def button():
+    print(WordTranslations.query.all())
+    return redirect('/')
 
-    word_id = db.Column(db.Integer, primary_key=True)
-    word = db.Column(db.String(5000), index=True, unique=True, nullable=False)
-    lang_1 = db.Column(db.String(2), nullable=False)
-    lang_2 = db.Column(db.String(2))
-    lang_3 = db.Column(db.String(2))
-    translation_1 = db.Column(db.String(5000), nullable=False)
-    translation_2 = db.Column(db.String(5000))
-    translation_2 = db.Column(db.String(5000))
-
-
-    def __init__(self, word, lang_1, translation_1, lang_2=None, translation_2=None, lang_3=None, translation_3=None):
-        self.word = word
-        self.lang_1 = lang_1
-        self.lang_2 = lang_2
-        self.lang_3 = lang_3
-        self.translation_1 = translation_1
-        self.translation_2 = translation_2
-        self.translation_3 = translation_3
-
-    def __repr__(self):
-        return '<Word: {}. lang_1: {}. translation_1: {}>'.format(self.word, self.lang_1, self.translation_1)
