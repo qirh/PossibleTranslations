@@ -28,7 +28,7 @@
     <section id="button">
         <h1>Words</h1>
         {% for word in words %}
-            <p>{{word.word}}, Source -- {{word.lang_1}} : Translation in {{word.to_lang}} = {{word.translation_1}} </p>
+            <p>({{word.lang_1}}) '{{word.word}}'. Translation in ({{word.target_lang}}) '{{word.translation_1}}' </p>
         {% endfor %}
     </section>
 
