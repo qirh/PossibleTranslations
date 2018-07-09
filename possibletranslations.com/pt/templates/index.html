@@ -3,9 +3,37 @@
 {% block body %}
     <section id="index">
         <h1 style="display: inline">hola</h1>
+
         <form method="POST" action="/">
-            <input type="text" name="word">
-            <input type="submit" value="Find Language">
+
+            <input style="display: inline" type="text" name="word">
+
+            <select id="dropdown" name="target">
+                <option disabled selected value="en"> -- Target Language -- </option>
+                {% for lang in langs %}
+                    <option value="{{lang.language}}">{{lang.name}}</option>
+                {% endfor %}
+            </select>
+
+            <input style="display: inline" type="submit" value="Find Language">
+
         </form>
     </section>
+    <section id="button">
+        <form method="POST" action="/button">
+            <input type="submit" value="Press me">
+        </form>
+    </section>
+
+    <section id="button">
+        <h1>Words</h1>
+        {% for word in words %}
+            <p>{{word.word}}, Source -- {{word.lang_1}} : Translation in {{word.to_lang}} = {{word.translation_1}} </p>
+        {% endfor %}
+    </section>
+
+    <script>
+
+    </script>
+
 {% endblock %}
