@@ -21,6 +21,7 @@ POSTGRES = {
 }
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@localhost:5432/words_db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@@127.0.0.1:5432/words_db'
 app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
