@@ -164,7 +164,13 @@ def button():
     print(WordTranslations.query.all())
     return redirect('/')
 
+@app.route ('/api/<int:id>', methods=['GET'])
+def get_word(id):
+    word = WordTranslations.query.get(id)
+    print(word)
+    return jsonify(word.serialize())
+
 @app.route ('/api', methods=['GET'])
-def api():
+def get_all():
     words = WordTranslations.query.all()
-    return jsonify([e.serialize() for e in words])
+    return jsonify([w.serialize() for w in words])
