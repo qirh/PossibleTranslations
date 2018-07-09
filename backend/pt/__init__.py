@@ -20,7 +20,7 @@ POSTGRES = {
     'port': '5432',
 }
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@172.0.0.1:5432/words_db' % POSTGRES
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@@127.0.0.1:5432/words_db'
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.db'
 app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
