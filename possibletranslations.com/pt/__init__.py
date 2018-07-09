@@ -167,4 +167,4 @@ def button():
 @app.route ('/api', methods=['GET'])
 def api():
     words = WordTranslations.query.all()
-    return jsonify(eqtls=[e.serialize() for e in words])
+    return jsonify([e.serialize() for e in words])
