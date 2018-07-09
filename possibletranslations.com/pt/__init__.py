@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+
 from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
 from flask import Flask, request, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
-
+from google.cloud import translate
 
 
 app = Flask(__name__)
@@ -16,9 +16,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///words.db'
 app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+TARGET = 'en'
+
+from pt.models import *
 
 
 def get_langs(word):
@@ -50,6 +52,24 @@ def get_langs(word):
 
     return langs
 
+
+def get_translations(langs, word):
+
+    """
+    returns a list of the 3 string pairs [lang: translation]
+    """
+    translations = []
+    translate_client = translate.Client()
+
+    for i in range(len(langs)):
+        if langs[i] == None:
+            translations.append(None)
+        else:
+            translations.append(translate_client.translate(word, source_language=langs[i], target_language=TARGET)['translatedText'])
+
+    return dict(zip(langs, translations))
+
+
 @app.errorhandler(404)
 def error_page(error1=None, error2=None, error3=None):
     return render_template('/404.html', title="404")
@@ -59,9 +79,13 @@ def error_page(error1=None, error2=None, error3=None):
 def index():
     DetectorFactory.seed = 0
     if request.form:
-        print(get_langs(request.form["word"]))
-        
+        langs = get_langs(request.form["word"])
+        translations = get_translations(langs, request.form["word"])
 
+        w = Word(request.form["word"], langs[0], translations[langs[0]], langs[1], translations[langs[1]], langs[2], translations[langs[2]])
+        print(translations)
+        print(w.word_id)
+        print(w)
     return render_template('/index.html')
 
 @app.route('/<name>')
