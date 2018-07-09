@@ -6,7 +6,7 @@
 
         <form method="POST" action="/">
 
-            <input style="display: inline" type="text" name="word">
+            <input style="display: inline" type="text" name="word" placeholder="Sentence to translate">
 
             <select id="dropdown" name="target">
                 <option disabled selected value="en">Target Language: en</option>
@@ -30,12 +30,10 @@
             <tr>
                 <th>Sentence</th>
                 <th>Target lang</th>
-                <th>Detected Lang(1)</th>
-                <th>Translation(1)</th>
-                <th>Detected Lang(2)</th>
-                <th>Translation(2)</th>
-                <th>Detected Lang(3)</th>
-                <th>Translation(3)</th>
+                <th>Detected Lang #1</th>
+                <th>Translation #1</th>
+                <th>Detected Lang #2</th>
+                <th>Translation #2</th>
             </tr>
 
             {% for word in words %}
@@ -46,8 +44,6 @@
                     <td>{{ word.translation_1 }}</td>
                     <td>{{ word.lang_2 }}</td>
                     <td>{{ word.translation_2 }}</td>
-                    <td>{{ word.lang_3 }}</td>
-                    <td>{{ word.translation_3 }}</td>
                 </tr>
             {% endfor %}
         </table>
