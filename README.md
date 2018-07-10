@@ -2,8 +2,8 @@
 
 ## Old readme
 **Important:**
-1. Replace local db with Remote
-2. Implement front end (React) --> Flask API
+1. Replace local db with Remote --> add JWT
+2. Implement front end (React) --> Flask API + JWT + flask cdn
 3. Make sure it's mobile responsive
 4. Write Unit Tests
 

@@ -4,7 +4,7 @@
 from flask import Flask, request, render_template, redirect, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from sqlalchemy import exc
+from sqlalchemy import exc, and_
 from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
@@ -20,8 +20,8 @@ POSTGRES = {
     'port': '5432',
 }
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://saleh:400700we@wordsaws.clzvkffnzrmz.us-east-1.rds.amazonaws.com:5432/words_db'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@@127.0.0.1:5432/words_db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://saleh:400700we@wordsaws.clzvkffnzrmz.us-east-1.rds.amazonaws.com:5432/words_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@localhost:5432/words_db'
 app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
@@ -119,13 +119,10 @@ def get_translations(langs, word, target_lang):
 
     for i in range(len(langs)):
         if langs[i] == None:
-            print("0")
             translations.append(None)
         elif langs[i] == target_lang:
-            print("1")
             translations.append(word)
         else:
-            print("ok")
             translations.append(translate_client.translate(word, source_language=langs[i], target_language=target_lang)['translatedText'])
 
     return dict(zip(langs, translations))
@@ -134,8 +131,9 @@ def get_translations(langs, word, target_lang):
 
 # Views
 @app.errorhandler(404)
-def error_page(error1=None, error2=None, error3=None):
-    return render_template('/404.html', title="404")
+def error_page(custom=None):
+    print(custom)
+    return render_template('/404.html', title="404", custom=custom)
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
@@ -149,8 +147,6 @@ def index():
         target_lang = TARGET
         word = request.form.get("word")
 
-        print(request.form)
-        print(request.form.get("target"))
         if(request.form.get("target") != None):
             target_lang = request.form["target"]
 
@@ -160,7 +156,6 @@ def index():
         w = WordTranslations(word, target_lang, langs[0], translations[langs[0]], langs[1], translations[langs[1]], langs[2], translations[langs[2]])
 
         try:
-            print(w)
             db.session.add(w)
             db.session.commit()
         except exc.IntegrityError:
@@ -172,13 +167,58 @@ def index():
     return render_template('/index.html', title="Possible Translations", words=words, langs=client)
 
 
-@app.route ('/api/<int:id>', methods=['GET'])
-def get_word(id):
-    word = WordTranslations.query.get(id)
-    print(word)
-    return jsonify(word.serialize())
+
+
+@app.route ('/api/word?<string:word_filter>', methods=['GET'])
+def get_word(word_filter):
+    print("here")
+    try:
+        words = WordTranslations.query.filter(WordTranslations.word == word_filter).all()
+        if(len(words) < 1):
+            raise Exception("get_word - len(words) = 0")
+        return jsonify([w.serialize() for w in words])
+    except Exception as e:
+        print(str(e))
+        return error_page("Resource does not exist")
+
+@app.route ('/api/language?<string:lang_filter>', methods=['GET'])
+def get_lang(lang_filter):
+    try:
+        words = WordTranslations.query.filter(WordTranslations.target_lang == lang_filter).all()
+        if (len(words) < 1):
+            raise Exception("get_lang - len(words) = 0")
+        return jsonify([w.serialize() for w in words])
+    except Exception as e:
+        print(str(e))
+        return error_page("Resource does not exist")
+
+@app.route ('/api/word?<string:word_filter>/language?<string:lang_filter>', methods=['GET'])
+@app.route ('/api/language?<string:lang_filter>/word?<string:word_filter>', methods=['GET'])
+def get_word_lang(word_filter, lang_filter):
+    try:
+        words = WordTranslations.query.filter(and_(WordTranslations.word == word_filter, WordTranslations.target_lang == lang_filter)).all()
+        if (len(words) < 1):
+            raise Exception("get_word_lang - len(words) = 0")
+        return jsonify([w.serialize() for w in words])
+    except Exception as e:
+        print(str(e))
+        return error_page("Resource does not exist")
+
+@app.route ('/api?<int:id>', methods=['GET'])
+@app.route ('/api/id?<int:id>', methods=['GET'])
+def get_id(id_filter):
+    try:
+        return jsonify(WordTranslations.query.get(id_filter).serialize())
+    except Exception as e:
+        print("get_id - " + str(e))
+        return error_page("Resource does not exist")
 
 @app.route ('/api', methods=['GET'])
-def get_all():
-    words = WordTranslations.query.all()
-    return jsonify([w.serialize() for w in words])
+def get_all(path=None):
+    try:
+        words = WordTranslations.query.all()
+        if (len(words) < 1):
+            raise Exception("get_all - len(words) = 0")
+        return jsonify([w.serialize() for w in words])
+    except Exception as e:
+        return error_page("Resource does not exist")
