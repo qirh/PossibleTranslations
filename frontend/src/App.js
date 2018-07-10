@@ -12,29 +12,46 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://whalertestbackend-env.73ghfcgu73.us-east-2.elasticbeanstalk.com/donors')
+
+  //   var api_data = fetch('http://localhost:5000/api', {method: 'get'})
+  //     .then(
+  //        words => this.setState({ words })
+  //       console.log(words)
+  //     )
+  //     .catch(function(err) {
+  //     // Error :(
+  //     });
+  // console.log(2)
+  // console.log(api_data)
+
+  fetch('http://localhost:5000/api')
       .then(res => res.json())
-      .then(words => this.setState({ words }));
-  }
+      .then(words => this.setState({ words })
+  );
+  //console.log(words)
+  fetch('http://whalertestbackend-env.73ghfcgu73.us-east-2.elasticbeanstalk.com/donors')
+      .then(res => res.json())
 
-  handleOrganizationIDChange = (user_input) => {
-    var new_organization_id = 0
-    if (!isNaN(user_input) && user_input !== "") {
-      new_organization_id = parseFloat(user_input)
-    }
-    this.setState(prevState => ({
-      organization_id: new_organization_id,
-    }))
-  }
+}
 
-  render() {
-    return (
-      <div className="words-app">
-        <h1 className="words-header">FIND MY WORD!</h1>
-        <SearchDonors onHandleOrganizationIDChange={this.handleOrganizationIDChange} />
-        <WordsTable words={this.state.words}
-                     organization_id={this.state.organization_id}/>
-      </div>
-    );
+handleOrganizationIDChange = (user_input) => {
+  var new_organization_id = 0
+  if (!isNaN(user_input) && user_input !== "") {
+    new_organization_id = parseFloat(user_input)
   }
+  this.setState(prevState => ({
+    organization_id: new_organization_id,
+  }))
+}
+
+render() {
+  return (
+    <div className="words-app">
+    <h1 className="words-header">FIND MY WORD!</h1>
+    <SearchDonors onHandleOrganizationIDChange={this.handleOrganizationIDChange} />
+    <WordsTable words={this.state.words}
+    organization_id={this.state.organization_id}/>
+    </div>
+  );
+}
 }
