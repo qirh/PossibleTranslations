@@ -182,11 +182,12 @@ def get_all():
             print(e)
             return make_response(jsonify({'error': 'illegal search query'}), 404)
 
-        print(words)
-
         if (len(words) < 1):
             raise Exception("len(words) = 0")
-        return jsonify({'words':[w.serialize() for w in words]})
+
+        response = jsonify([w.serialize() for w in words])
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
     except Exception as e:
         print(str(e))
         return make_response(jsonify({'error': 'Not found'}), 404)

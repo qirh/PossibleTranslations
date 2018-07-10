@@ -15,20 +15,25 @@ export default class WordsTable extends Component {
 
   generateTableRows = (words, organization_id) => {
     // Sort by id
-    words.sort(function(a,b) {return a.id - b.id});
-
+    console.log(words);
+    words.sort(function(a, b){
+      if(a.word < b.word) return -1;
+      if(a.word > b.word) return 1;
+      return 0;
+    })
+    console.log(words);
     // Create table elements
     var result = []
     var keyID = 1
     words.forEach((word) => {
       if (word.OrganizationId === organization_id || organization_id === 0) {
         result.push(<tr className="words-row" key={keyID}>
-                        <td>{word.OrganizationId}</td>
-                        <td>{word.FirstName}</td>
-                        <td>{word.LastName}</td>
-                        <td>{word.EmailAddress}</td>
-                        <td>{word.DonationDate}</td>
-                        <td>{word.DonationAmount}</td>
+                        <td>{word.word}</td>
+                        <td>{word.target_lang}</td>
+                        <td>{word.lang_1}</td>
+                        <td>{word.translation_1}</td>
+                        <td>{word.lang_2}</td>
+                        <td>{word.translation_1}</td>
                        </tr>)
         keyID += 1
       }
@@ -59,16 +64,16 @@ export default class WordsTable extends Component {
         <table className="words-table">
           <tbody>
             <tr className="words-header-row">
-              <th colSpan="5">{headerText}</th>
-              <th><button className="donors-export-button">EXPORT</button></th>
+              <th colSpan="6">{headerText}</th>
+              <th><button className="words-export-button">EXPORT</button></th>
             </tr>
             <tr className="words-column-names">
-              <th>Word id</th>
               <th>Word</th>
               <th>Target Language</th>
               <th>Detected Language #1</th>
-              <th>Translation #1 </th>
-              <th>Donation Amount</th>
+              <th>Translation #1</th>
+              <th>Detected Language #2</th>
+              <th>Translation #2</th>
             </tr>
             {tableRows}
           </tbody>
