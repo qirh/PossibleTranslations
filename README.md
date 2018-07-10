@@ -2,21 +2,15 @@
 
 ## Old readme
 **Important:**
-1. ~~Register Domain~~ [possibletranslations.com](possibletranslations.com)
-2. ~~Set up flask (sql-alchemy + flask api)~~
-3. ~~Create HTML~~
+1. Replace local db with Remote
+2. Implement front end (React) --> Flask API
+3. Make sure it's mobile responsive
 4. Write Unit Tests
-5. Replace local db with Remote
-6. Implement front end (React)
-7. Make sure it's mobile responsive
 
 **Not so important:**
 1. Serve HTTPS Domain (let's encrypt)
-2. Add support for other translator (bing?)
-
-## Old readme
-API that queries a bunch of language translators and return multiple results, will be helpful to translate words that might have multiple meanings.
-Return the translation of a word and all it's synonyms Arabic &lt;-> English.
+2. Add support for another translator (bing?)
+3. Dash instead of None in Table
 
 ## Alex requirement
 The goal of this project is to create a tool that will accept text input (e.g. a sentence), determine the language entered, and translate the text to English. Then you should deploy this tool to the Web so I can see it.
