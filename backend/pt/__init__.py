@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import Flask, request, render_template, redirect, jsonify
+from flask import Flask, request, render_template, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from sqlalchemy import exc, and_
@@ -158,67 +158,50 @@ def index():
         try:
             db.session.add(w)
             db.session.commit()
-        except exc.IntegrityError:
-            print("!!!!!!!!!!!!!!")
-            print("exc.IntegrityError")
-            print("!!!!!!!!!!!!!!")
+        except exc.IntegrityError as e:
+            print("exc.IntegrityError: " + str(e))
             db.session().rollback()
     words = WordTranslations.query.all()
     return render_template('/index.html', title="Possible Translations", words=words, langs=client)
 
 
 
-
-@app.route ('/api/word?<string:word_filter>', methods=['GET'])
-def get_word(word_filter):
-    print("here")
-    try:
-        words = WordTranslations.query.filter(WordTranslations.word == word_filter).all()
-        if(len(words) < 1):
-            raise Exception("get_word - len(words) = 0")
-        return jsonify([w.serialize() for w in words])
-    except Exception as e:
-        print(str(e))
-        return error_page("Resource does not exist")
-
-@app.route ('/api/language?<string:lang_filter>', methods=['GET'])
-def get_lang(lang_filter):
-    try:
-        words = WordTranslations.query.filter(WordTranslations.target_lang == lang_filter).all()
-        if (len(words) < 1):
-            raise Exception("get_lang - len(words) = 0")
-        return jsonify([w.serialize() for w in words])
-    except Exception as e:
-        print(str(e))
-        return error_page("Resource does not exist")
-
-@app.route ('/api/word?<string:word_filter>/language?<string:lang_filter>', methods=['GET'])
-@app.route ('/api/language?<string:lang_filter>/word?<string:word_filter>', methods=['GET'])
-def get_word_lang(word_filter, lang_filter):
-    try:
-        words = WordTranslations.query.filter(and_(WordTranslations.word == word_filter, WordTranslations.target_lang == lang_filter)).all()
-        if (len(words) < 1):
-            raise Exception("get_word_lang - len(words) = 0")
-        return jsonify([w.serialize() for w in words])
-    except Exception as e:
-        print(str(e))
-        return error_page("Resource does not exist")
-
-@app.route ('/api?<int:id>', methods=['GET'])
-@app.route ('/api/id?<int:id>', methods=['GET'])
-def get_id(id_filter):
-    try:
-        return jsonify(WordTranslations.query.get(id_filter).serialize())
-    except Exception as e:
-        print("get_id - " + str(e))
-        return error_page("Resource does not exist")
-
 @app.route ('/api', methods=['GET'])
-def get_all(path=None):
+def get_all():
+
     try:
-        words = WordTranslations.query.all()
+        filters = request.args.to_dict()
+        if (filters.get('lang') is not None):
+            filters['target_lang'] = filters.pop('lang')
+        if (filters.get('id') is not None):
+            filters['word_id'] = filters.pop('id')
+
+        try:
+            words = WordTranslations.query.filter_by(**filters).all()
+        except Exception as e:
+            print(e)
+            return make_response(jsonify({'error': 'illegal search query'}), 404)
+
+        print(words)
+
         if (len(words) < 1):
-            raise Exception("get_all - len(words) = 0")
-        return jsonify([w.serialize() for w in words])
+            raise Exception("len(words) = 0")
+        return jsonify({'words':[w.serialize() for w in words]})
     except Exception as e:
-        return error_page("Resource does not exist")
+        print(str(e))
+        return make_response(jsonify({'error': 'Not found'}), 404)
+
+@app.route('/api/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+def api_echo():
+    if request.method == 'GET':
+        return make_response(jsonify({'ECHO': 'GET'}))
+    elif request.method == 'POST':
+        return make_response(jsonify({'ECHO': 'POST'}))
+    elif request.method == 'PATCH':
+        return make_response(jsonify({'ECHO': 'PATCH'}))
+    elif request.method == 'PUT':
+        return make_response(jsonify({'ECHO': 'PUT'}))
+    elif request.method == 'DELETE':
+        return make_response(jsonify({'ECHO': 'DELETE'}))
+    else:
+        return make_response(jsonify({'error': 'unsupported method'}, {'methods supported': {'GET', 'POST', 'PATCH', 'PUT', 'DELETE'}}), 404)
