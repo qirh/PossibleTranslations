@@ -8,3 +8,16 @@ p, body, input, button {
 * {
   font-family: Junge, serif;
 }
+.ReactTable {
+  height: 600px
+}
+
+/* Mobile */
+@media only screen and (max-width: 599px) {
+}
+/* Tablets */
+@media only screen and (min-width: 600px) {
+}
+/* Desktop */
+@media only screen and (min-width: 768px) {
+}
