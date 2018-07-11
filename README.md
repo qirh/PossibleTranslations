@@ -1,16 +1,31 @@
 # PossibleTranslations
 
-## Old readme
+## Progress
 **Important:**
-1. Replace local db with Remote --> add JWT
-2. Implement front end (React) --> Flask API + JWT + flask cdn
-3. Make sure it's mobile responsive
+1. Replace local db with Remote
+  * add JWT
+2. Implement front end (React)
+3. Mobile responsive
 4. Write Unit Tests
+5. Implement Post
+6. Implement Put
+7. Implement Patch
+8. Add Apiary
 
 **Not so important:**
 1. Serve HTTPS Domain (let's encrypt)
 2. Add support for another translator (bing?)
 3. Dash instead of None in Table
+
+## Issues
+**Backend:**
+1. Need unit tests (API tests)
+
+**Frontend:**
+1. React icon shows up before custom icon
+2. Need box to insert new word
+3. Need option to delete word
+4. Edit word?
 
 ## Alex requirement
 The goal of this project is to create a tool that will accept text input (e.g. a sentence), determine the language entered, and translate the text to English. Then you should deploy this tool to the Web so I can see it.

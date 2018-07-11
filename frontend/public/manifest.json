@@ -1,13 +1,11 @@
 {
-  "short_name": "Possible Translations",
-  "name": "Show the two most likely translations for a word",
-  "icons": [
-    {
-      "src": "icon.png",
+  "short_name": "PT",
+  "name": "Possible Translations",
+  "icons": [{
+      "src": "icon-64x64.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
-    }
-  ],
+    }],
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
