@@ -4,7 +4,7 @@
 from flask import Flask, request, render_template, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from sqlalchemy import exc, and_
+from sqlalchemy import exc
 from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
@@ -177,6 +177,7 @@ def add_word(form):
     try:
         db.session.add(w)
         db.session.commit()
+        return w
     except exc.IntegrityError as e:
         print("exc.IntegrityError: " + str(e))
         db.session().rollback()
@@ -193,14 +194,17 @@ def error_page(custom=None):
 @app.route("/index", methods=["GET", "POST"])
 def index():
 
+    client = translate.Client().get_languages() # What if this fails?
+    try:
+        words = WordTranslations.query.all()
+    except:
+        return make_response(render_template('/index.html', title="Possible Translations", words=[], langs=client), 422)
     try:
         if request.form:
-            add_word(request.form)
-        client = translate.Client().get_languages()
-        words = WordTranslations.query.all()
+            words.appen(add_word(request.form))
+
         return make_response(
             render_template('/index.html', title="Possible Translations", words=words, langs=client), 200)
-
     except:
         return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
 
