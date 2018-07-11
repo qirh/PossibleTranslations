@@ -127,6 +127,33 @@ def get_translations(langs, word, target_lang):
 
     return dict(zip(langs, translations))
 
+def get_words_with_filter(filters):
+
+    if (filters.get('lang') is not None):
+        filters['target_lang'] = filters.pop('lang')
+    if (filters.get('id') is not None):
+        filters['word_id'] = filters.pop('id')
+    try:
+        words = WordTranslations.query.filter_by(**filters).all()
+    except Exception:
+        raise IllegalQueryExcpetion(404, 'illegal search query')
+
+    if (len(words) < 1):
+        if(not filters):
+            raise NotFoundException(404, 'DB is empty')
+        raise NotFoundException(404, 'Word Not Found')
+    return words
+
+class NotFoundException(Exception):
+    def __init__(self, number, message):
+        self.number = number
+        self.message = message
+        super().__init__(message)
+class IllegalQueryExcpetion(Exception):
+    def __init__(self, number, message):
+        self.number = number
+        self.message = message
+        super().__init__(message)
 
 
 # Views
@@ -158,7 +185,6 @@ def index():
         for attr, value in w.__dict__.items():
             if value is None:
                 w.__dict__[attr] = "-"
-
         try:
             db.session.add(w)
             db.session.commit()
@@ -169,32 +195,41 @@ def index():
     return render_template('/index.html', title="Possible Translations", words=words, langs=client)
 
 
-
-@app.route ('/api', methods=['GET'])
-def get_all():
-
+@app.route ('/api', methods=['DELETE'])
+def api_delete():
+    print("1")
     try:
-        filters = request.args.to_dict()
-        if (filters.get('lang') is not None):
-            filters['target_lang'] = filters.pop('lang')
-        if (filters.get('id') is not None):
-            filters['word_id'] = filters.pop('id')
-
+        words = get_words_with_filter(request.args.to_dict())
+        for w in words:
+            print(w)
         try:
-            words = WordTranslations.query.filter_by(**filters).all()
-        except Exception as e:
-            print(e)
-            return make_response(jsonify({'error': 'illegal search query'}), 404)
-
-        if (len(words) < 1):
-            raise Exception("len(words) = 0")
+            for w in words:
+                db.session.delete(w)
+            db.session.commit()
+        except exc.IntegrityError as e:
+            print("exc.IntegrityError: " + str(e))
+            db.session().rollback()
+            return make_response(jsonify({'error': 'DB Integrity Error'}), 404)
 
         response = jsonify([w.serialize() for w in words])
         response.headers.add('Access-Control-Allow-Origin', '*')
-        return response
+        return make_response(response, 200)
+    except (NotFoundException, IllegalQueryExcpetion) as e:
+        return make_response(jsonify({'error': e.message}), e.number)
     except Exception as e:
-        print(str(e))
-        return make_response(jsonify({'error': 'Not found'}), 404)
+        return make_response(jsonify({'error': 'unknown error'}), 404)
+
+@app.route ('/api', methods=['GET'])
+def api_get():
+    try:
+        words = get_words_with_filter(request.args.to_dict())
+        response = jsonify([w.serialize() for w in words])
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return make_response(response, 200)
+    except (NotFoundException, IllegalQueryExcpetion) as e:
+        return make_response(jsonify({'error': e.message}), e.number)
+    except Exception as e:
+        return make_response(jsonify({'error': 'unknown error'}), 404)
 
 @app.route('/api/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 def api_echo():
