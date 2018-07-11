@@ -38,11 +38,11 @@ class WordTranslations(db.Model):
     word = db.Column(db.String(5000), nullable=False)
     target_lang = db.Column(db.String(20), nullable=False)
     lang_1 = db.Column(db.String(20), nullable=False)
-    lang_2 = db.Column(db.String(20))
-    lang_3 = db.Column(db.String(20))
+    lang_2 = db.Column(db.String(20), nullable=False)
+    lang_3 = db.Column(db.String(20), nullable=False)
     translation_1 = db.Column(db.String(5000), nullable=False)
-    translation_2 = db.Column(db.String(5000))
-    translation_3 = db.Column(db.String(5000))
+    translation_2 = db.Column(db.String(5000), nullable=False)
+    translation_3 = db.Column(db.String(5000), nullable=False)
 
 
     def __init__(self, word, target_lang, lang_1, translation_1, lang_2=None, translation_2=None, lang_3=None, translation_3=None):
@@ -74,7 +74,7 @@ class WordTranslations(db.Model):
 def drop():
     db.reflect()
     db.drop_all()
-
+#drop()
 db.create_all()
 db.session.commit()
 
@@ -154,6 +154,10 @@ def index():
         translations = get_translations(langs, word, target_lang)
 
         w = WordTranslations(word, target_lang, langs[0], translations[langs[0]], langs[1], translations[langs[1]], langs[2], translations[langs[2]])
+
+        for attr, value in w.__dict__.items():
+            if value is None:
+                w.__dict__[attr] = "-"
 
         try:
             db.session.add(w)

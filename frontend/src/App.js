@@ -5,7 +5,6 @@ import './App.css';
 //React table
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
-import matchSorter from 'match-sorter'
 
 
 export default class App extends Component {
@@ -32,28 +31,27 @@ handleOrganizationIDChange = (user_input) => {
 }
 
 
-
 render() {
   const columns = [
     {Header: "Info", columns: [
-      {Header: 'Word', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)&&row[filter.id].endsWith(filter.value)},
-      {Header: 'Target Language', accessor: 'target_lang'}
+      {Header: 'Word', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+      {Header: 'Target Language', accessor: 'target_lang', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
     ]},
 
     {Header: "Guess #1", columns: [
-      {Header: 'Detected Language', accessor: 'lang_1'},
-      {Header: 'Translation', accessor: 'translation_1'}
+      {Header: 'Detected Language', accessor: 'lang_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+      {Header: 'Translation', accessor: 'translation_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
     ]},
     {Header: "Guess #2", columns: [
-      {Header: 'Detected Language', accessor: 'lang_2'},
-      {Header: 'Translation', accessor: 'translation_2'}
+      {Header: 'Detected Language', accessor: 'lang_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+      {Header: 'Translation', accessor: 'translation_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
     ]}
   ]
   return (
     <div className="words-app">
     <h1 className="words-header">Possible Translations</h1>
 
-    <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight"/>
+    <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
     </div>
   );
