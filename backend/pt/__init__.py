@@ -186,7 +186,7 @@ def add_word(form):
 # Views
 @app.errorhandler(404)
 def error_page(custom=None):
-    print(custom)
+    print("error_page(custom= " + custom)
     return render_template('/404.html', title="404", custom=custom)
 
 @app.route("/", methods=["GET", "POST"])
