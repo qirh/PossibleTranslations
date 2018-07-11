@@ -8,6 +8,7 @@ from sqlalchemy import exc, and_
 from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
+from .models
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
@@ -155,32 +156,10 @@ class IllegalQueryExcpetion(Exception):
         self.message = message
         super().__init__(message)
 
-def add_word(form):
-
+def add_word(word, form):
+    client = translate.Client()
+    client = client.get_languages()
     DetectorFactory.seed = 0
-    target_lang = TARGET
-
-    word = form.get("word")
-
-    if (form.get("target") != None):
-        target_lang = form["target"]
-
-    langs = get_langs(word)
-    translations = get_translations(langs, word, target_lang)
-
-    w = WordTranslations(word, target_lang, langs[0], translations[langs[0]], langs[1], translations[langs[1]],
-                         langs[2], translations[langs[2]])
-
-    for attr, value in w.__dict__.items():
-        if value is None:
-            w.__dict__[attr] = "-"
-    try:
-        db.session.add(w)
-        db.session.commit()
-    except exc.IntegrityError as e:
-        print("exc.IntegrityError: " + str(e))
-        db.session().rollback()
-        raise Exception
 
 
 # Views
@@ -193,32 +172,36 @@ def error_page(custom=None):
 @app.route("/index", methods=["GET", "POST"])
 def index():
 
-    try:
-        if request.form:
-            add_word(request.form)
-        client = translate.Client().get_languages()
-        words = WordTranslations.query.all()
-        return make_response(
-            render_template('/index.html', title="Possible Translations", words=words, langs=client), 200)
 
-    except:
-        return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
+    if request.form:
+        target_lang = TARGET
+        word = request.form.get("word")
+
+        if(request.form.get("target") != None):
+            target_lang = request.form["target"]
+
+        langs = get_langs(word)
+        translations = get_translations(langs, word, target_lang)
+
+        w = WordTranslations(word, target_lang, langs[0], translations[langs[0]], langs[1], translations[langs[1]], langs[2], translations[langs[2]])
+
+        for attr, value in w.__dict__.items():
+            if value is None:
+                w.__dict__[attr] = "-"
+        try:
+            db.session.add(w)
+            db.session.commit()
+        except exc.IntegrityError as e:
+            print("exc.IntegrityError: " + str(e))
+            db.session().rollback()
+    words = WordTranslations.query.all()
+    return render_template('/index.html', title="Possible Translations", words=words, langs=client)
 
 
 @app.route ('/api', methods=['POST'])
 def api_post():
 
-    print(request.args.getlist('word'))
-
-    if False:
-        try:
-            add_word(request.form)
-            client = translate.Client().get_languages()
-            words = WordTranslations.query.all()
-            return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 200)
-        except:
-            return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
-
+    return make_response(jsonify({'error': 'unknown error'}), 404)
 
 @app.route ('/api', methods=['DELETE'])
 def api_delete():
