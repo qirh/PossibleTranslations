@@ -51,12 +51,10 @@ render() {
   ]
   return (
     <div className="words-app">
-    <h1 className="words-header">FIND MY WORD!</h1>
+    <h1 className="words-header">Possible Translations</h1>
     <SearchWords onHandleOrganizationIDChange={this.handleOrganizationIDChange}/>
 
-
-
-    <ReactTable data={this.state.words} columns={columns}/>
+    <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight"/>
 
     </div>
   );
