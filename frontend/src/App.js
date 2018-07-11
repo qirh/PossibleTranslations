@@ -8,6 +8,7 @@ import WordsTable from './WordsTable.js';
 //React table
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
+import matchSorter from 'match-sorter'
 
 
 export default class App extends Component {
@@ -42,19 +43,22 @@ handleOrganizationIDChange = (user_input) => {
 
 render() {
   const columns = [
-    {Header: 'Word', accessor: 'word'},
-    {Header: 'Target Language',accessor: 'target_lang', Cell: props => <span className='number'>{props.value}</span>},
-    {Header: 'Detected Language #1 ', accessor: 'lang_1', Cell: props => <span className='number'>{props.value}</span>},
-    {Header: 'Translation #1 ', accessor: 'translation_1', Cell: props => <span className='number'>{props.value}</span>},
-    {Header: 'Detected Language #2 ', accessor: 'lang_2', Cell: props => <span className='number'>{props.value}</span>},
-    {Header: 'Detected Language #2 ', accessor: 'translation_2', Cell: props => <span className='number'>{props.value}</span>},
+    {Header: "Info", columns: [
+      {Header: 'Word', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)&&row[filter.id].endsWith(filter.value)},
+      {Header: 'Target Language', accessor: 'target_lang', accessor: d => d.lastName, filterMethod: (filter, rows) => matchSorter(rows, filter.value, { keys: ["target_lang"] }), filterAll: true}
+    ]},
+
+    {Header: "Guess #1", columns: [{Header: 'Detected Language', accessor: 'lang_1', Cell: props => <span className='number'>{props.value}</span>},
+    {Header: 'Translation', accessor: 'translation_1', Cell: props => <span className='number'>{props.value}</span>}]},
+    {Header: "Guess #2", columns: [{Header: 'Detected Language', accessor: 'lang_2', Cell: props => <span className='number'>{props.value}</span>},
+    {Header: 'Translation', accessor: 'translation_2', Cell: props => <span className='number'>{props.value}</span>}]}
   ]
   return (
     <div className="words-app">
     <h1 className="words-header">Possible Translations</h1>
     <SearchWords onHandleOrganizationIDChange={this.handleOrganizationIDChange}/>
 
-    <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight"/>
+    <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
     </div>
   );
