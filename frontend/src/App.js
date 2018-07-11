@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 
 //Components
-import SearchDonors from './SearchWords.js';
+import SearchWords from './SearchWords.js';
 import WordsTable from './WordsTable.js';
+
+//React table
+import ReactTable from "react-table";
+import 'react-table/react-table.css'
+
 
 export default class App extends Component {
   state = {
@@ -13,24 +18,13 @@ export default class App extends Component {
 
   componentDidMount() {
 
-  //   var api_data = fetch('http://localhost:5000/api', {method: 'get'})
-  //     .then(
-  //        words => this.setState({ words })
-  //       console.log(words)
-  //     )
-  //     .catch(function(err) {
-  //     // Error :(
-  //     });
-  // console.log(2)
-  // console.log(api_data)
-
-  fetch('http://localhost:5000/api')
-      .then(res => res.json())
-      .then(words => this.setState({ words })
+    fetch('http://localhost:5000/api')
+    .then(res => res.json())
+    .then(words => this.setState({ words })
   );
   //console.log(words)
   fetch('http://whalertestbackend-env.73ghfcgu73.us-east-2.elasticbeanstalk.com/donors')
-      .then(res => res.json())
+  .then(res => res.json())
 
 }
 
@@ -44,13 +38,26 @@ handleOrganizationIDChange = (user_input) => {
   }))
 }
 
+
+
 render() {
+  const columns = [
+    {Header: 'Word', accessor: 'word'},
+    {Header: 'Target Language',accessor: 'target_lang', Cell: props => <span className='number'>{props.value}</span>},
+    {Header: 'Detected Language #1 ', accessor: 'lang_1', Cell: props => <span className='number'>{props.value}</span>},
+    {Header: 'Translation #1 ', accessor: 'translation_1', Cell: props => <span className='number'>{props.value}</span>},
+    {Header: 'Detected Language #2 ', accessor: 'lang_2', Cell: props => <span className='number'>{props.value}</span>},
+    {Header: 'Detected Language #2 ', accessor: 'translation_2', Cell: props => <span className='number'>{props.value}</span>},
+  ]
   return (
     <div className="words-app">
     <h1 className="words-header">FIND MY WORD!</h1>
-    <SearchDonors onHandleOrganizationIDChange={this.handleOrganizationIDChange} />
-    <WordsTable words={this.state.words}
-    organization_id={this.state.organization_id}/>
+    <SearchWords onHandleOrganizationIDChange={this.handleOrganizationIDChange}/>
+
+
+
+    <ReactTable data={this.state.words} columns={columns}/>
+
     </div>
   );
 }
