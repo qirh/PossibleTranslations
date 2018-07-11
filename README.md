@@ -3,7 +3,7 @@
 ## Progress
 **Important:**
 1. Replace local db with Remote
-  * add JWT
+    * add JWT
 2. Implement front end (React)
 3. Mobile responsive
 4. Write Unit Tests
@@ -20,6 +20,8 @@
 ## Issues
 **Backend:**
 1. Need unit tests (API tests)
+2. API documentation
+3. API can accept JSON payloads
 
 **Frontend:**
 1. React icon shows up before custom icon
