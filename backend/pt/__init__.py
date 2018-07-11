@@ -204,7 +204,7 @@ def index():
     except:
         return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
 
-
+# only posts one entry at a time (needs word + lang)
 @app.route ('/api', methods=['POST'])
 def api_post():
 
@@ -219,7 +219,7 @@ def api_post():
         except:
             return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
 
-
+# only deletes one entry at a time (only requires word)
 @app.route ('/api', methods=['DELETE'])
 def api_delete():
     try:
@@ -243,6 +243,7 @@ def api_delete():
     except Exception as e:
         return make_response(jsonify({'error': 'unknown error'}), 404)
 
+# gets all applicable words
 @app.route ('/api', methods=['GET'])
 def api_get():
     try:
