@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-import { array } from 'prop-types';
 
 export default class DropDown extends Component {
 
   state = {
     languages: []
-  }
-  static propTypes = {
-    languages: array.isRequired
   }
 
   componentDidMount() {
@@ -25,9 +21,9 @@ export default class DropDown extends Component {
     const { languages } = this.state;
 
     return (
-      <select ref="userInput" defaultValue="" required> <option value="" disabled>Target Language (en)</option>
-          {languages.map(function(user) {
-            return <option key={user.language} value={user.name}>{user.name}</option>;
+      <select className="language-drop-down"> <option disabled defaultValue="en">Target Language (en)</option>
+          {languages.map(function(l) {
+            return <option key={l.language} value={l.language}>{l.name}</option>;
           })}
       </select>
     );
