@@ -19,8 +19,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-TARGET = 'en'
-
+TARGET_LANGUAGE = 'en'
+AVALIABLE_LANGUAGES = []
 
 #########################################
 ################# MODEL #################
@@ -156,12 +156,11 @@ def word_is_unique(filters):
         search_dict['word_id'] = filters.pop('id')
     if (filters.get('word') is not None):
         search_dict['word'] = filters.pop('word')
-    print(search_dict)
     try:
         words = WordTranslations.query.filter_by(**search_dict).all()
     except Exception:
         raise CustomException(404, 'Illegal search query')
-    print(words)
+
     if (len(words) < 1):
         if(not search_dict):
             raise CustomException(404, 'DB is empty')
@@ -181,16 +180,22 @@ def find_word(filters):
     if (filters.get('word') is not None):
         search_dict['word'] = filters.pop('word')
 
-    print(search_dict)
     try:
         words = WordTranslations.query.filter_by(**search_dict).all()
     except Exception:
         raise CustomException(404, 'Illegal search query')
 
-    print(words)
     if (len(words) > 1):
         raise CustomException(404, 'Word already exists')
     return words
+
+
+def update_languages():
+    try:
+        global AVALIABLE_LANGUAGES
+        AVALIABLE_LANGUAGES = translate.Client().get_languages()  # What if this fails?
+    except Exception as e:
+        AVALIABLE_LANGUAGES = [{'language': 'en', 'name': 'English'}]
 
 
 class CustomException(Exception):
@@ -202,7 +207,7 @@ class CustomException(Exception):
 
 def add_word(form):
     DetectorFactory.seed = 0
-    target_lang = TARGET
+    target_lang = TARGET_LANGUAGE
     word = form.get("word")
     if (form.get("target_lang") != None):
         target_lang = form["target_lang"]
@@ -239,19 +244,19 @@ def error_page(custom=None):
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
 def index():
-    client = translate.Client().get_languages() # What if this fails?
+    update_languages()
     try:
         words = WordTranslations.query.all()
     except:
-        return make_response(render_template('/index.html', title="Possible Translations", words=[], langs=client), 422)
+        return make_response(render_template('/index.html', title="Possible Translations", words=[], langs=AVALIABLE_LANGUAGES), 422)
     try:
         if request.form:
             words.append(add_word(request.form))
 
         return make_response(
-            render_template('/index.html', title="Possible Translations", words=words, langs=client), 200)
+            render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 200)
     except:
-        return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
+        return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 422)
 
 
 # Edits one entry at a time (needs word + target_lang + new_target_lang)
@@ -324,7 +329,7 @@ def api_delete():
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
-# Gets all applicable words
+# Gets specific entries or all entries
 @app.route ('/api/1.0', methods=['GET'])
 @app.route ('/api/1.0/q', methods=['GET'])
 def api_get():
@@ -334,6 +339,20 @@ def api_get():
         else:
             words = WordTranslations.query.all()
         response = jsonify([w.serialize() for w in words])
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return make_response(response, 200)
+    except CustomException as e:
+        return make_response(jsonify({'Error': e.message}), e.number)
+    except Exception as e:
+        return make_response(jsonify({'Error': 'unknown error'}), 404)
+
+# Gets supported languages
+@app.route ('/api/1.0/languages', methods=['GET'])
+def api_get_languages():
+    try:
+        update_languages()
+        response = jsonify(AVALIABLE_LANGUAGES)
+        print("here3")
         response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
     except CustomException as e:
