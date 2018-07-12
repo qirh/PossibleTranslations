@@ -125,36 +125,8 @@ def get_translations(langs, word, target_lang):
     return dict(zip(langs, translations))
 
 
-# Used for Post
-def post_helper(filters):
-    search_dict = {}
-    if (filters.get('lang') is not None):
-        search_dict['target_lang'] = filters.pop('lang')
-    else:
-        raise CustomException(404, 'No language specified')
-    if (filters.get('word') is not None):
-        search_dict['word'] = filters.pop('word')
-    else:
-        raise CustomException(404, 'No word specified')
-
-    client = translate.Client().get_languages()
-
-    if (not (search_dict['target_lang'] in [c['language'] for c in client])):
-        raise CustomException(404, 'Illegal language, please pick a language from the following list: ' + str([c['language'] for c in client]))
-
-    words = None
-    try:
-        words = WordTranslations.query.filter_by(**search_dict).all()
-    except Exception as e:
-        print(e)
-        raise CustomException(404, 'Illegal search query')
-    if (words is not None):
-        if (len(words) >= 1):
-            raise CustomException(404, 'Word exists already')
-
-
-# Used for GET
-def get_helper(filters):
+# Used for GET, return a list of all entries matching filter
+def find_all_words(filters):
     search_dict = {}
     if (filters.get('lang') is not None):
         search_dict['target_lang'] = filters.pop('lang')
@@ -175,8 +147,8 @@ def get_helper(filters):
     return words
 
 
-# Used for DELETE
-def delete_helper(filters):
+# Used for DELETE & PUT, will raise an exception if combination of (word + lang) either does not exist in the DB or if there are multiple entries
+def word_exists(filters):
     search_dict = {}
     if (filters.get('lang') is not None):
         search_dict['target_lang'] = filters.pop('lang')
@@ -191,11 +163,33 @@ def delete_helper(filters):
         raise CustomException(404, 'Illegal search query')
 
     if (len(words) < 1):
-        if(not filters):
+        if(not search_dict):
             raise CustomException(404, 'DB is empty')
         raise CustomException(404, 'Word Not Found')
     elif(len(words) > 1):
         raise CustomException(404, 'Too many options, please narrow down with more questions')
+    return words
+
+
+# Used for POST, will raise an exception if combination of (word + lang) has an entry in the DB
+def find_word(filters):
+    search_dict = {}
+    if (filters.get('lang') is not None):
+        search_dict['target_lang'] = filters.pop('lang')
+    if (filters.get('id') is not None):
+        search_dict['word_id'] = filters.pop('id')
+    if (filters.get('word') is not None):
+        search_dict['word'] = filters.pop('word')
+
+    print(search_dict)
+    try:
+        words = WordTranslations.query.filter_by(**search_dict).all()
+    except Exception:
+        raise CustomException(404, 'Illegal search query')
+
+    print(words)
+    if (len(words) > 1):
+        raise CustomException(404, 'Word already exists')
     return words
 
 
@@ -232,35 +226,6 @@ def add_word(form):
         raise exc.IntegrityError
 
 
-def edit_word(form):
-    DetectorFactory.seed = 0
-
-    word = form.get("word")
-    lang = form.get("lang")
-
-    langs = get_langs(word)
-    translations = get_translations(langs, word, lang)
-
-    w = WordTranslations.query.filter_by(word=word, target_lang=lang)
-
-    w.lang_1= langs[0]
-    w.translation_1 = translations[langs[0]]
-    w.lang_2 = langs[1]
-    w.translation_2 = translations[langs[1]]
-    w.lang_3 = langs[2]
-    w.translation_3 = translations[langs[2]]
-
-    for attr, value in w.__dict__.items():
-        if value is None:
-            w.__dict__[attr] = "-"
-    try:
-        db.session.commit()
-        return w
-    except exc.IntegrityError as e:
-        print("exc.IntegrityError: " + str(e))
-        db.session().rollback()
-        raise exc.IntegrityError
-
 
 #########################################
 ################# VIEWS #################
@@ -293,8 +258,31 @@ def index():
 @app.route ('/api/1.0/q', methods=['PUT'])
 def api_put():
     try:
-        post_helper(request.args.to_dict())
-        word = add_word(request.args.to_dict())
+        dict = request.args.to_dict()
+        word = word_exists(dict)
+        try:
+
+            print(dict)
+            db.session.delete(word)
+
+            print(dict)
+            dict['lang'] = dict['new_lang']
+            word = add_word(request.args.to_dict())
+
+            response = jsonify(word.serialize())
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return make_response(response, 200)
+        except CustomException as e:
+            return make_response(jsonify({'Error': e.message}), e.number)
+        except Exception as e:
+            print(e)
+            return make_response(jsonify({'Error': 'unknown error'}), 404)
+            db.session.commit()
+        except exc.IntegrityError as e:
+            print("exc.IntegrityError: " + str(e))
+            db.session().rollback()
+            return make_response(jsonify({'Error': 'DB Integrity Error'}), 404)
+
         response = jsonify(word.serialize())
         response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
@@ -309,7 +297,7 @@ def api_put():
 @app.route ('/api/1.0/q', methods=['POST'])
 def api_post():
     try:
-        post_helper(request.args.to_dict())
+        find_word(request.args.to_dict())
         word = add_word(request.args.to_dict())
         response = jsonify(word.serialize())
         response.headers.add('Access-Control-Allow-Origin', '*')
@@ -325,7 +313,7 @@ def api_post():
 @app.route ('/api/1.0/q', methods=['DELETE'])
 def api_delete():
     try:
-        word = delete_helper(request.args.to_dict())
+        word = word_exists(request.args.to_dict())
         try:
             db.session.delete(word)
             db.session.commit()
@@ -345,11 +333,12 @@ def api_delete():
 
 
 # Gets all applicable words
+@app.route ('/api/1.0', methods=['GET'])
 @app.route ('/api/1.0/q', methods=['GET'])
 def api_get():
     try:
         if(request.args.to_dict()):
-            words = get_helper(request.args.to_dict())
+            words = find_all_words(request.args.to_dict())
         else:
             words = WordTranslations.query.all()
         response = jsonify([w.serialize() for w in words])
