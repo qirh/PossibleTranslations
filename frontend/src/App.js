@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-//Style
+// Style
 import './App.css';
 
-//Components
+// Components
 import SubmitWord from './SubmitWord.js';
 
-//React table
+// React table https://react-table.js.org/
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
@@ -56,7 +56,7 @@ render() {
     <div className="words-app">
     <h1 className="words-header">Possible Translations</h1>
 
-    <SubmitWord/> /*onHandleOrganizationIDChange={this.handleOrganizationIDChange} />*/
+    <SubmitWord/>
 
     <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
