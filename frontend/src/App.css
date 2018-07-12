@@ -15,7 +15,6 @@
 	text-align: center;
   line-height: 70px;
 }
-
 .submit-word-container {
   display: flex;
   align-items: center;
@@ -25,25 +24,25 @@
   padding-bottom: 50px;
   font-size: 20px;
 }
-
 .submit-word-label {
   margin-right: 1rem;
 }
-
-.submit-word-button {
+.language-drop-down {
   margin-left: 1rem;
+  margin-right: 1rem;
 }
-
 .submit-word-input {
   width:50%;
 }
-
 .words-export-button {
   background-color: #E0E0E0;
   width: 150px;
   height: 30px;
   font-size: 15px;
   font-weight: 700;
+}
+.submit-word-container > *, .rt-th > * {
+  font-family: Muli, serif;
 }
 /* Mobile */
 @media only screen and (max-width: 599px) {
