@@ -21,7 +21,11 @@
 **Backend:**
 1. Need unit tests (API tests)
 2. API documentation
-3. API can accept JSON payloads
+3. API should accept JSON payloads
+4. Put
+    * Should be able to edit without need to insert old language if there is only one entry
+5. Post
+    * Add ability to enter custom id
 
 **Frontend:**
 1. React icon shows up before custom icon
@@ -31,6 +35,16 @@
 
 ## Notes
 1. You need to export the Google API Key, look [here](https://stackoverflow.com/questions/35159967/setting-google-application-credentials-for-bigquery-python-cli) & [here](https://stackoverflow.com/questions/39843252/pycharm-set-environment-variable-for-google-service-account-key-json-credentia)
+
+
+## Stack used
+* hosting: DO droplet for flask, AWS s3 for react
+* database: postgres (AWS RDS instance)
+* vc: github
+* backend: flask
+* front end: react
+* language detection: langdetect & textblob
+* language translation: google translate (considering adding bing service if time permits)
 
 
 ## Alex requirement
