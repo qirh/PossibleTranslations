@@ -257,39 +257,32 @@ def index():
 # Edits one entry at a time (needs word + target_lang + new_target_lang)
 @app.route ('/api/1.0/q', methods=['PUT'])
 def api_put():
+
+    word = ""
+
     try:
-        dict = request.args.to_dict()
-        word = word_is_unique(dict)
-        try:
-            print(dict)
-            db.session.delete(word)
-
-            print(dict)
-            dict['target_lang'] = dict['new_target_lang']
-            word = add_word(request.args.to_dict())
-
-            response = jsonify(word.serialize())
-            response.headers.add('Access-Control-Allow-Origin', '*')
-            return make_response(response, 200)
-        except CustomException as e:
-            return make_response(jsonify({'Error': e.message}), e.number)
-        except Exception as e:
-            print(e)
-            return make_response(jsonify({'Error': 'unknown error'}), 404)
-            db.session.commit()
-        except exc.IntegrityError as e:
-            print("exc.IntegrityError: " + str(e))
-            db.session().rollback()
-            return make_response(jsonify({'Error': 'DB Integrity Error'}), 404)
-
-        response = jsonify(word.serialize())
-        response.headers.add('Access-Control-Allow-Origin', '*')
-        return make_response(response, 200)
+        word = word_is_unique(request.args.to_dict())
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
         print(e)
         return make_response(jsonify({'Error': 'unknown error'}), 404)
+    try:
+        db.session.delete(word)
+        args_dict = request.args.to_dict()
+        args_dict['target_lang'] = args_dict.pop('new_target_lang')
+        word = add_word(args_dict)
+    except CustomException as e:
+        return make_response(jsonify({'Error': e.message}), e.number)
+    except exc.IntegrityError as e:
+        print("exc.IntegrityError: " + str(e))
+        db.session().rollback()
+        return make_response(jsonify({'Error': 'DB Integrity Error'}), 404)
+
+    response = jsonify(word.serialize())
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return make_response(response, 200)
+
 
 
 # Posts one entry at a time (needs word + target_lang)

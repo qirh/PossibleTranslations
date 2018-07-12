@@ -2,28 +2,24 @@
 
 ## Progress
 **Important:**
-1. Replace local db with Remote
+1. ~~Replace local db with Remote~~
     * add JWT
-2. Implement front end (React)
-3. Mobile responsive
+2. ~~Implement front end (React)~~
+3. Mobile responsive ?
 4. Write Unit Tests
-5. Implement Post
-6. Implement Put
-7. Implement Patch
-8. Add Apiary
+7. API documentation
 
 **Not so important:**
 1. Serve HTTPS Domain (let's encrypt)
 2. Add support for another translator (bing?)
-3. Dash instead of None in Table
 
 ## Issues
 **Backend:**
 1. Need unit tests (API tests)
-2. API documentation
 3. API should accept JSON payloads
 4. Put
     * Should be able to edit without need to insert old language if there is only one entry
+    * Currently put does not edit a row, but rather deletes it and inserts a new one
 5. Post
     * Add ability to enter custom id
 
@@ -35,6 +31,9 @@
 
 ## Notes
 1. You need to export the Google API Key, look [here](https://stackoverflow.com/questions/35159967/setting-google-application-credentials-for-bigquery-python-cli) & [here](https://stackoverflow.com/questions/39843252/pycharm-set-environment-variable-for-google-service-account-key-json-credentia)
+
+## API documentation
+1. Will ignore all invalid keys
 
 
 ## Stack used

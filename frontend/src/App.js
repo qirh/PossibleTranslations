@@ -14,7 +14,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:5000/api')
+    fetch('http://localhost:5000/api/1.0')
     .then(res => res.json())
     .then(words => this.setState({ words })
   );
