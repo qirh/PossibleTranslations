@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
+
+//Style
 import './App.css';
+
+//Components
+import SearchDonors from './submitWord.js';
 
 
 //React table
@@ -50,6 +55,7 @@ render() {
   return (
     <div className="words-app">
     <h1 className="words-header">Possible Translations</h1>
+    <SearchDonors onHandleOrganizationIDChange={this.handleOrganizationIDChange} />
 
     <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
