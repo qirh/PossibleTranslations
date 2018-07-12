@@ -2,6 +2,8 @@
   text-align: center;
 }
 
+
+
 .words-header {
   margin-top: 0;
 	height: 70px;
@@ -13,6 +15,29 @@
 	text-align: center;
   line-height: 70px;
 }
+
+.submit-word-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: 20px;
+}
+
+.submit-word-label {
+  margin-right: 1rem;
+}
+
+.submit-word-button {
+  margin-left: 1rem;
+}
+
+.submit-word-input {
+  width:50%;
+}
+
 .words-export-button {
   background-color: #E0E0E0;
   width: 150px;
