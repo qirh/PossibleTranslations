@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { func } from 'prop-types';
+
 
 export default class DropDown extends Component {
 
   state = {
-    languages: []
+    languages: [],
+  }
+
+  static propTypes = {
+    onHandleLanguageChange: func.isRequired,
   }
 
   componentDidMount() {
@@ -12,19 +18,22 @@ export default class DropDown extends Component {
     .then(languages => this.setState({ languages })
     );
   }
-
   static defaultProps = {
     languages: []
+  }
+  handleLanguageChange = (e) => {
+    this.props.onHandleLanguageChange(e.target.value)
   }
 
   render() {
     const { languages } = this.state;
 
     return (
-      <select className="language-drop-down"> <option disabled defaultValue="en">Target Language (en)</option>
-          {languages.map(function(l) {
-            return <option key={l.language} value={l.language}>{l.name}</option>;
-          })}
+      <select className="language-drop-down" onChange={this.handleLanguageChange}>
+        <option defaultValue="en">Target Language (en)</option>
+        {languages.map(function(l) {
+          return <option key={l.language} value={l.language}>{l.name}</option>;
+        })}
       </select>
     );
   }
