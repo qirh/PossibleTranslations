@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
-import { func } from 'prop-types';
+import { array } from 'prop-types';
 
-export default class submitWord extends Component {
+export default class SubmitWord extends Component {
 
+  state = {
+    languages: [],
+  }
   static propTypes = {
-    onHandleOrganizationIDChange: func.isRequired
+    languages: array.isRequired
+  }
+
+  componentDidMount() {
+    fetch('http://localhost:5000/api/1.0/languages')
+    .then(res => res.json())
+    .then(languages => this.setState({ languages })
+    );
   }
 
   static defaultProps = {
-    onHandleOrganizationIDChange: () => null
+    languages: []
   }
 
   handleOrganizationIDChange = () => {
-    this.props.onHandleOrganizationIDChange(this.search.value);
-    this.search.value = ""
   }
 
   handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      this.handleOrganizationIDChange()
-    }
   }
 
   render() {
     return (
       <div className="submit-word-container">
-        <p class="submit-word-label">Add a sentence to translate</p>
+        <p className="submit-word-label">Add a sentence to translate</p>
         <input className="submit-word-input" type="text" ref={input => this.search = input} name="wordInput" placeholder="Sentence to translate" onKeyPress={this.handleKeyPress}></input>
         <button className="submit-word-button" onClick={this.handleOrganizationIDChange}>Find langugae and search</button>
       </div>

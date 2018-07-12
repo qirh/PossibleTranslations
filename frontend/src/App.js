@@ -4,27 +4,26 @@ import React, { Component } from 'react';
 import './App.css';
 
 //Components
-import SearchDonors from './submitWord.js';
-
+import SubmitWord from './SubmitWord.js';
 
 //React table
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
-
 export default class App extends Component {
+
   state = {
     words: [],
-    organization_id: 0
   }
 
   componentDidMount() {
     fetch('http://localhost:5000/api/1.0')
     .then(res => res.json())
     .then(words => this.setState({ words })
-  );
-}
+    );
+  }
 
+/*
 handleOrganizationIDChange = (user_input) => {
   var new_organization_id = 0
   if (!isNaN(user_input) && user_input !== "") {
@@ -34,6 +33,7 @@ handleOrganizationIDChange = (user_input) => {
     organization_id: new_organization_id,
   }))
 }
+*/
 
 
 render() {
@@ -55,7 +55,8 @@ render() {
   return (
     <div className="words-app">
     <h1 className="words-header">Possible Translations</h1>
-    <SearchDonors onHandleOrganizationIDChange={this.handleOrganizationIDChange} />
+
+    <SubmitWord/> /*onHandleOrganizationIDChange={this.handleOrganizationIDChange} />*/
 
     <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
