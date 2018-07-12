@@ -1,9 +1,9 @@
 .words-app {
   text-align: center;
 }
-
-
-
+.Select {
+  width: 200px
+}
 .words-header {
   margin-top: 0;
 	height: 70px;
