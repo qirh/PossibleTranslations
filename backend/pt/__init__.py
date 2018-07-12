@@ -128,8 +128,8 @@ def get_translations(langs, word, target_lang):
 # Used for GET, return a list of all entries matching filter
 def find_all_words(filters):
     search_dict = {}
-    if (filters.get('lang') is not None):
-        search_dict['target_lang'] = filters.pop('lang')
+    if (filters.get('target_lang') is not None):
+        search_dict['target_lang'] = filters.pop('target_lang')
     if (filters.get('id') is not None):
         search_dict['word_id'] = filters.pop('id')
     if (filters.get('word') is not None):
@@ -147,35 +147,35 @@ def find_all_words(filters):
     return words
 
 
-# Used for DELETE & PUT, will raise an exception if combination of (word + lang) either does not exist in the DB or if there are multiple entries
-def word_exists(filters):
+# Used for DELETE & PUT, will raise an exception if combination of (word + target_lang) either does not exist in the DB or if there are multiple entries
+def word_is_unique(filters):
     search_dict = {}
-    if (filters.get('lang') is not None):
-        search_dict['target_lang'] = filters.pop('lang')
+    if (filters.get('target_lang') is not None):
+        search_dict['target_lang'] = filters.pop('target_lang')
     if (filters.get('id') is not None):
         search_dict['word_id'] = filters.pop('id')
     if (filters.get('word') is not None):
         search_dict['word'] = filters.pop('word')
-
+    print(search_dict)
     try:
         words = WordTranslations.query.filter_by(**search_dict).all()
     except Exception:
         raise CustomException(404, 'Illegal search query')
-
+    print(words)
     if (len(words) < 1):
         if(not search_dict):
             raise CustomException(404, 'DB is empty')
         raise CustomException(404, 'Word Not Found')
     elif(len(words) > 1):
         raise CustomException(404, 'Too many options, please narrow down with more questions')
-    return words
+    return words[0]
 
 
-# Used for POST, will raise an exception if combination of (word + lang) has an entry in the DB
+# Used for POST, will raise an exception if combination of (word + target_lang) has an entry in the DB
 def find_word(filters):
     search_dict = {}
-    if (filters.get('lang') is not None):
-        search_dict['target_lang'] = filters.pop('lang')
+    if (filters.get('target_lang') is not None):
+        search_dict['target_lang'] = filters.pop('target_lang')
     if (filters.get('id') is not None):
         search_dict['word_id'] = filters.pop('id')
     if (filters.get('word') is not None):
@@ -204,8 +204,8 @@ def add_word(form):
     DetectorFactory.seed = 0
     target_lang = TARGET
     word = form.get("word")
-    if (form.get("lang") != None):
-        target_lang = form["lang"]
+    if (form.get("target_lang") != None):
+        target_lang = form["target_lang"]
 
     langs = get_langs(word)
     translations = get_translations(langs, word, target_lang)
@@ -254,19 +254,18 @@ def index():
         return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
 
 
-# Edits one entry at a time (needs word + old_lang + new_lang)
+# Edits one entry at a time (needs word + target_lang + new_target_lang)
 @app.route ('/api/1.0/q', methods=['PUT'])
 def api_put():
     try:
         dict = request.args.to_dict()
-        word = word_exists(dict)
+        word = word_is_unique(dict)
         try:
-
             print(dict)
             db.session.delete(word)
 
             print(dict)
-            dict['lang'] = dict['new_lang']
+            dict['target_lang'] = dict['new_target_lang']
             word = add_word(request.args.to_dict())
 
             response = jsonify(word.serialize())
@@ -293,7 +292,7 @@ def api_put():
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
-# Posts one entry at a time (needs word + lang)
+# Posts one entry at a time (needs word + target_lang)
 @app.route ('/api/1.0/q', methods=['POST'])
 def api_post():
     try:
@@ -309,11 +308,11 @@ def api_post():
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
-# Deletes one entry at a time (requires word or target_lang or id)
+# Deletes one entry at a time (requires word or target_lang or id). Will only delete only if one entry exists
 @app.route ('/api/1.0/q', methods=['DELETE'])
 def api_delete():
     try:
-        word = word_exists(request.args.to_dict())
+        word = word_is_unique(request.args.to_dict())
         try:
             db.session.delete(word)
             db.session.commit()
