@@ -12,14 +12,6 @@ from google.cloud import translate
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
-POSTGRES = {
-    'user': 'sal7',
-    'pw': '400700we@',
-    'db': 'words_db',
-    'host': 'localhost',
-    'port': '5432',
-}
-
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://saleh:400700we@wordsaws.clzvkffnzrmz.us-east-1.rds.amazonaws.com:5432/words_db'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@localhost:5432/words_db'
 app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
@@ -28,6 +20,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 TARGET = 'en'
+
 
 #########################################
 ################# MODEL #################
@@ -73,6 +66,7 @@ class WordTranslations(db.Model):
             'translation_3': self.translation_3,
         }
 
+
 def drop():
     db.reflect()
     db.drop_all()
@@ -80,11 +74,11 @@ def drop():
 db.create_all()
 db.session.commit()
 
+
 ##############################################
 ################# CONTROLLER #################
 ##############################################
 def get_langs(word):
-
     """
     returns a list of the 3 most probable languages. the last two elemnts might be None
     TextBlob return 1 language. langdetect return a list of languages.
@@ -114,7 +108,6 @@ def get_langs(word):
 
 
 def get_translations(langs, word, target_lang):
-
     """
     returns a list of the 3 string pairs [lang: translation]
     """
@@ -131,9 +124,35 @@ def get_translations(langs, word, target_lang):
 
     return dict(zip(langs, translations))
 
-# Used for GET (
-def get_all_words_with_filter(filters):
 
+# Used for Post
+def post_helper(filters):
+    search_dict = {}
+    if (filters.get('lang') is not None):
+        search_dict['target_lang'] = filters.pop('lang')
+    else:
+        raise CustomException(404, 'No language specified')
+    if (filters.get('word') is not None):
+        search_dict['word'] = filters.pop('word')
+    else:
+        raise CustomException(404, 'No word specified')
+
+    client = translate.Client().get_languages()
+
+    if (not (search_dict['target_lang'] in [c['language'] for c in client])):
+        raise CustomException(404, 'Illegal language, please pick a language from the following list: ' + str([c['language'] for c in client]))
+
+    try:
+        words = WordTranslations.query.filter_by(**search_dict).all()
+        if(words is not None):
+            if (len(words) >= 1):
+                raise CustomException(404, 'Word exists already')
+    except Exception:
+        raise CustomException(404, 'Illegal search query')
+
+
+# Used for GET
+def get_helper(filters):
     search_dict = {}
     if (filters.get('lang') is not None):
         search_dict['target_lang'] = filters.pop('lang')
@@ -144,18 +163,18 @@ def get_all_words_with_filter(filters):
 
     try:
         words = WordTranslations.query.filter_by(**search_dict).all()
-        print(words)
     except Exception:
-        raise IllegalQueryExcpetion(404, 'illegal search query')
+        raise CustomException(404, 'Illegal search query')
 
     if (len(words) < 1):
         if(not search_dict):
-            raise NotFoundException(404, 'DB is empty')
-        raise NotFoundException(404, 'Word Not Found')
+            raise CustomException(404, 'DB is empty')
+        raise CustomException(404, 'Word Not Found')
     return words
 
+
 # Used for DELETE
-def get_word_with_filter(filters):
+def delete_helper(filters):
     search_dict = {}
     if (filters.get('lang') is not None):
         search_dict['target_lang'] = filters.pop('lang')
@@ -164,45 +183,34 @@ def get_word_with_filter(filters):
     if (filters.get('word') is not None):
         search_dict['word'] = filters.pop('word')
 
-
     try:
         words = WordTranslations.query.filter_by(**search_dict).all()
     except Exception:
-        raise IllegalQueryExcpetion(404, 'illegal search query')
+        raise CustomException(404, 'Illegal search query')
 
     if (len(words) < 1):
         if(not filters):
-            raise NotFoundException(404, 'DB is empty')
-        raise NotFoundException(404, 'Word Not Found')
+            raise CustomException(404, 'DB is empty')
+        raise CustomException(404, 'Word Not Found')
     elif(len(words) > 1):
-        raise NotSpeceficEnoughException(404, 'Too many options, please narrow down with more questions')
+        raise CustomException(404, 'Too many options, please narrow down with more questions')
     return words
 
-class NotFoundException(Exception):
+
+class CustomException(Exception):
     def __init__(self, number, message):
         self.number = number
         self.message = message
         super().__init__(message)
-class NotSpeceficEnoughException(Exception):
-    def __init__(self, number, message):
-        self.number = number
-        self.message = message
-        super().__init__(message)
-class IllegalQueryExcpetion(Exception):
-    def __init__(self, number, message):
-        self.number = number
-        self.message = message
-        super().__init__(message)
+
 
 def add_word(form):
-
     DetectorFactory.seed = 0
     target_lang = TARGET
-
     word = form.get("word")
-
-    if (form.get("target") != None):
-        target_lang = form["target"]
+    lang = form.get("word")
+    if (form.get("lang") != None):
+        target_lang = form["lang"]
 
     langs = get_langs(word)
     translations = get_translations(langs, word, target_lang)
@@ -222,6 +230,7 @@ def add_word(form):
         db.session().rollback()
         raise Exception
 
+
 #########################################
 ################# VIEWS #################
 #########################################
@@ -230,10 +239,10 @@ def error_page(custom=None):
     print("error_page(custom= " + str(custom))
     return render_template('/404.html', title="404", custom=custom)
 
+
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
 def index():
-
     client = translate.Client().get_languages() # What if this fails?
     try:
         words = WordTranslations.query.all()
@@ -248,26 +257,28 @@ def index():
     except:
         return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
 
-# only posts one entry at a time (needs word + lang)
+
+# Posts one entry at a time (needs word + lang) will honor id only if there is not conflict, will generate a new id otherwise
 @app.route ('/api', methods=['POST'])
 def api_post():
+    try:
+        post_helper(request.args.to_dict())
+        word = add_word(request.args.to_dict())
+        response = jsonify(word.serialize())
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return make_response(response, 200)
+    except CustomException as e:
+        return make_response(jsonify({'error': e.message}), e.number)
+    except Exception as e:
+        print(e)
+        return make_response(jsonify({'error': 'unknown error'}), 404)
 
-    print(request.args.getlist('word'))
-
-    if False:
-        try:
-            add_word(request.form)
-            client = translate.Client().get_languages()
-            words = WordTranslations.query.all()
-            return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 200)
-        except:
-            return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
 
 # Deletes one entry at a time (requires word or target_lang or id)
 @app.route ('/api', methods=['DELETE'])
 def api_delete():
     try:
-        word = get_word_with_filter(request.args.to_dict())
+        word = delete_helper(request.args.to_dict())
         try:
             db.session.delete(word)
             db.session.commit()
@@ -279,27 +290,29 @@ def api_delete():
         response = jsonify(word.serialize())
         response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
-    except (NotFoundException, IllegalQueryExcpetion, NotSpeceficEnoughException) as e:
+    except CustomException as e:
         return make_response(jsonify({'error': e.message}), e.number)
     except Exception as e:
         print(e)
         return make_response(jsonify({'error': 'unknown error'}), 404)
+
 
 # Gets all applicable words
 @app.route ('/api', methods=['GET'])
 def api_get():
     try:
         if(request.args.to_dict()):
-            words = get_all_words_with_filter(request.args.to_dict())
+            words = get_helper(request.args.to_dict())
         else:
             words = WordTranslations.query.all()
         response = jsonify([w.serialize() for w in words])
         response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
-    except (NotFoundException, IllegalQueryExcpetion) as e:
+    except CustomException as e:
         return make_response(jsonify({'error': e.message}), e.number)
     except Exception as e:
         return make_response(jsonify({'error': 'unknown error'}), 404)
+
 
 @app.route('/api/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 def api_echo():
