@@ -14,6 +14,8 @@ export default class App extends Component {
 
   state = {
     words: [],
+    wordToSearch: '',
+    language: ''
   }
 
   componentDidMount() {
@@ -23,18 +25,9 @@ export default class App extends Component {
     );
   }
 
-/*
-handleOrganizationIDChange = (user_input) => {
-  var new_organization_id = 0
-  if (!isNaN(user_input) && user_input !== "") {
-    new_organization_id = parseFloat(user_input)
+  refreshData = (user_input) => {
+    console.log("BUTTTTON PRESSED " + user_input);
   }
-  this.setState(prevState => ({
-    organization_id: new_organization_id,
-  }))
-}
-*/
-
 
 render() {
   const columns = [
@@ -56,9 +49,11 @@ render() {
     <div className="words-app">
     <h1 className="words-header">Possible Translations</h1>
 
-    <SubmitWord/>
+    <SubmitWord wordToSearch={this.state.wordToSearch} language={this.state.language} onButtonPress={this.refreshData} />
 
-    <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
+    <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable
+      defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}
+      />
 
     </div>
   );
