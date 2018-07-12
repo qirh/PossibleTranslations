@@ -142,13 +142,15 @@ def post_helper(filters):
     if (not (search_dict['target_lang'] in [c['language'] for c in client])):
         raise CustomException(404, 'Illegal language, please pick a language from the following list: ' + str([c['language'] for c in client]))
 
+    words = None
     try:
         words = WordTranslations.query.filter_by(**search_dict).all()
-        if(words is not None):
-            if (len(words) >= 1):
-                raise CustomException(404, 'Word exists already')
-    except Exception:
+    except Exception as e:
+        print(e)
         raise CustomException(404, 'Illegal search query')
+    if (words is not None):
+        if (len(words) >= 1):
+            raise CustomException(404, 'Word exists already')
 
 
 # Used for GET
@@ -208,7 +210,6 @@ def add_word(form):
     DetectorFactory.seed = 0
     target_lang = TARGET
     word = form.get("word")
-    lang = form.get("word")
     if (form.get("lang") != None):
         target_lang = form["lang"]
 
@@ -228,7 +229,37 @@ def add_word(form):
     except exc.IntegrityError as e:
         print("exc.IntegrityError: " + str(e))
         db.session().rollback()
-        raise Exception
+        raise exc.IntegrityError
+
+
+def edit_word(form):
+    DetectorFactory.seed = 0
+
+    word = form.get("word")
+    lang = form.get("lang")
+
+    langs = get_langs(word)
+    translations = get_translations(langs, word, lang)
+
+    w = WordTranslations.query.filter_by(word=word, target_lang=lang)
+
+    w.lang_1= langs[0]
+    w.translation_1 = translations[langs[0]]
+    w.lang_2 = langs[1]
+    w.translation_2 = translations[langs[1]]
+    w.lang_3 = langs[2]
+    w.translation_3 = translations[langs[2]]
+
+    for attr, value in w.__dict__.items():
+        if value is None:
+            w.__dict__[attr] = "-"
+    try:
+        db.session.commit()
+        return w
+    except exc.IntegrityError as e:
+        print("exc.IntegrityError: " + str(e))
+        db.session().rollback()
+        raise exc.IntegrityError
 
 
 #########################################
@@ -258,8 +289,24 @@ def index():
         return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=client), 422)
 
 
-# Posts one entry at a time (needs word + lang) will honor id only if there is not conflict, will generate a new id otherwise
-@app.route ('/api', methods=['POST'])
+# Edits one entry at a time (needs word + old_lang + new_lang)
+@app.route ('/api/1.0/q', methods=['PUT'])
+def api_put():
+    try:
+        post_helper(request.args.to_dict())
+        word = add_word(request.args.to_dict())
+        response = jsonify(word.serialize())
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        return make_response(response, 200)
+    except CustomException as e:
+        return make_response(jsonify({'Error': e.message}), e.number)
+    except Exception as e:
+        print(e)
+        return make_response(jsonify({'Error': 'unknown error'}), 404)
+
+
+# Posts one entry at a time (needs word + lang)
+@app.route ('/api/1.0/q', methods=['POST'])
 def api_post():
     try:
         post_helper(request.args.to_dict())
@@ -268,14 +315,14 @@ def api_post():
         response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
     except CustomException as e:
-        return make_response(jsonify({'error': e.message}), e.number)
+        return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
         print(e)
-        return make_response(jsonify({'error': 'unknown error'}), 404)
+        return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
 # Deletes one entry at a time (requires word or target_lang or id)
-@app.route ('/api', methods=['DELETE'])
+@app.route ('/api/1.0/q', methods=['DELETE'])
 def api_delete():
     try:
         word = delete_helper(request.args.to_dict())
@@ -285,20 +332,20 @@ def api_delete():
         except exc.IntegrityError as e:
             print("exc.IntegrityError: " + str(e))
             db.session().rollback()
-            return make_response(jsonify({'error': 'DB Integrity Error'}), 404)
+            return make_response(jsonify({'Error': 'DB Integrity Error'}), 404)
 
         response = jsonify(word.serialize())
         response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
     except CustomException as e:
-        return make_response(jsonify({'error': e.message}), e.number)
+        return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
         print(e)
-        return make_response(jsonify({'error': 'unknown error'}), 404)
+        return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
 # Gets all applicable words
-@app.route ('/api', methods=['GET'])
+@app.route ('/api/1.0/q', methods=['GET'])
 def api_get():
     try:
         if(request.args.to_dict()):
@@ -309,12 +356,12 @@ def api_get():
         response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
     except CustomException as e:
-        return make_response(jsonify({'error': e.message}), e.number)
+        return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
-        return make_response(jsonify({'error': 'unknown error'}), 404)
+        return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
-@app.route('/api/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@app.route('/api/1.0/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 def api_echo():
     if request.method == 'GET':
         return make_response(jsonify({'ECHO': 'GET'}))
@@ -327,4 +374,4 @@ def api_echo():
     elif request.method == 'DELETE':
         return make_response(jsonify({'ECHO': 'DELETE'}))
     else:
-        return make_response(jsonify({'error': 'unsupported method'}, {'methods supported': {'GET', 'POST', 'PATCH', 'PUT', 'DELETE'}}), 404)
+        return make_response(jsonify({'Error': 'unsupported method'}, {'methods supported': {'GET', 'POST', 'PATCH', 'PUT', 'DELETE'}}), 404)
