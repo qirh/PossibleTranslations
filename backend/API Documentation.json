@@ -7,6 +7,270 @@
 	},
 	"item": [
 		{
+			"name": "Echo Get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": ""
+				},
+				"description": "Test if Get works as expected"
+			},
+			"response": [
+				{
+					"id": "5f80c98d-54bf-4476-bf11-e2bcd588c573",
+					"name": "Get Echo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:5000/api/1.0/echo",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"1.0",
+								"echo"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "20",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jul 2018 01:21:38 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/0.14.1 Python/3.6.4",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"ECHO\": \"GET\"\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Echo Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": ""
+				},
+				"description": "Test if Post works as expected"
+			},
+			"response": [
+				{
+					"id": "cd46e944-8bcf-4795-947d-23bd6b962656",
+					"name": "Echo Post",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:5000/api/1.0/echo",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"1.0",
+								"echo"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "21",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jul 2018 01:23:32 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/0.14.1 Python/3.6.4",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"ECHO\": \"POST\"\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Echo Put",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": ""
+				},
+				"description": "Test if Put works as expected"
+			},
+			"response": [
+				{
+					"id": "d146de3e-e411-4292-8098-1702cd6effa7",
+					"name": "Echo Put",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:5000/api/1.0/echo",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"1.0",
+								"echo"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "21",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jul 2018 01:22:14 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/0.14.1 Python/3.6.4",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ECHO\": \"PUT\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Echo Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": ""
+				},
+				"description": "Test if Delete works as expected"
+			},
+			"response": [
+				{
+					"id": "f57f2708-491e-45a5-b5fc-fc06d1c4ec42",
+					"name": "Echo Delete",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:5000/api/1.0/echo",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"1.0",
+								"echo"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Length",
+							"value": "23",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jul 2018 01:24:28 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/0.14.1 Python/3.6.4",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"ECHO\": \"DELETE\"\n}\n"
+				}
+			]
+		},
+		{
 			"name": "Get all entries",
 			"request": {
 				"method": "GET",
@@ -18,7 +282,7 @@
 			},
 			"response": [
 				{
-					"id": "e6b230e4-d548-4121-907e-3aa8d3c76eb7",
+					"id": "63bf8e8c-ff68-4676-b3ec-f0c03932ff14",
 					"name": "Get all entries",
 					"originalRequest": {
 						"method": "GET",
@@ -78,6 +342,84 @@
 			]
 		},
 		{
+			"name": "Get a specific entry",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": [
+				{
+					"id": "bd22e0a6-bda0-440d-8c51-f37c6203a3d7",
+					"name": "Get a specific entry",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/api/1.0/q?word=hello,%20this%20is%20mike",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"1.0",
+								"q"
+							],
+							"query": [
+								{
+									"key": "word",
+									"value": "hello,%20this%20is%20mike"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "1600",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jul 2018 15:00:03 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/0.14.1 Python/3.6.4",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookie": [],
+					"body": "[\n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"de\", \n    \"translation_1\": \"Hallo, das ist Mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 18\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"en\", \n    \"translation_1\": \"hello, this is mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 12\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"fr\", \n    \"translation_1\": \"bonjour, c&#39;est mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 17\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"mg\", \n    \"translation_1\": \"Tsara izany, ity no mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 11\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"pt\", \n    \"translation_1\": \"ola, isso \\u00e9 microfone\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 10\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"th\", \n    \"translation_1\": \"\\u0e2a\\u0e27\\u0e31\\u0e2a\\u0e14\\u0e35\\u0e19\\u0e35\\u0e48\\u0e40\\u0e1b\\u0e47\\u0e19\\u0e44\\u0e21\\u0e04\\u0e4c\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 9\n  }\n]\n"
+				}
+			]
+		},
+		{
 			"name": "Post an entry",
 			"request": {
 				"method": "POST",
@@ -89,7 +431,7 @@
 			},
 			"response": [
 				{
-					"id": "597c8947-b83c-4590-8732-98c26dc06163",
+					"id": "f4a587c9-ee0b-403a-bdbd-291e1e756998",
 					"name": "Post an entry",
 					"originalRequest": {
 						"method": "POST",
@@ -159,158 +501,44 @@
 			]
 		},
 		{
-			"name": "Echo Get",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": ""
-				},
-				"description": "Test if Get works as expected"
-			},
-			"response": [
-				{
-					"id": "b811f300-6cc4-41ce-bfb2-5d025bf86f70",
-					"name": "Get Echo",
-					"originalRequest": {
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "localhost:5000/api/1.0/echo",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"1.0",
-								"echo"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Length",
-							"value": "20",
-							"name": "Content-Length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:21:38 GMT",
-							"name": "Date",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"key": "Server",
-							"value": "Werkzeug/0.14.1 Python/3.6.4",
-							"name": "Server",
-							"description": "A name for the server"
-						}
-					],
-					"cookie": [],
-					"body": "{\n  \"ECHO\": \"GET\"\n}\n"
-				}
-			]
-		},
-		{
-			"name": "Echo Delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": ""
-				},
-				"description": "Test if Delete works as expected"
-			},
-			"response": [
-				{
-					"id": "aede31c2-600b-4f83-90ef-0379111a7ecd",
-					"name": "Echo Delete",
-					"originalRequest": {
-						"method": "DELETE",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "localhost:5000/api/1.0/echo",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"1.0",
-								"echo"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Length",
-							"value": "23",
-							"name": "Content-Length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:24:28 GMT",
-							"name": "Date",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"key": "Server",
-							"value": "Werkzeug/0.14.1 Python/3.6.4",
-							"name": "Server",
-							"description": "A name for the server"
-						}
-					],
-					"cookie": [],
-					"body": "{\n  \"ECHO\": \"DELETE\"\n}\n"
-				}
-			]
-		},
-		{
-			"name": "Echo Put",
+			"name": "Edit an entry",
 			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": ""
-				},
-				"description": "Test if Put works as expected"
+					"raw": "localhost:5000/api/1.0/q?word=mike&lang=de",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"1.0",
+						"q"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "mike"
+						},
+						{
+							"key": "lang",
+							"value": "de"
+						}
+					]
+				}
 			},
 			"response": [
 				{
-					"id": "137f5095-693c-4ab2-8ae7-84787275f9f3",
-					"name": "Echo Put",
+					"id": "88588121-0fe7-430a-ab18-f780b4816438",
+					"name": "Edit an entry",
 					"originalRequest": {
 						"method": "PUT",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "localhost:5000/api/1.0/echo",
+							"raw": "localhost:5000/api/1.0/q?word=mike&lang=de",
 							"host": [
 								"localhost"
 							],
@@ -318,17 +546,27 @@
 							"path": [
 								"api",
 								"1.0",
-								"echo"
+								"q"
+							],
+							"query": [
+								{
+									"key": "word",
+									"value": "mike"
+								},
+								{
+									"key": "lang",
+									"value": "de"
+								}
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
+					"status": "NOT FOUND",
+					"code": 404,
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
 							"key": "Content-Length",
-							"value": "21",
+							"value": "31",
 							"name": "Content-Length",
 							"description": "The length of the response body in octets (8-bit bytes)"
 						},
@@ -340,7 +578,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:22:14 GMT",
+							"value": "Thu, 12 Jul 2018 15:26:52 GMT",
 							"name": "Date",
 							"description": "The date and time that the message was sent"
 						},
@@ -352,75 +590,40 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"ECHO\": \"PUT\"\n}"
+					"body": "{\n  \"Error\": \"unknown error\"\n}\n"
 				}
 			]
 		},
 		{
-			"name": "Echo Post",
+			"name": "Delete an entry",
 			"request": {
-				"method": "POST",
+				"method": "DELETE",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": ""
-				},
-				"description": "Test if Post works as expected"
-			},
-			"response": [
-				{
-					"id": "24250f9c-e515-4f62-9e7a-a332604ccc10",
-					"name": "Echo Post",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "localhost:5000/api/1.0/echo",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"api",
-								"1.0",
-								"echo"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Length",
-							"value": "21",
-							"name": "Content-Length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:23:32 GMT",
-							"name": "Date",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"key": "Server",
-							"value": "Werkzeug/0.14.1 Python/3.6.4",
-							"name": "Server",
-							"description": "A name for the server"
-						}
+					"raw": "localhost:5000/api/1.0/q?word=mikey&target_lang=en",
+					"host": [
+						"localhost"
 					],
-					"cookie": [],
-					"body": "{\n  \"ECHO\": \"POST\"\n}\n"
+					"port": "5000",
+					"path": [
+						"api",
+						"1.0",
+						"q"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "mikey"
+						},
+						{
+							"key": "target_lang",
+							"value": "en"
+						}
+					]
 				}
-			]
+			},
+			"response": []
 		}
 	]
 }
