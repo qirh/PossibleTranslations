@@ -133,8 +133,8 @@ def find_all_words(filters):
     search_dict = {}
     if (filters.get('target_lang') is not None):
         search_dict['target_lang'] = filters.pop('target_lang')
-    if (filters.get('id') is not None):
-        search_dict['word_id'] = filters.pop('id')
+    if (filters.get('word_id') is not None):
+        search_dict['word_id'] = filters.pop('word_id')
     if (filters.get('word') is not None):
         search_dict['word'] = filters.pop('word')
 
@@ -155,8 +155,8 @@ def word_is_unique(filters):
     search_dict = {}
     if (filters.get('target_lang') is not None):
         search_dict['target_lang'] = filters.pop('target_lang')
-    if (filters.get('id') is not None):
-        search_dict['word_id'] = filters.pop('id')
+    if (filters.get('word_id') is not None):
+        search_dict['word_id'] = filters.pop('word_id')
     if (filters.get('word') is not None):
         search_dict['word'] = filters.pop('word')
     try:
@@ -180,8 +180,8 @@ def find_word(filters):
         search_dict['target_lang'] = filters.pop('target_lang')
     else:
         raise CustomException(404, 'Missing target_lang field')
-    if (filters.get('id') is not None):
-        search_dict['word_id'] = filters.pop('id')
+    if (filters.get('word_id') is not None):
+        search_dict['word_id'] = filters.pop('word_id')
     if (filters.get('word') is not None):
         search_dict['word'] = filters.pop('word')
     else:
