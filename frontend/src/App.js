@@ -17,7 +17,7 @@ export default class App extends Component {
   }
 
   getData () {
-    fetch('http://localhost:5000/api/1.0')
+    fetch('http://PossibleTranslations.com/api/1.0')
       .then(res => res.json())
       .then(words => this.setState({ words }));
   }

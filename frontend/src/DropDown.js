@@ -14,7 +14,7 @@ export default class DropDown extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:5000/api/1.0/languages')
+    fetch('http://PossibleTranslations.com/api/1.0/languages')
     .then(res => res.json())
     .then(languages => this.setState({ languages })
     );
