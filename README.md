@@ -1,22 +1,50 @@
 # PossibleTranslations
 
-## Old readme
+## Progress
 **Important:**
-1. ~~Register Domain~~ [possibletranslations.com](possibletranslations.com)
-2. ~~Set up flask (sql-alchemy + flask api)~~
-3. ~~Create HTML~~
+1. ~~Replace local db with Remote~~
+    * add JWT
+2. ~~Implement front end (React)~~
+3. Mobile responsive ?
 4. Write Unit Tests
-5. Replace local db with Remote
-6. Implement front end (React)
-7. Make sure it's mobile responsive
+7. API documentation
 
 **Not so important:**
 1. Serve HTTPS Domain (let's encrypt)
-2. Add support for other translator (bing?)
+2. Add support for another translator (bing?)
 
-## Old readme
-API that queries a bunch of language translators and return multiple results, will be helpful to translate words that might have multiple meanings.
-Return the translation of a word and all it's synonyms Arabic &lt;-> English.
+## Issues
+**Backend:**
+1. Need unit tests (API tests)
+3. API should accept JSON payloads
+4. Put
+    * Should be able to edit without need to insert old language if there is only one entry
+    * Currently put does not edit a row, but rather deletes it and inserts a new one
+5. Post
+    * Add ability to enter custom id
+
+**Frontend:**
+1. React icon shows up before custom icon
+2. Need box to insert new word
+3. Need option to delete word
+4. Edit word?
+
+## Notes
+1. You need to export the Google API Key, look [here](https://stackoverflow.com/questions/35159967/setting-google-application-credentials-for-bigquery-python-cli) & [here](https://stackoverflow.com/questions/39843252/pycharm-set-environment-variable-for-google-service-account-key-json-credentia)
+
+## API documentation
+1. Will ignore all invalid keys
+
+
+## Stack used
+* hosting: DO droplet for flask, AWS s3 for react
+* database: postgres (AWS RDS instance)
+* vc: github
+* backend: flask
+* front end: react
+* language detection: langdetect & textblob
+* language translation: google translate (considering adding bing service if time permits)
+
 
 ## Alex requirement
 The goal of this project is to create a tool that will accept text input (e.g. a sentence), determine the language entered, and translate the text to English. Then you should deploy this tool to the Web so I can see it.
