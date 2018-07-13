@@ -9,7 +9,7 @@
             <input style="display: inline" type="text" name="word" placeholder="Sentence to translate">
 
             <select id="dropdown" name="target">
-                <option disabled selected value="en">Target Language: en</option>
+                <option disabled selected value="en">Target Language (en)</option>
                 {% for lang in langs %}
                     <option value="{{lang.language | safe}}">{{lang.name}}</option>
                 {% endfor %}

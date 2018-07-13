@@ -22,8 +22,7 @@ export default class App extends Component {
       .then(words => this.setState({ words }));
   }
 
-  refreshData = (user_input) => {
-    console.log("BUTTTTON PRESSED " + user_input);
+  refreshData = () => {
     this.getData()
   }
   componentDidMount() {

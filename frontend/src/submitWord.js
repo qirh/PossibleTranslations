@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { func, string } from 'prop-types';
+import { func } from 'prop-types';
 
 // Components
 import DropDown from './DropDown.js';
@@ -7,7 +7,8 @@ import DropDown from './DropDown.js';
 export default class SubmitWord extends Component {
 
   state = {
-    language: 'en',
+    word: "",
+    language: "en"
   }
 
   static propTypes = {
@@ -18,15 +19,25 @@ export default class SubmitWord extends Component {
   }
 
   buttonPress = () => {
+
     // api call to add new word
     //localhost:5000/api/1.0/q?word=hey%20my%20name%20is%20mike&target_lang=fr
-    this.props.onButtonPress("1");
+
+    fetch("http://localhost:5000/api/1.0/q?word=" + this.state.word + "&target_lang=" + this.state.language, {method: 'POST'}).then((response) => this.props.onButtonPress())
+
+
   }
-  handleKeyPress = (e) => {
-    console.log(e)
+  handleKeyPress(text) {
+    console.log("handleKeyPress = (e) --> " + text.target.value);
+    this.setState({
+      word: text.target.value
+    })
   }
-  handleLanguageChange = (e) => {
-    console.log(e)
+  handleLanguageChange = (lang) => {
+    console.log("handleLanguageChange = (e) --> " + lang);
+    this.setState(prevState => ({
+      language: lang
+    }))
   }
 
   render() {
@@ -34,9 +45,9 @@ export default class SubmitWord extends Component {
       <div className="submit-word-container">
         <p className="submit-word-label">Add a sentence to translate</p>
 
-        <input className="submit-word-input" type="text" ref={input => this.search = input} name="wordInput" placeholder="Sentence to translate" onKeyPress={this.handleKeyPress}></input>
+        <input className="submit-word-input" type="text" name="wordInput" placeholder="Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
 
-        <DropDown onHandleLanguageChange={this.handleLanguageChange} />
+        <DropDown onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language} />
 
         <button className="submit-word-button" onClick={this.buttonPress}>Find langugae</button>
       </div>
