@@ -19,18 +19,18 @@
 			},
 			"response": [
 				{
-					"id": "5f80c98d-54bf-4476-bf11-e2bcd588c573",
+					"id": "da24620b-46a5-4f7e-b3d0-7acc1ee38d6b",
 					"name": "Get Echo",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "localhost:5000/api/1.0/echo",
+							"raw": "http://165.227.80.12/api/1.0/echo",
 							"host": [
-								"localhost"
+								"165.227.80.12"
 							],
-							"port": "5000",
+							"port": "80",
 							"path": [
 								"api",
 								"1.0",
@@ -85,18 +85,18 @@
 			},
 			"response": [
 				{
-					"id": "cd46e944-8bcf-4795-947d-23bd6b962656",
+					"id": "24a203e8-e25e-4c25-b2a5-a8422f139923",
 					"name": "Echo Post",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "localhost:5000/api/1.0/echo",
+							"raw": "http://165.227.80.12/api/1.0/echo",
 							"host": [
-								"localhost"
+								"165.227.80.12"
 							],
-							"port": "5000",
+							"port": "80",
 							"path": [
 								"api",
 								"1.0",
@@ -151,18 +151,18 @@
 			},
 			"response": [
 				{
-					"id": "d146de3e-e411-4292-8098-1702cd6effa7",
+					"id": "c31cc3ff-fb44-483a-9367-fff190cffea2",
 					"name": "Echo Put",
 					"originalRequest": {
 						"method": "PUT",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "localhost:5000/api/1.0/echo",
+							"raw": "http://165.227.80.12/api/1.0/echo",
 							"host": [
-								"localhost"
+								"165.227.80.12"
 							],
-							"port": "5000",
+							"port": "80",
 							"path": [
 								"api",
 								"1.0",
@@ -217,18 +217,18 @@
 			},
 			"response": [
 				{
-					"id": "f57f2708-491e-45a5-b5fc-fc06d1c4ec42",
+					"id": "07fb5fc4-1df6-451c-a1f2-176b1d8a8ffa",
 					"name": "Echo Delete",
 					"originalRequest": {
 						"method": "DELETE",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "localhost:5000/api/1.0/echo",
+							"raw": "http://165.227.80.12/api/1.0/echo",
 							"host": [
-								"localhost"
+								"165.227.80.12"
 							],
-							"port": "5000",
+							"port": "80",
 							"path": [
 								"api",
 								"1.0",
@@ -282,18 +282,18 @@
 			},
 			"response": [
 				{
-					"id": "63bf8e8c-ff68-4676-b3ec-f0c03932ff14",
+					"id": "c436ffe9-22ba-41e5-8540-7cf28c090c0a",
 					"name": "Get all entries",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "localhost:5000/api/1.0/q",
+							"raw": "http://165.227.80.12/api/1.0/q",
 							"host": [
-								"localhost"
+								"165.227.80.12"
 							],
-							"port": "5000",
+							"port": "80",
 							"path": [
 								"api",
 								"1.0",
@@ -313,7 +313,7 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "2167",
+							"value": "1042",
 							"name": "Content-Length",
 							"description": "The length of the response body in octets (8-bit bytes)"
 						},
@@ -325,7 +325,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:17:04 GMT",
+							"value": "Thu, 12 Jul 2018 16:57:22 GMT",
 							"name": "Date",
 							"description": "The date and time that the message was sent"
 						},
@@ -337,7 +337,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n  {\n    \"lang_1\": \"es\", \n    \"lang_2\": \"so\", \n    \"lang_3\": \"es\", \n    \"target_lang\": \"et\", \n    \"translation_1\": \"Tere, ma olen Miguel\", \n    \"translation_2\": \"hola, yo soja miguel\", \n    \"translation_3\": \"Tere, ma olen Miguel\", \n    \"word\": \"hola, yo soy miguel\", \n    \"word_id\": 3\n  }, \n  {\n    \"lang_1\": \"fr\", \n    \"lang_2\": \"hr\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"fr\", \n    \"translation_1\": \"Bonjour, je suis kevin\", \n    \"translation_2\": \"Bonjour, je suis kevin\", \n    \"translation_3\": \"-\", \n    \"word\": \"Bonjour, je suis kevin\", \n    \"word_id\": 4\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"th\", \n    \"translation_1\": \"\\u0e2a\\u0e27\\u0e31\\u0e2a\\u0e14\\u0e35\\u0e19\\u0e35\\u0e48\\u0e40\\u0e1b\\u0e47\\u0e19\\u0e44\\u0e21\\u0e04\\u0e4c\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 9\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"pt\", \n    \"translation_1\": \"ola, isso \\u00e9 microfone\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 10\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"mg\", \n    \"translation_1\": \"Tsara izany, ity no mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 11\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"en\", \n    \"translation_1\": \"hello, this is mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 12\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"fr\", \n    \"translation_1\": \"bonjour, c&#39;est mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 17\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"de\", \n    \"translation_1\": \"Hallo, das ist Mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 18\n  }\n]\n"
+					"body": "[\n  {\n    \"lang_1\": \"es\", \n    \"lang_2\": \"so\", \n    \"lang_3\": \"es\", \n    \"target_lang\": \"et\", \n    \"translation_1\": \"Tere, ma olen Miguel\", \n    \"translation_2\": \"hola, yo soja miguel\", \n    \"translation_3\": \"Tere, ma olen Miguel\", \n    \"word\": \"hola, yo soy miguel\", \n    \"word_id\": 3\n  }, \n  {\n    \"lang_1\": \"fr\", \n    \"lang_2\": \"hr\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"fr\", \n    \"translation_1\": \"Bonjour, je suis kevin\", \n    \"translation_2\": \"Bonjour, je suis kevin\", \n    \"translation_3\": \"-\", \n    \"word\": \"Bonjour, je suis kevin\", \n    \"word_id\": 4\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"fi\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"he\", \n    \"translation_1\": \"\\u05d2&#39;\\u05d5\", \n    \"translation_2\": \"\\u05d2&#39;\\u05d5\", \n    \"translation_3\": \"-\", \n    \"word\": \"joe\", \n    \"word_id\": 26\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"et\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"en\", \n    \"translation_1\": \"mike\", \n    \"translation_2\": \"mike\", \n    \"translation_3\": \"-\", \n    \"word\": \"mike\", \n    \"word_id\": 27\n  }\n]\n"
 				}
 			]
 		},
@@ -353,19 +353,19 @@
 			},
 			"response": [
 				{
-					"id": "bd22e0a6-bda0-440d-8c51-f37c6203a3d7",
+					"id": "d2afd0e2-7610-476b-ae89-b091d74bf596",
 					"name": "Get a specific entry",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:5000/api/1.0/q?word=hello,%20this%20is%20mike",
+							"raw": "http://http://165.227.80.12/api/1.0/q?word=joe",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"165.227.80.12"
 							],
-							"port": "5000",
+							"port": "80",
 							"path": [
 								"api",
 								"1.0",
@@ -374,7 +374,7 @@
 							"query": [
 								{
 									"key": "word",
-									"value": "hello,%20this%20is%20mike"
+									"value": "joe"
 								}
 							]
 						}
@@ -391,7 +391,7 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "1600",
+							"value": "251",
 							"name": "Content-Length",
 							"description": "The length of the response body in octets (8-bit bytes)"
 						},
@@ -403,7 +403,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 12 Jul 2018 15:00:03 GMT",
+							"value": "Thu, 12 Jul 2018 16:56:52 GMT",
 							"name": "Date",
 							"description": "The date and time that the message was sent"
 						},
@@ -415,7 +415,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "[\n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"de\", \n    \"translation_1\": \"Hallo, das ist Mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 18\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"en\", \n    \"translation_1\": \"hello, this is mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 12\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"fr\", \n    \"translation_1\": \"bonjour, c&#39;est mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 17\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"mg\", \n    \"translation_1\": \"Tsara izany, ity no mike\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 11\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"pt\", \n    \"translation_1\": \"ola, isso \\u00e9 microfone\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 10\n  }, \n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"-\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"th\", \n    \"translation_1\": \"\\u0e2a\\u0e27\\u0e31\\u0e2a\\u0e14\\u0e35\\u0e19\\u0e35\\u0e48\\u0e40\\u0e1b\\u0e47\\u0e19\\u0e44\\u0e21\\u0e04\\u0e4c\", \n    \"translation_2\": \"-\", \n    \"translation_3\": \"-\", \n    \"word\": \"hello, this is mike\", \n    \"word_id\": 9\n  }\n]\n"
+					"body": "[\n  {\n    \"lang_1\": \"en\", \n    \"lang_2\": \"fi\", \n    \"lang_3\": \"-\", \n    \"target_lang\": \"he\", \n    \"translation_1\": \"\\u05d2&#39;\\u05d5\", \n    \"translation_2\": \"\\u05d2&#39;\\u05d5\", \n    \"translation_3\": \"-\", \n    \"word\": \"joe\", \n    \"word_id\": 26\n  }\n]\n"
 				}
 			]
 		},
@@ -426,23 +426,42 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": ""
+					"raw": "http://165.227.80.12/api/1.0/q?word=mike&target_lang=fr",
+					"host": [
+						"165.227.80.12"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"1.0",
+						"q"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "mike"
+						},
+						{
+							"key": "target_lang",
+							"value": "fr"
+						}
+					]
 				}
 			},
 			"response": [
 				{
-					"id": "f4a587c9-ee0b-403a-bdbd-291e1e756998",
+					"id": "93c3ff30-f9cc-484a-bff3-62edec341ea5",
 					"name": "Post an entry",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "localhost:5000/api/1.0/q?word=mike&lang=fr",
+							"raw": "http://165.227.80.12/api/1.0/q?word=mike&target_lang=fr",
 							"host": [
-								"localhost"
+								"165.227.80.12"
 							],
-							"port": "5000",
+							"port": "80",
 							"path": [
 								"api",
 								"1.0",
@@ -454,7 +473,7 @@
 									"value": "mike"
 								},
 								{
-									"key": "lang",
+									"key": "target_lang",
 									"value": "fr"
 								}
 							]
@@ -484,7 +503,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:19:24 GMT",
+							"value": "Thu, 12 Jul 2018 20:47:49 GMT",
 							"name": "Date",
 							"description": "The date and time that the message was sent"
 						},
@@ -496,7 +515,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n  \"lang_1\": \"en\", \n  \"lang_2\": \"et\", \n  \"lang_3\": \"-\", \n  \"target_lang\": \"fr\", \n  \"translation_1\": \"Mike\", \n  \"translation_2\": \"Mike\", \n  \"translation_3\": \"-\", \n  \"word\": \"mike\", \n  \"word_id\": 19\n}\n"
+					"body": "{\n  \"lang_1\": \"en\", \n  \"lang_2\": \"et\", \n  \"lang_3\": \"-\", \n  \"target_lang\": \"fr\", \n  \"translation_1\": \"Mike\", \n  \"translation_2\": \"Mike\", \n  \"translation_3\": \"-\", \n  \"word\": \"mike\", \n  \"word_id\": 29\n}\n"
 				}
 			]
 		},
@@ -507,11 +526,11 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:5000/api/1.0/q?word=mike&lang=de",
+					"raw": "http://165.227.80.12/api/1.0/q?word=mike&lang=de",
 					"host": [
-						"localhost"
+						"165.227.80.12"
 					],
-					"port": "5000",
+					"port": "80",
 					"path": [
 						"api",
 						"1.0",
@@ -531,18 +550,18 @@
 			},
 			"response": [
 				{
-					"id": "88588121-0fe7-430a-ab18-f780b4816438",
+					"id": "45c4f7e8-821c-4827-b3f9-dd1bf3edf3fa",
 					"name": "Edit an entry",
 					"originalRequest": {
 						"method": "PUT",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "localhost:5000/api/1.0/q?word=mike&lang=de",
+							"raw": "http://165.227.80.12/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
 							"host": [
-								"localhost"
+								"165.227.80.12"
 							],
-							"port": "5000",
+							"port": "80",
 							"path": [
 								"api",
 								"1.0",
@@ -551,22 +570,32 @@
 							"query": [
 								{
 									"key": "word",
-									"value": "mike"
+									"value": "joe"
 								},
 								{
-									"key": "lang",
-									"value": "de"
+									"key": "target_lang",
+									"value": "fr"
+								},
+								{
+									"key": "new_target_lang",
+									"value": "he"
 								}
 							]
 						}
 					},
-					"status": "NOT FOUND",
-					"code": 404,
+					"status": "OK",
+					"code": 200,
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
 							"key": "Content-Length",
-							"value": "31",
+							"value": "225",
 							"name": "Content-Length",
 							"description": "The length of the response body in octets (8-bit bytes)"
 						},
@@ -578,7 +607,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 12 Jul 2018 15:26:52 GMT",
+							"value": "Thu, 12 Jul 2018 16:53:58 GMT",
 							"name": "Date",
 							"description": "The date and time that the message was sent"
 						},
@@ -590,7 +619,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n  \"Error\": \"unknown error\"\n}\n"
+					"body": "{\n  \"lang_1\": \"en\", \n  \"lang_2\": \"fi\", \n  \"lang_3\": \"-\", \n  \"target_lang\": \"he\", \n  \"translation_1\": \"\\u05d2&#39;\\u05d5\", \n  \"translation_2\": \"\\u05d2&#39;\\u05d5\", \n  \"translation_3\": \"-\", \n  \"word\": \"joe\", \n  \"word_id\": 26\n}\n"
 				}
 			]
 		},
@@ -601,11 +630,11 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "localhost:5000/api/1.0/q?word=mikey&target_lang=en",
+					"raw": "http://165.227.80.12/api/1.0/q?word=mikey&target_lang=en",
 					"host": [
-						"localhost"
+						"165.227.80.12"
 					],
-					"port": "5000",
+					"port": "80",
 					"path": [
 						"api",
 						"1.0",
@@ -623,7 +652,156 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"id": "33798ad6-1131-4426-8b12-888fee0a230e",
+					"name": "Delete an entry",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://165.227.80.12/api/1.0/q?word=mikey&target_lang=en",
+							"host": [
+								"165.227.80.12"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"1.0",
+								"q"
+							],
+							"query": [
+								{
+									"key": "word",
+									"value": "mikey"
+								},
+								{
+									"key": "target_lang",
+									"value": "en"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "208",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jul 2018 16:33:59 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/0.14.1 Python/3.6.4",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"lang_1\": \"en\", \n  \"lang_2\": \"et\", \n  \"lang_3\": \"fi\", \n  \"target_lang\": \"en\", \n  \"translation_1\": \"mikey\", \n  \"translation_2\": \"mikey\", \n  \"translation_3\": \"mikey\", \n  \"word\": \"mikey\", \n  \"word_id\": 21\n}\n"
+				}
+			]
+		},
+		{
+			"name": "Get supported languages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://165.227.80.12/api/1.0/languages",
+					"host": [
+						"165.227.80.12"
+					],
+					"port": "80",
+					"path": [
+						"api",
+						"1.0",
+						"languages"
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "60b25d24-f88c-44b5-afc8-4415d9c65b67",
+					"name": "Get supported languages",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://165.227.80.12/api/1.0/languages",
+							"host": [
+								"165.227.80.12"
+							],
+							"port": "80",
+							"path": [
+								"api",
+								"1.0",
+								"languages"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Content-Length",
+							"value": "5785",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 12 Jul 2018 18:03:23 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Server",
+							"value": "Werkzeug/0.14.1 Python/3.6.4",
+							"name": "Server",
+							"description": "A name for the server"
+						}
+					],
+					"cookie": [],
+					"body": "[\n  {\n    \"language\": \"af\", \n    \"name\": \"Afrikaans\"\n  }, \n  {\n    \"language\": \"sq\", \n    \"name\": \"Albanian\"\n  }, \n  {\n    \"language\": \"am\", \n    \"name\": \"Amharic\"\n  }, \n  {\n    \"language\": \"ar\", \n    \"name\": \"Arabic\"\n  }, \n  {\n    \"language\": \"hy\", \n    \"name\": \"Armenian\"\n  }, \n  {\n    \"language\": \"az\", \n    \"name\": \"Azerbaijani\"\n  }, \n  {\n    \"language\": \"eu\", \n    \"name\": \"Basque\"\n  }, \n  {\n    \"language\": \"be\", \n    \"name\": \"Belarusian\"\n  }, \n  {\n    \"language\": \"bn\", \n    \"name\": \"Bengali\"\n  }, \n  {\n    \"language\": \"bs\", \n    \"name\": \"Bosnian\"\n  }, \n  {\n    \"language\": \"bg\", \n    \"name\": \"Bulgarian\"\n  }, \n  {\n    \"language\": \"ca\", \n    \"name\": \"Catalan\"\n  }, \n  {\n    \"language\": \"ceb\", \n    \"name\": \"Cebuano\"\n  }, \n  {\n    \"language\": \"ny\", \n    \"name\": \"Chichewa\"\n  }, \n  {\n    \"language\": \"zh\", \n    \"name\": \"Chinese (Simplified)\"\n  }, \n  {\n    \"language\": \"zh-TW\", \n    \"name\": \"Chinese (Traditional)\"\n  }, \n  {\n    \"language\": \"co\", \n    \"name\": \"Corsican\"\n  }, \n  {\n    \"language\": \"hr\", \n    \"name\": \"Croatian\"\n  }, \n  {\n    \"language\": \"cs\", \n    \"name\": \"Czech\"\n  }, \n  {\n    \"language\": \"da\", \n    \"name\": \"Danish\"\n  }, \n  {\n    \"language\": \"nl\", \n    \"name\": \"Dutch\"\n  }, \n  {\n    \"language\": \"en\", \n    \"name\": \"English\"\n  }, \n  {\n    \"language\": \"eo\", \n    \"name\": \"Esperanto\"\n  }, \n  {\n    \"language\": \"et\", \n    \"name\": \"Estonian\"\n  }, \n  {\n    \"language\": \"tl\", \n    \"name\": \"Filipino\"\n  }, \n  {\n    \"language\": \"fi\", \n    \"name\": \"Finnish\"\n  }, \n  {\n    \"language\": \"fr\", \n    \"name\": \"French\"\n  }, \n  {\n    \"language\": \"fy\", \n    \"name\": \"Frisian\"\n  }, \n  {\n    \"language\": \"gl\", \n    \"name\": \"Galician\"\n  }, \n  {\n    \"language\": \"ka\", \n    \"name\": \"Georgian\"\n  }, \n  {\n    \"language\": \"de\", \n    \"name\": \"German\"\n  }, \n  {\n    \"language\": \"el\", \n    \"name\": \"Greek\"\n  }, \n  {\n    \"language\": \"gu\", \n    \"name\": \"Gujarati\"\n  }, \n  {\n    \"language\": \"ht\", \n    \"name\": \"Haitian Creole\"\n  }, \n  {\n    \"language\": \"ha\", \n    \"name\": \"Hausa\"\n  }, \n  {\n    \"language\": \"haw\", \n    \"name\": \"Hawaiian\"\n  }, \n  {\n    \"language\": \"iw\", \n    \"name\": \"Hebrew\"\n  }, \n  {\n    \"language\": \"hi\", \n    \"name\": \"Hindi\"\n  }, \n  {\n    \"language\": \"hmn\", \n    \"name\": \"Hmong\"\n  }, \n  {\n    \"language\": \"hu\", \n    \"name\": \"Hungarian\"\n  }, \n  {\n    \"language\": \"is\", \n    \"name\": \"Icelandic\"\n  }, \n  {\n    \"language\": \"ig\", \n    \"name\": \"Igbo\"\n  }, \n  {\n    \"language\": \"id\", \n    \"name\": \"Indonesian\"\n  }, \n  {\n    \"language\": \"ga\", \n    \"name\": \"Irish\"\n  }, \n  {\n    \"language\": \"it\", \n    \"name\": \"Italian\"\n  }, \n  {\n    \"language\": \"ja\", \n    \"name\": \"Japanese\"\n  }, \n  {\n    \"language\": \"jw\", \n    \"name\": \"Javanese\"\n  }, \n  {\n    \"language\": \"kn\", \n    \"name\": \"Kannada\"\n  }, \n  {\n    \"language\": \"kk\", \n    \"name\": \"Kazakh\"\n  }, \n  {\n    \"language\": \"km\", \n    \"name\": \"Khmer\"\n  }, \n  {\n    \"language\": \"ko\", \n    \"name\": \"Korean\"\n  }, \n  {\n    \"language\": \"ku\", \n    \"name\": \"Kurdish (Kurmanji)\"\n  }, \n  {\n    \"language\": \"ky\", \n    \"name\": \"Kyrgyz\"\n  }, \n  {\n    \"language\": \"lo\", \n    \"name\": \"Lao\"\n  }, \n  {\n    \"language\": \"la\", \n    \"name\": \"Latin\"\n  }, \n  {\n    \"language\": \"lv\", \n    \"name\": \"Latvian\"\n  }, \n  {\n    \"language\": \"lt\", \n    \"name\": \"Lithuanian\"\n  }, \n  {\n    \"language\": \"lb\", \n    \"name\": \"Luxembourgish\"\n  }, \n  {\n    \"language\": \"mk\", \n    \"name\": \"Macedonian\"\n  }, \n  {\n    \"language\": \"mg\", \n    \"name\": \"Malagasy\"\n  }, \n  {\n    \"language\": \"ms\", \n    \"name\": \"Malay\"\n  }, \n  {\n    \"language\": \"ml\", \n    \"name\": \"Malayalam\"\n  }, \n  {\n    \"language\": \"mt\", \n    \"name\": \"Maltese\"\n  }, \n  {\n    \"language\": \"mi\", \n    \"name\": \"Maori\"\n  }, \n  {\n    \"language\": \"mr\", \n    \"name\": \"Marathi\"\n  }, \n  {\n    \"language\": \"mn\", \n    \"name\": \"Mongolian\"\n  }, \n  {\n    \"language\": \"my\", \n    \"name\": \"Myanmar (Burmese)\"\n  }, \n  {\n    \"language\": \"ne\", \n    \"name\": \"Nepali\"\n  }, \n  {\n    \"language\": \"no\", \n    \"name\": \"Norwegian\"\n  }, \n  {\n    \"language\": \"ps\", \n    \"name\": \"Pashto\"\n  }, \n  {\n    \"language\": \"fa\", \n    \"name\": \"Persian\"\n  }, \n  {\n    \"language\": \"pl\", \n    \"name\": \"Polish\"\n  }, \n  {\n    \"language\": \"pt\", \n    \"name\": \"Portuguese\"\n  }, \n  {\n    \"language\": \"pa\", \n    \"name\": \"Punjabi\"\n  }, \n  {\n    \"language\": \"ro\", \n    \"name\": \"Romanian\"\n  }, \n  {\n    \"language\": \"ru\", \n    \"name\": \"Russian\"\n  }, \n  {\n    \"language\": \"sm\", \n    \"name\": \"Samoan\"\n  }, \n  {\n    \"language\": \"gd\", \n    \"name\": \"Scots Gaelic\"\n  }, \n  {\n    \"language\": \"sr\", \n    \"name\": \"Serbian\"\n  }, \n  {\n    \"language\": \"st\", \n    \"name\": \"Sesotho\"\n  }, \n  {\n    \"language\": \"sn\", \n    \"name\": \"Shona\"\n  }, \n  {\n    \"language\": \"sd\", \n    \"name\": \"Sindhi\"\n  }, \n  {\n    \"language\": \"si\", \n    \"name\": \"Sinhala\"\n  }, \n  {\n    \"language\": \"sk\", \n    \"name\": \"Slovak\"\n  }, \n  {\n    \"language\": \"sl\", \n    \"name\": \"Slovenian\"\n  }, \n  {\n    \"language\": \"so\", \n    \"name\": \"Somali\"\n  }, \n  {\n    \"language\": \"es\", \n    \"name\": \"Spanish\"\n  }, \n  {\n    \"language\": \"su\", \n    \"name\": \"Sundanese\"\n  }, \n  {\n    \"language\": \"sw\", \n    \"name\": \"Swahili\"\n  }, \n  {\n    \"language\": \"sv\", \n    \"name\": \"Swedish\"\n  }, \n  {\n    \"language\": \"tg\", \n    \"name\": \"Tajik\"\n  }, \n  {\n    \"language\": \"ta\", \n    \"name\": \"Tamil\"\n  }, \n  {\n    \"language\": \"te\", \n    \"name\": \"Telugu\"\n  }, \n  {\n    \"language\": \"th\", \n    \"name\": \"Thai\"\n  }, \n  {\n    \"language\": \"tr\", \n    \"name\": \"Turkish\"\n  }, \n  {\n    \"language\": \"uk\", \n    \"name\": \"Ukrainian\"\n  }, \n  {\n    \"language\": \"ur\", \n    \"name\": \"Urdu\"\n  }, \n  {\n    \"language\": \"uz\", \n    \"name\": \"Uzbek\"\n  }, \n  {\n    \"language\": \"vi\", \n    \"name\": \"Vietnamese\"\n  }, \n  {\n    \"language\": \"cy\", \n    \"name\": \"Welsh\"\n  }, \n  {\n    \"language\": \"xh\", \n    \"name\": \"Xhosa\"\n  }, \n  {\n    \"language\": \"yi\", \n    \"name\": \"Yiddish\"\n  }, \n  {\n    \"language\": \"yo\", \n    \"name\": \"Yoruba\"\n  }, \n  {\n    \"language\": \"zu\", \n    \"name\": \"Zulu\"\n  }\n]\n"
+				}
+			]
 		}
 	]
 }
