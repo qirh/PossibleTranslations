@@ -175,10 +175,14 @@ def find_word(filters):
     search_dict = {}
     if (filters.get('target_lang') is not None):
         search_dict['target_lang'] = filters.pop('target_lang')
+    else:
+        raise CustomException(404, 'Missing target_lang field')
     if (filters.get('id') is not None):
         search_dict['word_id'] = filters.pop('id')
     if (filters.get('word') is not None):
         search_dict['word'] = filters.pop('word')
+    else:
+        raise CustomException(404, 'Missing word field')
 
     try:
         words = WordTranslations.query.filter_by(**search_dict).all()

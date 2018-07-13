@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { func } from 'prop-types';
+import { string, func } from 'prop-types';
 
 
 export default class DropDown extends Component {
@@ -10,6 +10,7 @@ export default class DropDown extends Component {
 
   static propTypes = {
     onHandleLanguageChange: func.isRequired,
+    defaultValue: string.isRequired
   }
 
   componentDidMount() {
@@ -30,7 +31,7 @@ export default class DropDown extends Component {
 
     return (
       <select className="language-drop-down" onChange={this.handleLanguageChange}>
-        <option defaultValue="en">Target Language (en)</option>
+        <option defaultValue={this.props.defaultValue}>Target Language ({this.props.defaultValue})</option>
         {languages.map(function(l) {
           return <option key={l.language} value={l.language}>{l.name}</option>;
         })}
