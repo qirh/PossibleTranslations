@@ -295,7 +295,7 @@ def api_put():
         return make_response(jsonify({'Error': 'DB Integrity Error'}), 404)
 
     response = jsonify(word.serialize())
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    #response.headers.add('Access-Control-Allow-Origin', '*')
     return make_response(response, 200)
 
 
@@ -307,7 +307,7 @@ def api_post():
         find_word(request.args.to_dict())
         word = add_word(request.args.to_dict())
         response = jsonify(word.serialize())
-        response.headers.add('Access-Control-Allow-Origin', '*')
+        #response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
@@ -331,7 +331,7 @@ def api_delete():
             return make_response(jsonify({'Error': 'DB Integrity Error'}), 404)
 
         response = jsonify(word.serialize())
-        response.headers.add('Access-Control-Allow-Origin', '*')
+        #response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
@@ -351,7 +351,7 @@ def api_get():
         else:
             words = WordTranslations.query.all()
         response = jsonify([w.serialize() for w in words])
-        response.headers.add('Access-Control-Allow-Origin', '*')
+        #response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
@@ -367,7 +367,7 @@ def api_get_languages():
         update_languages()
         response = jsonify(AVALIABLE_LANGUAGES)
         print("here3")
-        response.headers.add('Access-Control-Allow-Origin', '*')
+        #response.headers.add('Access-Control-Allow-Origin', '*')
         return make_response(response, 200)
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
