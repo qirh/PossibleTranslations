@@ -22,6 +22,7 @@
 3. Missing option to delete word
 4. Missing option to edit word
 5. Serve HTTPS Domain (let's encrypt)
+6. Search should case insensitive
 
 ## Notes
 1. You need to export the Google API Key, look [here](https://stackoverflow.com/questions/35159967/setting-google-application-credentials-for-bigquery-python-cli) & [here](https://stackoverflow.com/questions/39843252/pycharm-set-environment-variable-for-google-service-account-key-json-credentia)
