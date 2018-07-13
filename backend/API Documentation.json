@@ -26,9 +26,9 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://165.227.80.12/api/1.0/echo",
+							"raw": "http://possibletranslations.com/api/1.0/echo",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
@@ -92,9 +92,9 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://165.227.80.12/api/1.0/echo",
+							"raw": "http://possibletranslations.com/api/1.0/echo",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
@@ -158,9 +158,9 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://165.227.80.12/api/1.0/echo",
+							"raw": "http://possibletranslations.com/api/1.0/echo",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
@@ -224,9 +224,9 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://165.227.80.12/api/1.0/echo",
+							"raw": "http://possibletranslations.com/api/1.0/echo",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
@@ -289,9 +289,9 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://165.227.80.12/api/1.0/q",
+							"raw": "http://possibletranslations.com/api/1.0/q",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
@@ -360,10 +360,10 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://http://165.227.80.12/api/1.0/q?word=joe",
+							"raw": "http://http://possibletranslations.com/api/1.0/q?word=joe",
 							"protocol": "http",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
@@ -426,9 +426,9 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://165.227.80.12/api/1.0/q?word=mike&target_lang=fr",
+					"raw": "http://possibletranslations.com/api/1.0/q?word=mike&target_lang=fr",
 					"host": [
-						"165.227.80.12"
+						"possibletranslations.com"
 					],
 					"port": "80",
 					"path": [
@@ -457,9 +457,9 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://165.227.80.12/api/1.0/q?word=mike&target_lang=fr",
+							"raw": "http://possibletranslations.com/api/1.0/q?word=mike&target_lang=fr",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
@@ -526,9 +526,9 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://165.227.80.12/api/1.0/q?word=mike&lang=de",
+					"raw": "http://possibletranslations.com/api/1.0/q?word=mike&lang=de",
 					"host": [
-						"165.227.80.12"
+						"possibletranslations.com"
 					],
 					"port": "80",
 					"path": [
@@ -557,9 +557,9 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://165.227.80.12/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
+							"raw": "http://possibletranslations.com/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
@@ -630,9 +630,9 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://165.227.80.12/api/1.0/q?word=mikey&target_lang=en",
+					"raw": "http://possibletranslations.com/api/1.0/q?word=mikey&target_lang=en",
 					"host": [
-						"165.227.80.12"
+						"possibletranslations.com"
 					],
 					"port": "80",
 					"path": [
@@ -661,9 +661,9 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://165.227.80.12/api/1.0/q?word=mikey&target_lang=en",
+							"raw": "http://possibletranslations.com/api/1.0/q?word=mikey&target_lang=en",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
@@ -730,9 +730,9 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "http://165.227.80.12/api/1.0/languages",
+					"raw": "http://possibletranslations.com/api/1.0/languages",
 					"host": [
-						"165.227.80.12"
+						"possibletranslations.com"
 					],
 					"port": "80",
 					"path": [
@@ -751,9 +751,9 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://165.227.80.12/api/1.0/languages",
+							"raw": "http://possibletranslations.com/api/1.0/languages",
 							"host": [
-								"165.227.80.12"
+								"possibletranslations.com"
 							],
 							"port": "80",
 							"path": [
