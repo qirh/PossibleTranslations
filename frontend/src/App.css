@@ -1,36 +1,55 @@
-.donors-app {
+.words-app {
   text-align: center;
-  font-family: Roboto;
 }
-
-.donors-header {
+.Select {
+  width: 200px
+}
+.words-header {
   margin-top: 0;
 	height: 70px;
 	background-color: #244253;
   color: #FFFFFF;
-  font-size: 16px;
+  font-size: 20px;
 	font-weight: bold;
 	line-height: 19px;
 	text-align: center;
   line-height: 70px;
 }
-
-.donors-table {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  border-collapse: collapse;
+.submit-word-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: 20px;
 }
-
-.donors-table th, td {
-  padding: 20px;
+.submit-word-label {
+  margin-right: 1rem;
 }
-
-.donors-header-row {
-  opacity: 0.54;
+.language-drop-down {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
-
-.donors-row {
-	line-height: 14px;
-  border-bottom: 0.5px solid #979797;
+.submit-word-input {
+  width:50%;
+}
+.words-export-button {
+  background-color: #E0E0E0;
+  width: 150px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.submit-word-container > *, .rt-th > * {
+  font-family: Muli, serif;
+}
+/* Mobile */
+@media only screen and (max-width: 599px) {
+}
+/* Tablets */
+@media only screen and (min-width: 600px) {
+}
+/* Desktop */
+@media only screen and (min-width: 768px) {
 }
