@@ -4,16 +4,19 @@
 from flask import Flask, request, render_template, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cors import CORS, cross_origin
+
 from sqlalchemy import exc
 from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
 
 app = Flask(__name__)
+CORS(app)
 app.url_map.strict_slashes = False
 
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://saleh:400700we@wordsaws.clzvkffnzrmz.us-east-1.rds.amazonaws.com:5432/words_db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@localhost:5432/words_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://saleh:400700we@wordsaws.clzvkffnzrmz.us-east-1.rds.amazonaws.com:5432/words_db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@localhost:5432/words_db'
 app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
@@ -240,6 +243,7 @@ def add_word(form):
 ################# VIEWS #################
 #########################################
 @app.errorhandler(404)
+@cross_origin()
 def error_page(custom=None):
     print("error_page(custom= " + str(custom))
     return render_template('/404.html', title="404", custom=custom)
@@ -247,6 +251,7 @@ def error_page(custom=None):
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
+@cross_origin()
 def index():
     update_languages()
     try:
@@ -265,6 +270,7 @@ def index():
 
 # Edits one entry at a time (needs word + target_lang + new_target_lang)
 @app.route ('/api/1.0/q', methods=['PUT'])
+@cross_origin()
 def api_put():
 
     word = ""
@@ -293,9 +299,9 @@ def api_put():
     return make_response(response, 200)
 
 
-
 # Posts one entry at a time (needs word + target_lang)
 @app.route ('/api/1.0/q', methods=['POST'])
+@cross_origin()
 def api_post():
     try:
         find_word(request.args.to_dict())
@@ -312,6 +318,7 @@ def api_post():
 
 # Deletes one entry at a time (requires word or target_lang or id). Will only delete only if one entry exists
 @app.route ('/api/1.0/q', methods=['DELETE'])
+@cross_origin()
 def api_delete():
     try:
         word = word_is_unique(request.args.to_dict())
@@ -336,6 +343,7 @@ def api_delete():
 # Gets specific entries or all entries
 @app.route ('/api/1.0', methods=['GET'])
 @app.route ('/api/1.0/q', methods=['GET'])
+@cross_origin()
 def api_get():
     try:
         if(request.args.to_dict()):
@@ -350,8 +358,10 @@ def api_get():
     except Exception as e:
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
+
 # Gets supported languages
 @app.route ('/api/1.0/languages', methods=['GET'])
+@cross_origin()
 def api_get_languages():
     try:
         update_languages()
@@ -366,6 +376,7 @@ def api_get_languages():
 
 
 @app.route('/api/1.0/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@cross_origin()
 def api_echo():
     if request.method == 'GET':
         return make_response(jsonify({'ECHO': 'GET'}))
