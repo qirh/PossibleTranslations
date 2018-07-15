@@ -1,17 +1,83 @@
-h1, h2, th {
-  margin-bottom: 1.25rem;
-  font-size: 1.25rem;
-}
-p, body, input, button {
-  font-size: 1rem;
-}
 * {
   font-family: Junge, serif;
+}
+h1, h2, th {
+  padding-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+h1 {
+  font-size: 1.50rem;
+}
+p, body, input, button, option, select {
+  font-size: 1rem;
 }
 .ReactTable {
   height: 600px
 }
-
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+button {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.-btn, .submit-word-button {
+  color: #FFFFFF !important;
+  background-color: #0a699f !important;
+}
+.submit-word-button {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.submit-word-container > *, .rt-th > *, h3, option, select {
+  font-family: Muli, serif;
+}
+.words-app {
+  text-align: center;
+}
+.Select {
+  width: 200px
+}
+.words-header {
+  margin-top: 0;
+	height: 90px;
+	background-color: #244253;
+  color: #FFFFFF;
+  border-radius: 8px;
+}
+.submit-word-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: 20px;
+}
+.submit-word-label {
+  margin-right: 1rem;
+}
+.language-drop-down {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.submit-word-input {
+  width:50%;
+  border-radius: 15px 50px 30px;
+  border: 1px solid #0a699f;
+}
 /* Mobile */
 @media only screen and (max-width: 599px) {
 }

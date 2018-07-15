@@ -31,7 +31,7 @@ export default class DropDown extends Component {
 
     return (
       <select className="language-drop-down" onChange={this.handleLanguageChange}>
-        <option defaultValue={this.props.defaultValue}>Target Language ({this.props.defaultValue})</option>
+        <option defaultValue={this.props.defaultValue}>Translate to ({this.props.defaultValue})</option>
         {languages.map(function(l) {
           return <option key={l.language} value={l.language}>{l.name}</option>;
         })}

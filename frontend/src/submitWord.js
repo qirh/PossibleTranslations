@@ -37,10 +37,9 @@ export default class SubmitWord extends Component {
   render() {
     return (
       <div className="submit-word-container">
-        <p className="submit-word-label">Add a sentence to translate</p>
-        <input className="submit-word-input" type="text" name="wordInput" placeholder="Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
+        <input className="submit-word-input" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
         <DropDown onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language} />
-        <button className="submit-word-button" onClick={this.buttonPress}>Find langugae</button>
+        <button className="submit-word-button" onClick={this.buttonPress}>Detect language and translate</button>
       </div>
     );
   }
