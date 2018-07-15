@@ -19,7 +19,6 @@ export default class App extends Component {
       .then(res => res.json())
       .then(words => this.setState({ words }));
   }
-
   refreshData = () => {
     this.getData()
   }
