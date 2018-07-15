@@ -7,26 +7,23 @@ export default class DropDown extends Component {
   state = {
     languages: [],
   }
-
+  static defaultProps = {
+    languages: []
+  }
   static propTypes = {
     onHandleLanguageChange: func.isRequired,
     defaultValue: string.isRequired
   }
-
   componentDidMount() {
     fetch('http://PossibleTranslations.com/api/1.0/languages')
     .then(res => res.json())
     .then(languages => this.setState({ languages })
     );
   }
-  static defaultProps = {
-    languages: []
-  }
   handleLanguageChange = (e) => {
-    console.log("here --> " + e);
+    console.log("here --> ");
     this.props.onHandleLanguageChange(e.target.value);
   }
-
   render() {
     const { languages } = this.state;
 

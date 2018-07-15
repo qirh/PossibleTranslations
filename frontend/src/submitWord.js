@@ -12,7 +12,6 @@ export default class SubmitWord extends Component {
     language: "en",
     loading: false
   }
-
   static propTypes = {
     onButtonPress: func.isRequired,
   }
@@ -26,7 +25,6 @@ export default class SubmitWord extends Component {
       {method: 'POST'})
     .then(response => this.props.onButtonPress())
     .then(response => this.clearItems())
-    .then(response => this.setState({loading: false, language: "en"}))
   }
   handleKeyPress(text) {
     this.setState({
@@ -34,11 +32,13 @@ export default class SubmitWord extends Component {
     })
   }
   handleLanguageChange = (lang) => {
+    console.log("here2 --> ");
     this.setState(prevState => ({
       language: lang
-    }))
+    }));
   }
   clearItems() {
+    this.setState({loading: false, language: "en"})
     this.refs.inputRef.value = "";
   }
 
