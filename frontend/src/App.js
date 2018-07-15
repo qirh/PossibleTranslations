@@ -47,13 +47,15 @@ export default class App extends Component {
     ]
     return (
       <div className="words-app">
-      <h1 className="words-header">Possible Translations</h1>
+        <div className="words-header">
+          <h1>Possible Translations</h1>
+          <h3>Enter a sentence in the box below and choose a language to translate to. The website will query Google Translate to get a translation and list it in the table below</h3>
+        </div>
 
-      <SubmitWord onButtonPress={this.refreshData} />
+        <SubmitWord onButtonPress={this.refreshData} />
 
-      <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable
-        defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}
-      />
+        <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable
+          defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
       </div>
     );
