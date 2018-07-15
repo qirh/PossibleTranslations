@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { func } from 'prop-types';
+import { FadeLoader } from 'react-spinners';
 
 // Components
 import DropDown from './DropDown.js';
@@ -8,7 +9,8 @@ export default class SubmitWord extends Component {
 
   state = {
     word: "",
-    language: "en"
+    language: "en",
+    loading: false
   }
 
   static propTypes = {
@@ -19,9 +21,11 @@ export default class SubmitWord extends Component {
   }
 
   buttonPress = () => {
+    this.setState({ loading: true })
     fetch('http://PossibleTranslations.com/api/1.0/q?word=' + this.state.word + '&target_lang=' + this.state.language,
       {method: 'POST'})
     .then((response) => this.props.onButtonPress())
+    .then(response => {this.setState({ loading: false })})
   }
   handleKeyPress(text) {
     this.setState({
@@ -37,9 +41,14 @@ export default class SubmitWord extends Component {
   render() {
     return (
       <div className="submit-word-container">
-        <input className="submit-word-input" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
-        <DropDown onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language} />
-        <button className="submit-word-button" onClick={this.buttonPress}>Detect language and translate</button>
+        <div className="submit-word-main">
+          <input className="submit-word-input" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
+          <DropDown onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language} />
+          <button className="submit-word-button" onClick={this.buttonPress}>Detect language and translate</button>
+        </div>
+        <div className='sweet-loading'>
+          <FadeLoader color={'#123abc'} loading={this.state.loading}/>
+        </div>
       </div>
     );
   }
