@@ -23,7 +23,8 @@ export default class DropDown extends Component {
     languages: []
   }
   handleLanguageChange = (e) => {
-    this.props.onHandleLanguageChange(e.target.value)
+    console.log("here --> " + e);
+    this.props.onHandleLanguageChange(e.target.value);
   }
 
   render() {

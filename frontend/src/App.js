@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-// Style
-import './App.css';
 
 // Components
 import SubmitWord from './SubmitWord.js';
