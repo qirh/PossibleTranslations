@@ -5,9 +5,11 @@
 1. Need unit tests (API tests)
 2. Write Unit Tests
 3. Add support for another translator (bing?)
-4. API
+4. Serve HTTPS Domain (let's encrypt)
+5. API
+  * Form Parameters?
   * Needs better documentation
-  * Does not have any auth (JWT)
+  * Needs auth (JWT)
   * Should be able to accept JSON payloads
   * Method Specific:
     * Put
@@ -17,12 +19,14 @@
       * Add ability to enter custom id
 
 **Frontend:**
-1. Is it mobile responsive ?
-2. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
+1. There's a bug in the dropdown menu when selecting the first value then other values
+2. Alex wants 2 screens!
 3. Missing option to delete word
 4. Missing option to edit word
-5. Serve HTTPS Domain (let's encrypt)
-6. Search should case insensitive
+5. Is it mobile responsive ?
+6. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
+7. Search should case insensitive
+8. Spinner should be overlay
 
 ## Notes
 1. You need to export the Google API Key, look [here](https://stackoverflow.com/questions/35159967/setting-google-application-credentials-for-bigquery-python-cli) & [here](https://stackoverflow.com/questions/39843252/pycharm-set-environment-variable-for-google-service-account-key-json-credentia)
@@ -37,7 +41,7 @@
 * language translation: google translate (considering adding bing service if time permits)
 
 
-## Alex requirement
+## Email from Alex
 The goal of this project is to create a tool that will accept text input (e.g. a sentence), determine the language entered, and translate the text to English. Then you should deploy this tool to the Web so I can see it.
 
 The UI consists of 2 screens. 1) A screen to enter text, and 2) A list of the entered text, alongside the language of the text and a translation.

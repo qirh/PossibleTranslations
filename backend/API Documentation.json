@@ -1,272 +1,328 @@
 {
 	"info": {
-		"_postman_id": "fda2d699-e499-4c56-b4e3-ff829cff2644",
+		"_postman_id": "49ceab52-782e-474b-a8b1-51f1d135d8ab",
 		"name": "Possible Translations",
-		"description": "API for Possible Translations",
+		"description": "Documenatation for PossibleTranslations.com. A website that detects the language of a sentence from user input and translates it using Google Translate.\n\nCurrently, only `HTTP` is supported and the API responds to all requests without Authentication.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Echo Get",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": ""
-				},
-				"description": "Test if Get works as expected"
-			},
-			"response": [
+			"name": "Echo",
+			"description": "Echo is service you can use to test the API endpoint and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT` & `DELETE`.",
+			"item": [
 				{
-					"id": "da24620b-46a5-4f7e-b3d0-7acc1ee38d6b",
-					"name": "Get Echo",
-					"originalRequest": {
+					"name": "Echo Get",
+					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://possibletranslations.com/api/1.0/echo",
-							"host": [
-								"possibletranslations.com"
-							],
-							"port": "80",
-							"path": [
-								"api",
-								"1.0",
-								"echo"
-							]
-						}
+							"raw": ""
+						},
+						"description": "Test if Get works as expected"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Length",
-							"value": "20",
-							"name": "Content-Length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:21:38 GMT",
-							"name": "Date",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"key": "Server",
-							"value": "Werkzeug/0.14.1 Python/3.6.4",
-							"name": "Server",
-							"description": "A name for the server"
+							"id": "1e5a29f6-2ce1-4050-bc3e-9a1b2d819b24",
+							"name": "Get Echo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "possibletranslations.com:80/api/1.0/echo",
+									"host": [
+										"possibletranslations",
+										"com"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"1.0",
+										"echo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "20",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jul 2018 01:21:38 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/0.14.1 Python/3.6.4",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"ECHO\": \"GET\"\n}\n"
 						}
-					],
-					"cookie": [],
-					"body": "{\n  \"ECHO\": \"GET\"\n}\n"
-				}
-			]
-		},
-		{
-			"name": "Echo Post",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": ""
+					]
 				},
-				"description": "Test if Post works as expected"
-			},
-			"response": [
 				{
-					"id": "24a203e8-e25e-4c25-b2a5-a8422f139923",
 					"name": "Echo Post",
-					"originalRequest": {
+					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://possibletranslations.com/api/1.0/echo",
-							"host": [
-								"possibletranslations.com"
-							],
-							"port": "80",
-							"path": [
-								"api",
-								"1.0",
-								"echo"
-							]
-						}
+							"raw": ""
+						},
+						"description": "Test if Post works as expected"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Length",
-							"value": "21",
-							"name": "Content-Length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:23:32 GMT",
-							"name": "Date",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"key": "Server",
-							"value": "Werkzeug/0.14.1 Python/3.6.4",
-							"name": "Server",
-							"description": "A name for the server"
+							"id": "b720d624-8749-42ab-a378-35144b2133ac",
+							"name": "Echo Post",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "possibletranslations.com:80/api/1.0/echo",
+									"host": [
+										"possibletranslations",
+										"com"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"1.0",
+										"echo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "21",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jul 2018 01:23:32 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/0.14.1 Python/3.6.4",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"ECHO\": \"POST\"\n}\n"
 						}
-					],
-					"cookie": [],
-					"body": "{\n  \"ECHO\": \"POST\"\n}\n"
-				}
-			]
-		},
-		{
-			"name": "Echo Put",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": ""
+					]
 				},
-				"description": "Test if Put works as expected"
-			},
-			"response": [
 				{
-					"id": "c31cc3ff-fb44-483a-9367-fff190cffea2",
 					"name": "Echo Put",
-					"originalRequest": {
+					"request": {
 						"method": "PUT",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://possibletranslations.com/api/1.0/echo",
-							"host": [
-								"possibletranslations.com"
-							],
-							"port": "80",
-							"path": [
-								"api",
-								"1.0",
-								"echo"
-							]
-						}
+							"raw": ""
+						},
+						"description": "Test if Put works as expected"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Length",
-							"value": "21",
-							"name": "Content-Length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:22:14 GMT",
-							"name": "Date",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"key": "Server",
-							"value": "Werkzeug/0.14.1 Python/3.6.4",
-							"name": "Server",
-							"description": "A name for the server"
+							"id": "e913100b-dda4-45b1-9d0e-8dc325c2ed4e",
+							"name": "Echo Put",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "possibletranslations.com:80/api/1.0/echo",
+									"host": [
+										"possibletranslations",
+										"com"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"1.0",
+										"echo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "21",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jul 2018 01:22:14 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/0.14.1 Python/3.6.4",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"ECHO\": \"PUT\"\n}"
 						}
-					],
-					"cookie": [],
-					"body": "{\n    \"ECHO\": \"PUT\"\n}"
-				}
-			]
-		},
-		{
-			"name": "Echo Delete",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": ""
+					]
 				},
-				"description": "Test if Delete works as expected"
-			},
-			"response": [
 				{
-					"id": "07fb5fc4-1df6-451c-a1f2-176b1d8a8ffa",
 					"name": "Echo Delete",
-					"originalRequest": {
+					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://possibletranslations.com/api/1.0/echo",
-							"host": [
-								"possibletranslations.com"
-							],
-							"port": "80",
-							"path": [
-								"api",
-								"1.0",
-								"echo"
-							]
-						}
+							"raw": ""
+						},
+						"description": "Test if Delete works as expected"
 					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
+					"response": [
 						{
-							"key": "Content-Length",
-							"value": "23",
-							"name": "Content-Length",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"key": "Content-Type",
-							"value": "application/json",
-							"name": "Content-Type",
-							"description": "The mime type of this content"
-						},
-						{
-							"key": "Date",
-							"value": "Thu, 12 Jul 2018 01:24:28 GMT",
-							"name": "Date",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"key": "Server",
-							"value": "Werkzeug/0.14.1 Python/3.6.4",
-							"name": "Server",
-							"description": "A name for the server"
+							"id": "c616e48b-00dc-49a2-b4b0-fbf21a9f0c03",
+							"name": "Echo Delete",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "possibletranslations.com:80/api/1.0/echo",
+									"host": [
+										"possibletranslations",
+										"com"
+									],
+									"port": "80",
+									"path": [
+										"api",
+										"1.0",
+										"echo"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "23",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 12 Jul 2018 01:24:28 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/0.14.1 Python/3.6.4",
+									"name": "Server",
+									"description": "A name for the server"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"ECHO\": \"DELETE\"\n}\n"
 						}
-					],
-					"cookie": [],
-					"body": "{\n  \"ECHO\": \"DELETE\"\n}\n"
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e4ef5286-f078-4362-8c39-f8d792ae3a4a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "de687190-b4da-4052-8e9d-0d6a718b37ec",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -275,23 +331,30 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": ""
 				}
 			},
 			"response": [
 				{
-					"id": "c436ffe9-22ba-41e5-8540-7cf28c090c0a",
+					"id": "3be6937c-878d-4a35-9fd1-d012f7641e1d",
 					"name": "Get all entries",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://possibletranslations.com/api/1.0/q",
+							"raw": "possibletranslations.com:80/api/1.0/q",
 							"host": [
-								"possibletranslations.com"
+								"possibletranslations",
+								"com"
 							],
 							"port": "80",
 							"path": [
@@ -346,24 +409,31 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": ""
 				}
 			},
 			"response": [
 				{
-					"id": "d2afd0e2-7610-476b-ae89-b091d74bf596",
+					"id": "3e6923cb-7f85-4f34-bf4d-44bf265e0962",
 					"name": "Get a specific entry",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://http://possibletranslations.com/api/1.0/q?word=joe",
+							"raw": "http://possibletranslations.com:80/api/1.0/q?word=joe",
 							"protocol": "http",
 							"host": [
-								"possibletranslations.com"
+								"possibletranslations",
+								"com"
 							],
 							"port": "80",
 							"path": [
@@ -424,11 +494,15 @@
 			"request": {
 				"method": "POST",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://possibletranslations.com/api/1.0/q?word=mike&target_lang=fr",
+					"raw": "possibletranslations.com:80/api/1.0/q?word=mike&target_lang=fr",
 					"host": [
-						"possibletranslations.com"
+						"possibletranslations",
+						"com"
 					],
 					"port": "80",
 					"path": [
@@ -450,16 +524,20 @@
 			},
 			"response": [
 				{
-					"id": "93c3ff30-f9cc-484a-bff3-62edec341ea5",
+					"id": "36480285-8945-440a-976c-abd23cbfaa2d",
 					"name": "Post an entry",
 					"originalRequest": {
 						"method": "POST",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://possibletranslations.com/api/1.0/q?word=mike&target_lang=fr",
+							"raw": "possibletranslations.com:80/api/1.0/q?word=mike&target_lang=fr",
 							"host": [
-								"possibletranslations.com"
+								"possibletranslations",
+								"com"
 							],
 							"port": "80",
 							"path": [
@@ -524,11 +602,15 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://possibletranslations.com/api/1.0/q?word=mike&lang=de",
+					"raw": "possibletranslations.com:80/api/1.0/q?word=mike&lang=de",
 					"host": [
-						"possibletranslations.com"
+						"possibletranslations",
+						"com"
 					],
 					"port": "80",
 					"path": [
@@ -550,16 +632,20 @@
 			},
 			"response": [
 				{
-					"id": "45c4f7e8-821c-4827-b3f9-dd1bf3edf3fa",
+					"id": "12ca2e6e-e8ef-494f-813f-0ea6f385c260",
 					"name": "Edit an entry",
 					"originalRequest": {
 						"method": "PUT",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://possibletranslations.com/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
+							"raw": "possibletranslations.com:80/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
 							"host": [
-								"possibletranslations.com"
+								"possibletranslations",
+								"com"
 							],
 							"port": "80",
 							"path": [
@@ -628,11 +714,15 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://possibletranslations.com/api/1.0/q?word=mikey&target_lang=en",
+					"raw": "possibletranslations.com:80/api/1.0/q?word=mikey&target_lang=en",
 					"host": [
-						"possibletranslations.com"
+						"possibletranslations",
+						"com"
 					],
 					"port": "80",
 					"path": [
@@ -654,16 +744,20 @@
 			},
 			"response": [
 				{
-					"id": "33798ad6-1131-4426-8b12-888fee0a230e",
+					"id": "7e540947-7577-4645-a8e4-af9ab5bba8ef",
 					"name": "Delete an entry",
 					"originalRequest": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://possibletranslations.com/api/1.0/q?word=mikey&target_lang=en",
+							"raw": "possibletranslations.com:80/api/1.0/q?word=mikey&target_lang=en",
 							"host": [
-								"possibletranslations.com"
+								"possibletranslations",
+								"com"
 							],
 							"port": "80",
 							"path": [
@@ -728,11 +822,15 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://possibletranslations.com/api/1.0/languages",
+					"raw": "possibletranslations.com:80/api/1.0/languages",
 					"host": [
-						"possibletranslations.com"
+						"possibletranslations",
+						"com"
 					],
 					"port": "80",
 					"path": [
@@ -744,16 +842,20 @@
 			},
 			"response": [
 				{
-					"id": "60b25d24-f88c-44b5-afc8-4415d9c65b67",
+					"id": "86915a24-f37a-49e2-92d0-5a5e4d4ffc84",
 					"name": "Get supported languages",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://possibletranslations.com/api/1.0/languages",
+							"raw": "possibletranslations.com:80/api/1.0/languages",
 							"host": [
-								"possibletranslations.com"
+								"possibletranslations",
+								"com"
 							],
 							"port": "80",
 							"path": [
@@ -802,6 +904,28 @@
 					"body": "[\n  {\n    \"language\": \"af\", \n    \"name\": \"Afrikaans\"\n  }, \n  {\n    \"language\": \"sq\", \n    \"name\": \"Albanian\"\n  }, \n  {\n    \"language\": \"am\", \n    \"name\": \"Amharic\"\n  }, \n  {\n    \"language\": \"ar\", \n    \"name\": \"Arabic\"\n  }, \n  {\n    \"language\": \"hy\", \n    \"name\": \"Armenian\"\n  }, \n  {\n    \"language\": \"az\", \n    \"name\": \"Azerbaijani\"\n  }, \n  {\n    \"language\": \"eu\", \n    \"name\": \"Basque\"\n  }, \n  {\n    \"language\": \"be\", \n    \"name\": \"Belarusian\"\n  }, \n  {\n    \"language\": \"bn\", \n    \"name\": \"Bengali\"\n  }, \n  {\n    \"language\": \"bs\", \n    \"name\": \"Bosnian\"\n  }, \n  {\n    \"language\": \"bg\", \n    \"name\": \"Bulgarian\"\n  }, \n  {\n    \"language\": \"ca\", \n    \"name\": \"Catalan\"\n  }, \n  {\n    \"language\": \"ceb\", \n    \"name\": \"Cebuano\"\n  }, \n  {\n    \"language\": \"ny\", \n    \"name\": \"Chichewa\"\n  }, \n  {\n    \"language\": \"zh\", \n    \"name\": \"Chinese (Simplified)\"\n  }, \n  {\n    \"language\": \"zh-TW\", \n    \"name\": \"Chinese (Traditional)\"\n  }, \n  {\n    \"language\": \"co\", \n    \"name\": \"Corsican\"\n  }, \n  {\n    \"language\": \"hr\", \n    \"name\": \"Croatian\"\n  }, \n  {\n    \"language\": \"cs\", \n    \"name\": \"Czech\"\n  }, \n  {\n    \"language\": \"da\", \n    \"name\": \"Danish\"\n  }, \n  {\n    \"language\": \"nl\", \n    \"name\": \"Dutch\"\n  }, \n  {\n    \"language\": \"en\", \n    \"name\": \"English\"\n  }, \n  {\n    \"language\": \"eo\", \n    \"name\": \"Esperanto\"\n  }, \n  {\n    \"language\": \"et\", \n    \"name\": \"Estonian\"\n  }, \n  {\n    \"language\": \"tl\", \n    \"name\": \"Filipino\"\n  }, \n  {\n    \"language\": \"fi\", \n    \"name\": \"Finnish\"\n  }, \n  {\n    \"language\": \"fr\", \n    \"name\": \"French\"\n  }, \n  {\n    \"language\": \"fy\", \n    \"name\": \"Frisian\"\n  }, \n  {\n    \"language\": \"gl\", \n    \"name\": \"Galician\"\n  }, \n  {\n    \"language\": \"ka\", \n    \"name\": \"Georgian\"\n  }, \n  {\n    \"language\": \"de\", \n    \"name\": \"German\"\n  }, \n  {\n    \"language\": \"el\", \n    \"name\": \"Greek\"\n  }, \n  {\n    \"language\": \"gu\", \n    \"name\": \"Gujarati\"\n  }, \n  {\n    \"language\": \"ht\", \n    \"name\": \"Haitian Creole\"\n  }, \n  {\n    \"language\": \"ha\", \n    \"name\": \"Hausa\"\n  }, \n  {\n    \"language\": \"haw\", \n    \"name\": \"Hawaiian\"\n  }, \n  {\n    \"language\": \"iw\", \n    \"name\": \"Hebrew\"\n  }, \n  {\n    \"language\": \"hi\", \n    \"name\": \"Hindi\"\n  }, \n  {\n    \"language\": \"hmn\", \n    \"name\": \"Hmong\"\n  }, \n  {\n    \"language\": \"hu\", \n    \"name\": \"Hungarian\"\n  }, \n  {\n    \"language\": \"is\", \n    \"name\": \"Icelandic\"\n  }, \n  {\n    \"language\": \"ig\", \n    \"name\": \"Igbo\"\n  }, \n  {\n    \"language\": \"id\", \n    \"name\": \"Indonesian\"\n  }, \n  {\n    \"language\": \"ga\", \n    \"name\": \"Irish\"\n  }, \n  {\n    \"language\": \"it\", \n    \"name\": \"Italian\"\n  }, \n  {\n    \"language\": \"ja\", \n    \"name\": \"Japanese\"\n  }, \n  {\n    \"language\": \"jw\", \n    \"name\": \"Javanese\"\n  }, \n  {\n    \"language\": \"kn\", \n    \"name\": \"Kannada\"\n  }, \n  {\n    \"language\": \"kk\", \n    \"name\": \"Kazakh\"\n  }, \n  {\n    \"language\": \"km\", \n    \"name\": \"Khmer\"\n  }, \n  {\n    \"language\": \"ko\", \n    \"name\": \"Korean\"\n  }, \n  {\n    \"language\": \"ku\", \n    \"name\": \"Kurdish (Kurmanji)\"\n  }, \n  {\n    \"language\": \"ky\", \n    \"name\": \"Kyrgyz\"\n  }, \n  {\n    \"language\": \"lo\", \n    \"name\": \"Lao\"\n  }, \n  {\n    \"language\": \"la\", \n    \"name\": \"Latin\"\n  }, \n  {\n    \"language\": \"lv\", \n    \"name\": \"Latvian\"\n  }, \n  {\n    \"language\": \"lt\", \n    \"name\": \"Lithuanian\"\n  }, \n  {\n    \"language\": \"lb\", \n    \"name\": \"Luxembourgish\"\n  }, \n  {\n    \"language\": \"mk\", \n    \"name\": \"Macedonian\"\n  }, \n  {\n    \"language\": \"mg\", \n    \"name\": \"Malagasy\"\n  }, \n  {\n    \"language\": \"ms\", \n    \"name\": \"Malay\"\n  }, \n  {\n    \"language\": \"ml\", \n    \"name\": \"Malayalam\"\n  }, \n  {\n    \"language\": \"mt\", \n    \"name\": \"Maltese\"\n  }, \n  {\n    \"language\": \"mi\", \n    \"name\": \"Maori\"\n  }, \n  {\n    \"language\": \"mr\", \n    \"name\": \"Marathi\"\n  }, \n  {\n    \"language\": \"mn\", \n    \"name\": \"Mongolian\"\n  }, \n  {\n    \"language\": \"my\", \n    \"name\": \"Myanmar (Burmese)\"\n  }, \n  {\n    \"language\": \"ne\", \n    \"name\": \"Nepali\"\n  }, \n  {\n    \"language\": \"no\", \n    \"name\": \"Norwegian\"\n  }, \n  {\n    \"language\": \"ps\", \n    \"name\": \"Pashto\"\n  }, \n  {\n    \"language\": \"fa\", \n    \"name\": \"Persian\"\n  }, \n  {\n    \"language\": \"pl\", \n    \"name\": \"Polish\"\n  }, \n  {\n    \"language\": \"pt\", \n    \"name\": \"Portuguese\"\n  }, \n  {\n    \"language\": \"pa\", \n    \"name\": \"Punjabi\"\n  }, \n  {\n    \"language\": \"ro\", \n    \"name\": \"Romanian\"\n  }, \n  {\n    \"language\": \"ru\", \n    \"name\": \"Russian\"\n  }, \n  {\n    \"language\": \"sm\", \n    \"name\": \"Samoan\"\n  }, \n  {\n    \"language\": \"gd\", \n    \"name\": \"Scots Gaelic\"\n  }, \n  {\n    \"language\": \"sr\", \n    \"name\": \"Serbian\"\n  }, \n  {\n    \"language\": \"st\", \n    \"name\": \"Sesotho\"\n  }, \n  {\n    \"language\": \"sn\", \n    \"name\": \"Shona\"\n  }, \n  {\n    \"language\": \"sd\", \n    \"name\": \"Sindhi\"\n  }, \n  {\n    \"language\": \"si\", \n    \"name\": \"Sinhala\"\n  }, \n  {\n    \"language\": \"sk\", \n    \"name\": \"Slovak\"\n  }, \n  {\n    \"language\": \"sl\", \n    \"name\": \"Slovenian\"\n  }, \n  {\n    \"language\": \"so\", \n    \"name\": \"Somali\"\n  }, \n  {\n    \"language\": \"es\", \n    \"name\": \"Spanish\"\n  }, \n  {\n    \"language\": \"su\", \n    \"name\": \"Sundanese\"\n  }, \n  {\n    \"language\": \"sw\", \n    \"name\": \"Swahili\"\n  }, \n  {\n    \"language\": \"sv\", \n    \"name\": \"Swedish\"\n  }, \n  {\n    \"language\": \"tg\", \n    \"name\": \"Tajik\"\n  }, \n  {\n    \"language\": \"ta\", \n    \"name\": \"Tamil\"\n  }, \n  {\n    \"language\": \"te\", \n    \"name\": \"Telugu\"\n  }, \n  {\n    \"language\": \"th\", \n    \"name\": \"Thai\"\n  }, \n  {\n    \"language\": \"tr\", \n    \"name\": \"Turkish\"\n  }, \n  {\n    \"language\": \"uk\", \n    \"name\": \"Ukrainian\"\n  }, \n  {\n    \"language\": \"ur\", \n    \"name\": \"Urdu\"\n  }, \n  {\n    \"language\": \"uz\", \n    \"name\": \"Uzbek\"\n  }, \n  {\n    \"language\": \"vi\", \n    \"name\": \"Vietnamese\"\n  }, \n  {\n    \"language\": \"cy\", \n    \"name\": \"Welsh\"\n  }, \n  {\n    \"language\": \"xh\", \n    \"name\": \"Xhosa\"\n  }, \n  {\n    \"language\": \"yi\", \n    \"name\": \"Yiddish\"\n  }, \n  {\n    \"language\": \"yo\", \n    \"name\": \"Yoruba\"\n  }, \n  {\n    \"language\": \"zu\", \n    \"name\": \"Zulu\"\n  }\n]\n"
 				}
 			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b4738ab5-9aaf-475d-b184-4b839280e7e5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "bda751eb-9d33-43d1-9f62-4ff2ac65a3ad",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	]
 }
