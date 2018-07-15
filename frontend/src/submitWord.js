@@ -24,8 +24,9 @@ export default class SubmitWord extends Component {
     this.setState({ loading: true })
     fetch('http://PossibleTranslations.com/api/1.0/q?word=' + this.state.word + '&target_lang=' + this.state.language,
       {method: 'POST'})
-    .then((response) => this.props.onButtonPress())
-    .then(response => {this.setState({ loading: false })})
+    .then(response => this.props.onButtonPress())
+    .then(response => this.clearItems())
+    .then(response => this.setState({loading: false, language: "en"}))
   }
   handleKeyPress(text) {
     this.setState({
@@ -37,17 +38,20 @@ export default class SubmitWord extends Component {
       language: lang
     }))
   }
+  clearItems() {
+    this.refs.inputRef.value = "";
+  }
 
   render() {
     return (
       <div className="submit-word-container">
         <div className="submit-word-main">
-          <input className="submit-word-input" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
-          <DropDown onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language} />
+          <input className="submit-word-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
+          <DropDown onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
           <button className="submit-word-button" onClick={this.buttonPress}>Detect language and translate</button>
         </div>
         <div className='sweet-loading'>
-          <FadeLoader color={'#123abc'} loading={this.state.loading}/>
+          <FadeLoader color={'#123abc'} loading={this.state.loading}></FadeLoader>
         </div>
       </div>
     );
