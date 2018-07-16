@@ -10,14 +10,23 @@ import 'react-table/react-table.css'
 
 export default class App extends Component {
 
-  state = {
-    words: [],
+  constructor(props) {
+    super(props);
+    this.state = {
+      words: [],
+    }
+    //this.getData = this.getData.bind(this);
   }
+
 
   getData () {
     fetch('http://PossibleTranslations.com/api/1.0')
       .then(res => res.json())
-      .then(words => this.setState({ words }));
+      .then(function(words){
+        words.reverse();
+        console.log(words);
+        this.setState({ words })
+      }.bind(this));
   }
   refreshData = () => {
     this.getData()
@@ -51,7 +60,7 @@ export default class App extends Component {
 
         <SubmitWord onButtonPress={this.refreshData} />
 
-        <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable
+        <ReactTable data={this.state.words} columns={columns} defaultPageSize={20} className="-striped -highlight" filterable
           defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
       </div>
