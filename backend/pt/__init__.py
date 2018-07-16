@@ -186,7 +186,7 @@ def find_word(filters):
         search_dict['word'] = filters.pop('word')
     else:
         raise CustomException(404, 'Missing word field')
-
+    print(search_dict)
     try:
         words = WordTranslations.query.filter_by(**search_dict).all()
     except Exception:
@@ -249,8 +249,8 @@ def error_page(custom=None):
     return render_template('/404.html', title="404", custom=custom)
 
 
-@app.route("/", methods=["GET", "POST"])
-@app.route("/index", methods=["GET", "POST"])
+@app.route("/", methods=["GET"])
+@app.route("/index", methods=["GET"])
 @cross_origin()
 def index():
     update_languages()
@@ -268,15 +268,22 @@ def index():
         return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 422)
 
 
+#########################################
+################# API ###################
+#########################################
+# Body data --> request.form
+# Query string data --> request.args
+# Both kinds of data --> request.values
+
 # Edits one entry at a time (needs word + target_lang + new_target_lang)
+@app.route ('/api/1.0', methods=['PUT'])
 @app.route ('/api/1.0/q', methods=['PUT'])
 @cross_origin()
 def api_put():
 
     word = ""
-
     try:
-        word = word_is_unique(request.args.to_dict())
+        word = word_is_unique(request.values.to_dict())
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
@@ -284,7 +291,7 @@ def api_put():
         return make_response(jsonify({'Error': 'unknown error'}), 404)
     try:
         db.session.delete(word)
-        args_dict = request.args.to_dict()
+        args_dict = request.values.to_dict()
         args_dict['target_lang'] = args_dict.pop('new_target_lang')
         word = add_word(args_dict)
     except CustomException as e:
@@ -299,12 +306,14 @@ def api_put():
 
 
 # Posts one entry at a time (needs word + target_lang)
+@app.route ('/api/1.0', methods=['POST'])
 @app.route ('/api/1.0/q', methods=['POST'])
 @cross_origin()
 def api_post():
+
     try:
-        find_word(request.args.to_dict())
-        word = add_word(request.args.to_dict())
+        find_word(request.values.to_dict())
+        word = add_word(request.values.to_dict())
         response = jsonify(word.serialize())
         return make_response(response, 200)
     except CustomException as e:
@@ -319,7 +328,7 @@ def api_post():
 @cross_origin()
 def api_delete():
     try:
-        word = word_is_unique(request.args.to_dict())
+        word = word_is_unique(request.values.to_dict())
         try:
             db.session.delete(word)
             db.session.commit()
@@ -342,9 +351,10 @@ def api_delete():
 @app.route ('/api/1.0/q', methods=['GET'])
 @cross_origin()
 def api_get():
+
     try:
-        if(request.args.to_dict()):
-            words = find_all_words(request.args.to_dict())
+        if(request.values.to_dict()):
+            words = find_all_words(request.values.to_dict())
         else:
             words = WordTranslations.query.all()
         response = jsonify([w.serialize() for w in words])

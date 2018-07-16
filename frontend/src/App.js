@@ -24,7 +24,6 @@ export default class App extends Component {
       .then(res => res.json())
       .then(function(words){
         words.reverse();
-        console.log(words);
         this.setState({ words })
       }.bind(this));
   }
