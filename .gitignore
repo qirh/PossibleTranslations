@@ -9,6 +9,8 @@ commands.txt
 # C extensions
 *.so
 
+***REMOVED***
+
 # Distribution / packaging
 .Python
 env/
