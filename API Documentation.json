@@ -7,18 +7,42 @@
 	},
 	"item": [
 		{
+			"name": "Data Model",
+			"description": "Here is how the data model looks like:\n\n* `word_id` The primary key for the table.\n* `word` The entry for the word/sentence to be translated.\n* `target_lang` The language that the `word` needs to be translated to.\n* `lang_1` The first guess on what language `word` is.\n* `lang_2` The second guess on what language `word` is.\n* `lang_3` The third guess on what language `word` is.\n* `translation_1` The translation in case guess the source language was lang_1.\n* `translation_2` The translation in case guess the source language was lang_2.\n* `translation_3` The translation in case guess the source language was lang_3.",
+			"item": [],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "54bff416-6e76-4997-a304-06b524c0104e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "2a771cd1-a9a7-41bf-b785-85772ddbc8cf",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Echo",
-			"description": "Here is how the data model looks like:\n\n\t* `word_id` The primary key for the table.\n\t* `word` The entry for the word/sentence to be translated.\n\t* `target_lang` The language that the `word` needs to be translated to.\n    * `lang_1` The first guess on what language `word` is.\n    * `lang_2` The second guess on what language `word` is.\n    * `lang_3` The third guess on what language `word` is.\n    * `translation_1` The translation in case guess the source language was lang_1.\n    * `translation_2` The translation in case guess the source language was lang_2.\n    * `translation_3` The translation in case guess the source language was lang_3.\n\nEcho is service you can use to test the API endpoint and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT` & `DELETE`.",
+			"description": "**Echo** is service you can use to test the API endpoint and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT` & `DELETE`.",
 			"item": [
 				{
 					"name": "Echo",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"url": {
 							"raw": ""
 						},
@@ -26,7 +50,7 @@
 					},
 					"response": [
 						{
-							"id": "09c35c43-bdb5-4347-9cb7-dde9c2d88a09",
+							"id": "4cc9986a-ffda-4e44-bb30-cf86bc6201f9",
 							"name": "Get Echo",
 							"originalRequest": {
 								"method": "GET",
@@ -88,10 +112,7 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"url": {
 							"raw": ""
 						},
@@ -99,7 +120,7 @@
 					},
 					"response": [
 						{
-							"id": "23dac0ea-a210-49d1-a1fa-3cd2c4a6f133",
+							"id": "a8740c9b-d60a-4fb5-85d4-93287a6aa832",
 							"name": "Echo Post",
 							"originalRequest": {
 								"method": "POST",
@@ -161,10 +182,7 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"url": {
 							"raw": ""
 						},
@@ -172,7 +190,7 @@
 					},
 					"response": [
 						{
-							"id": "fc1b2dae-6ab1-4db0-94f7-2c0fa40ee266",
+							"id": "e0efd563-16e6-4a4d-981b-5b5b92de8a25",
 							"name": "Echo Put",
 							"originalRequest": {
 								"method": "PUT",
@@ -234,10 +252,7 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"url": {
 							"raw": ""
 						},
@@ -245,7 +260,7 @@
 					},
 					"response": [
 						{
-							"id": "d2148600-e596-4067-bcb9-e8b21278662b",
+							"id": "dd1541f0-72a7-42ad-8908-b49ca70c2852",
 							"name": "Echo Delete",
 							"originalRequest": {
 								"method": "DELETE",
@@ -331,10 +346,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": ""
 				},
@@ -342,7 +354,7 @@
 			},
 			"response": [
 				{
-					"id": "d8658947-4515-44ae-9c48-f556ba9c4e3c",
+					"id": "5e3faba9-4863-4647-b38a-984b764ae8a6",
 					"name": "All entries",
 					"originalRequest": {
 						"method": "GET",
@@ -406,14 +418,11 @@
 			]
 		},
 		{
-			"name": "An entry",
+			"name": "Entry",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": ""
 				},
@@ -421,7 +430,7 @@
 			},
 			"response": [
 				{
-					"id": "42e332e3-7424-4b27-af94-1cca053f47e6",
+					"id": "c5578d8d-ddc3-43d2-9590-f9f731112cda",
 					"name": "An entry",
 					"originalRequest": {
 						"method": "GET",
@@ -492,14 +501,11 @@
 			]
 		},
 		{
-			"name": "An entry",
+			"name": "Entry",
 			"request": {
 				"method": "POST",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "possibletranslations.com:80/api/1.0/q?word=mike&target_lang=fr",
 					"host": [
@@ -523,11 +529,11 @@
 						}
 					]
 				},
-				"description": "Adds an entry to the database, must provide the sentece by using the `word` field and the language that you want the sentecne to be translated to by using the `target_lang` field.\n\nNo two rows in the database can have the same word/sentence & target_lang values. \n\n**Optional:** you can provide an optional id parameter using the `word_id` field. The honor will only be honored if the id number is avaliable, if not, that parameter will be ignored and a random id number will be generated."
+				"description": "Adds an entry to the database, must provide the sentece by using the `word` field and the language that you want the sentecne to be translated to by using the `target_lang` field.\n\n**Optional:** you can provide an optional id parameter using the `word_id` field. The honor will only be honored if the id number is avaliable, if not, that parameter will be ignored and a random id number will be generated."
 			},
 			"response": [
 				{
-					"id": "15b6723a-7531-4f8d-8263-e0424aad0032",
+					"id": "037b5373-b760-4ffd-83f6-bdf59c424743",
 					"name": "Post an entry",
 					"originalRequest": {
 						"method": "POST",
@@ -601,14 +607,11 @@
 			]
 		},
 		{
-			"name": "An entry",
+			"name": "Entry",
 			"request": {
 				"method": "PUT",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "possibletranslations.com:80/api/1.0/q?word=mike&lang=de",
 					"host": [
@@ -632,11 +635,11 @@
 						}
 					]
 				},
-				"description": "Edits an entry (sentence).\n\nCurrently, the only edit possible to an entry is to change the language that you would like it to be translated to.\n\nIf the word/sentece entry is unique, you can omit the `target_lang` parameter, otherwise, it is required. In order to edit an entry, you must provide the new language that you would like the entry to be translated to by using the `new_target_lang` parameter.\n\n**TODO:** Add the ability to edit the word/sentece but keep the language."
+				"description": "Edits an entry (sentence).\n\nCurrently, the only edit possible to an entry is to change the language that you would like it to be translated to.\\n\\nIf the word/sentece entry is unique, you can omit the `target_lang` parameter, otherwise, it is required. In order to edit an entry, you must provide the new language that you would like the entry to be translated to by using the `new_target_lang` parameter.\n\n**TODO:** Add the ability to edit the word/sentece but keep the language."
 			},
 			"response": [
 				{
-					"id": "ee628af9-fbb2-4532-8ef1-56ede9c1c802",
+					"id": "5b6c3542-c2ba-431b-a41a-7d9448058c5c",
 					"name": "Edit an entry",
 					"originalRequest": {
 						"method": "PUT",
@@ -714,14 +717,11 @@
 			]
 		},
 		{
-			"name": "An entry",
+			"name": "Entry",
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "possibletranslations.com:80/api/1.0/q?word=mikey&target_lang=en",
 					"host": [
@@ -744,11 +744,12 @@
 							"value": "en"
 						}
 					]
-				}
+				},
+				"description": "Deletes an entry from the database. Needs a unique `word`, or a combination of `word` & `target_lang`."
 			},
 			"response": [
 				{
-					"id": "b58e0339-279c-47c3-8304-032074378f43",
+					"id": "26dd554f-592f-459c-9734-df9bb22dcca3",
 					"name": "Delete an entry",
 					"originalRequest": {
 						"method": "DELETE",
@@ -826,10 +827,7 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
+				"body": {},
 				"url": {
 					"raw": "possibletranslations.com:80/api/1.0/languages",
 					"host": [
@@ -846,7 +844,7 @@
 			},
 			"response": [
 				{
-					"id": "686f0a86-b469-4079-b14b-8db69524985b",
+					"id": "2ede1a3f-2c33-47b9-9779-28e152460616",
 					"name": "All supported languages",
 					"originalRequest": {
 						"method": "GET",
