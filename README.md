@@ -3,11 +3,11 @@
 ## Issues (Importance based on order)
 **Backend:**
 1. Need unit tests (API tests).
-2. Write Unit Tests.
+2. Push notification to the front end in case an update happens to the DB.
 3. Add support for another translator (bing?).
 4. Serve HTTPS Domain [let's encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-16-04).
 5. API
-  * Accept Form Parameters & JSON payloads.
+  * Accept ~~Form Parameters~~ & JSON payloads.
   * Needs better documentation.
   * Needs auth (JWT).
   * Method Specific:
@@ -20,8 +20,8 @@
 
 **Frontend:**
 1. Alex wants 2 screens!
-2. Missing option to delete word.
-3. Missing option to edit word.
+2. Missing option to delete word from table.
+3. Missing option to edit word  from table.
 4. Is it mobile responsive ?
 5. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
 6. Search should case insensitive.
