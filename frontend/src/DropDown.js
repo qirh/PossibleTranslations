@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
-import { string, func } from 'prop-types';
+import { func } from 'prop-types';
 
-
+const defaultLang = "en";
 export default class DropDown extends Component {
 
-  state = {
-    languages: [],
+  constructor(props) {
+    super(props);
+    this.state = {
+      languages: [],
+      language: defaultLang
+    }
+    this.handleLanguageChange = this.handleLanguageChange.bind(this);
   }
+
   static defaultProps = {
-    languages: []
+    languages: [],
+    language: defaultLang
   }
   static propTypes = {
-    onHandleLanguageChange: func.isRequired,
-    defaultValue: string.isRequired
+    onHandleLanguageChange: func.isRequired
   }
   componentDidMount() {
     fetch('http://PossibleTranslations.com/api/1.0/languages')
@@ -20,18 +26,19 @@ export default class DropDown extends Component {
     .then(languages => this.setState({ languages })
     );
   }
-  handleLanguageChange = (e) => {
+  handleLanguageChange(e) {
     console.log("here --> ");
+    this.setState({language: e.target.value});
     this.props.onHandleLanguageChange(e.target.value);
   }
   render() {
     const { languages } = this.state;
 
     return (
-      <select className="language-drop-down" onChange={this.handleLanguageChange}>
-        <option defaultValue={this.props.defaultValue}>Translate to ({this.props.defaultValue})</option>
-        {languages.map(function(l) {
-          return <option key={l.language} value={l.language}>{l.name}</option>;
+      <select className="language-drop-down" value={this.state.language} onChange={this.handleLanguageChange}>
+
+        {this.state.languages.map(function(l) {
+          return <option key={l.language} value={l.language}>Translate to ({l.name})</option>;
         })}
       </select>
     );
