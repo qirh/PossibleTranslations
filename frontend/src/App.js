@@ -29,8 +29,8 @@ export default class App extends Component {
   render() {
     const columns = [
       {Header: "Info", columns: [
-        {Header: 'Word', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
-        {Header: 'Target Language', accessor: 'target_lang', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
+        {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+        {Header: 'Language to Translate', accessor: 'target_lang', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
       ]},
 
       {Header: "Guess #1", columns: [
