@@ -9,6 +9,8 @@ commands.txt
 # C extensions
 *.so
 
+GoogleService.json
+
 # Distribution / packaging
 .Python
 env/
