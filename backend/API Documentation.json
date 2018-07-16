@@ -2,16 +2,16 @@
 	"info": {
 		"_postman_id": "49ceab52-782e-474b-a8b1-51f1d135d8ab",
 		"name": "Possible Translations",
-		"description": "Documenatation for PossibleTranslations.com. A website that detects the language of a sentence from user input and translates it using Google Translate.\n\nCurrently, only `HTTP` is supported and the API responds to all requests without Authentication.",
+		"description": "Documenatation for PossibleTranslations.com. A website that detects the language of a sentence from user input and translates it using Google Translate.\n\nCurrently, only `HTTP` requests are supported, and the server is listening on port `80`. The API will respond to all requests without Authentication.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Echo",
-			"description": "Echo is service you can use to test the API endpoint and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT` & `DELETE`.",
+			"description": "Here is how the data model looks like:\n\n\t* `word_id` The primary key for the table.\n\t* `word` The entry for the word/sentence to be translated.\n\t* `target_lang` The language that the `word` needs to be translated to.\n    * `lang_1` The first guess on what language `word` is.\n    * `lang_2` The second guess on what language `word` is.\n    * `lang_3` The third guess on what language `word` is.\n    * `translation_1` The translation in case guess the source language was lang_1.\n    * `translation_2` The translation in case guess the source language was lang_2.\n    * `translation_3` The translation in case guess the source language was lang_3.\n\nEcho is service you can use to test the API endpoint and make sample API calls. It provides endpoints for `GET`, `POST`, `PUT` & `DELETE`.",
 			"item": [
 				{
-					"name": "Echo Get",
+					"name": "Echo",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -22,11 +22,11 @@
 						"url": {
 							"raw": ""
 						},
-						"description": "Test if Get works as expected"
+						"description": "Tester for the `GET` method."
 					},
 					"response": [
 						{
-							"id": "1e5a29f6-2ce1-4050-bc3e-9a1b2d819b24",
+							"id": "09c35c43-bdb5-4347-9cb7-dde9c2d88a09",
 							"name": "Get Echo",
 							"originalRequest": {
 								"method": "GET",
@@ -84,7 +84,7 @@
 					]
 				},
 				{
-					"name": "Echo Post",
+					"name": "Echo",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -95,11 +95,11 @@
 						"url": {
 							"raw": ""
 						},
-						"description": "Test if Post works as expected"
+						"description": "Tester for the `POST` method."
 					},
 					"response": [
 						{
-							"id": "b720d624-8749-42ab-a378-35144b2133ac",
+							"id": "23dac0ea-a210-49d1-a1fa-3cd2c4a6f133",
 							"name": "Echo Post",
 							"originalRequest": {
 								"method": "POST",
@@ -157,7 +157,7 @@
 					]
 				},
 				{
-					"name": "Echo Put",
+					"name": "Echo",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -168,11 +168,11 @@
 						"url": {
 							"raw": ""
 						},
-						"description": "Test if Put works as expected"
+						"description": "Tester for the `PUT` method."
 					},
 					"response": [
 						{
-							"id": "e913100b-dda4-45b1-9d0e-8dc325c2ed4e",
+							"id": "fc1b2dae-6ab1-4db0-94f7-2c0fa40ee266",
 							"name": "Echo Put",
 							"originalRequest": {
 								"method": "PUT",
@@ -230,7 +230,7 @@
 					]
 				},
 				{
-					"name": "Echo Delete",
+					"name": "Echo",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -241,11 +241,11 @@
 						"url": {
 							"raw": ""
 						},
-						"description": "Test if Delete works as expected"
+						"description": "Tester for the `DELETE` method."
 					},
 					"response": [
 						{
-							"id": "c616e48b-00dc-49a2-b4b0-fbf21a9f0c03",
+							"id": "d2148600-e596-4067-bcb9-e8b21278662b",
 							"name": "Echo Delete",
 							"originalRequest": {
 								"method": "DELETE",
@@ -327,7 +327,7 @@
 			]
 		},
 		{
-			"name": "Get all entries",
+			"name": "All entries",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -337,12 +337,13 @@
 				},
 				"url": {
 					"raw": ""
-				}
+				},
+				"description": "Gets all the entries in the database."
 			},
 			"response": [
 				{
-					"id": "3be6937c-878d-4a35-9fd1-d012f7641e1d",
-					"name": "Get all entries",
+					"id": "d8658947-4515-44ae-9c48-f556ba9c4e3c",
+					"name": "All entries",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
@@ -405,7 +406,7 @@
 			]
 		},
 		{
-			"name": "Get a specific entry",
+			"name": "An entry",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -415,12 +416,13 @@
 				},
 				"url": {
 					"raw": ""
-				}
+				},
+				"description": "Gets a spefic entry (sentence)."
 			},
 			"response": [
 				{
-					"id": "3e6923cb-7f85-4f34-bf4d-44bf265e0962",
-					"name": "Get a specific entry",
+					"id": "42e332e3-7424-4b27-af94-1cca053f47e6",
+					"name": "An entry",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
@@ -490,7 +492,7 @@
 			]
 		},
 		{
-			"name": "Post an entry",
+			"name": "An entry",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -520,11 +522,12 @@
 							"value": "fr"
 						}
 					]
-				}
+				},
+				"description": "Adds an entry to the database, must provide the sentece by using the `word` field and the language that you want the sentecne to be translated to by using the `target_lang` field.\n\nNo two rows in the database can have the same word/sentence & target_lang values. \n\n**Optional:** you can provide an optional id parameter using the `word_id` field. The honor will only be honored if the id number is avaliable, if not, that parameter will be ignored and a random id number will be generated."
 			},
 			"response": [
 				{
-					"id": "36480285-8945-440a-976c-abd23cbfaa2d",
+					"id": "15b6723a-7531-4f8d-8263-e0424aad0032",
 					"name": "Post an entry",
 					"originalRequest": {
 						"method": "POST",
@@ -598,7 +601,7 @@
 			]
 		},
 		{
-			"name": "Edit an entry",
+			"name": "An entry",
 			"request": {
 				"method": "PUT",
 				"header": [],
@@ -628,11 +631,12 @@
 							"value": "de"
 						}
 					]
-				}
+				},
+				"description": "Edits an entry (sentence).\n\nCurrently, the only edit possible to an entry is to change the language that you would like it to be translated to.\n\nIf the word/sentece entry is unique, you can omit the `target_lang` parameter, otherwise, it is required. In order to edit an entry, you must provide the new language that you would like the entry to be translated to by using the `new_target_lang` parameter.\n\n**TODO:** Add the ability to edit the word/sentece but keep the language."
 			},
 			"response": [
 				{
-					"id": "12ca2e6e-e8ef-494f-813f-0ea6f385c260",
+					"id": "ee628af9-fbb2-4532-8ef1-56ede9c1c802",
 					"name": "Edit an entry",
 					"originalRequest": {
 						"method": "PUT",
@@ -710,7 +714,7 @@
 			]
 		},
 		{
-			"name": "Delete an entry",
+			"name": "An entry",
 			"request": {
 				"method": "DELETE",
 				"header": [],
@@ -744,7 +748,7 @@
 			},
 			"response": [
 				{
-					"id": "7e540947-7577-4645-a8e4-af9ab5bba8ef",
+					"id": "b58e0339-279c-47c3-8304-032074378f43",
 					"name": "Delete an entry",
 					"originalRequest": {
 						"method": "DELETE",
@@ -818,7 +822,7 @@
 			]
 		},
 		{
-			"name": "Get supported languages",
+			"name": "All supported languages",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -842,8 +846,8 @@
 			},
 			"response": [
 				{
-					"id": "86915a24-f37a-49e2-92d0-5a5e4d4ffc84",
-					"name": "Get supported languages",
+					"id": "686f0a86-b469-4079-b14b-8db69524985b",
+					"name": "All supported languages",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
