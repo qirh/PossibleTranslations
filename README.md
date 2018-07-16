@@ -2,40 +2,36 @@
 
 ## Issues (Importance based on order)
 **Backend:**
-1. Need unit tests (API tests)
-2. Write Unit Tests
-3. Add support for another translator (bing?)
-4. Serve HTTPS Domain (let's encrypt)
+1. Need unit tests (API tests).
+2. Write Unit Tests.
+3. Add support for another translator (bing?).
+4. Serve HTTPS Domain [let's encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-16-04).
 5. API
-  * Form Parameters?
-  * Needs better documentation
-  * Needs auth (JWT)
-  * Should be able to accept JSON payloads
+  * Accept Form Parameters & JSON payloads.
+  * Needs better documentation.
+  * Needs auth (JWT).
   * Method Specific:
     * Put
-      * Should be able to edit without need to insert old language if there is only one entry
-      * Currently put does not edit a row, but rather deletes it and inserts a new one
+      * Should be able to edit without need to insert old language if there is only one entry.
+      * Currently put does not edit a row, but rather deletes it and inserts a new one.
+      * Add ability to edit word without changing the language.
     * Post
-      * Add ability to enter custom id
+      * Add ability to enter custom id.
 
 **Frontend:**
-1. There's a bug in the dropdown menu when selecting the first value then other values
-2. Alex wants 2 screens!
-3. Missing option to delete word
-4. Missing option to edit word
-5. Is it mobile responsive ?
-6. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
-7. Search should case insensitive
-8. Spinner should be overlay
-
-## Notes
-1. You need to export the Google API Key, look [here](https://stackoverflow.com/questions/35159967/setting-google-application-credentials-for-bigquery-python-cli) & [here](https://stackoverflow.com/questions/39843252/pycharm-set-environment-variable-for-google-service-account-key-json-credentia)
+1. Alex wants 2 screens!
+2. Missing option to delete word.
+3. Missing option to edit word.
+4. Is it mobile responsive ?
+5. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
+6. Search should case insensitive.
+7. Spinner should be overlay.
 
 ## Stack used
 * hosting: DO droplet for flask, AWS S3 for react
 * database: postgres (AWS RDS instance)
 * vc: github
-* backend: flask
+* backend (API): flask
 * front end: react
 * language detection: langdetect & textblob
 * language translation: google translate (considering adding bing service if time permits)
