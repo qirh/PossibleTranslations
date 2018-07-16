@@ -2,55 +2,10 @@
 
 {% block body %}
     <section id="index">
-        <h1>Possible Translations</h1>
-
-        <form method="POST" action="/">
-
-            <input style="display: inline" type="text" name="word" placeholder="Sentence to translate">
-
-            <select id="dropdown" name="target">
-                <option disabled selected value="en">Target Language (en)</option>
-                {% for lang in langs %}
-                    <option value="{{lang.language | safe}}">{{lang.name}}</option>
-                {% endfor %}
-            </select>
-
-            <input style="display: inline" type="submit" value="Find Language">
-
-        </form>
+        <h1>Possible Translations API</h1>
+        <p title="🙈🙊🙉">This is the API endpoint for Possible Translations.</p>
+        <p title="🙈🙊🙉"><a href="https://documenter.getpostman.com/view/4826790/RWMCt9fH">API Documentation</a>.</p>
+        <p title="🙈🙊🙉"><a href="http://saleh.s3.bucket.s3-website-us-east-1.amazonaws.com/">Front End</a>.</p>
     </section>
-
-    <section id="button">
-        <h1>Words</h1>
-
-    </section>
-
-    <section id="table">
-        <table style="width:100%">
-            <tr>
-                <th>Sentence</th>
-                <th>Target lang</th>
-                <th>Detected Lang #1</th>
-                <th>Translation #1</th>
-                <th>Detected Lang #2</th>
-                <th>Translation #2</th>
-            </tr>
-
-            {% for word in words %}
-                <tr>
-                    <td>{{ word.word }}</td>
-                    <td>{{ word.target_lang }}</td>
-                    <td>{{ word.lang_1 }}</td>
-                    <td>{{ word.translation_1 }}</td>
-                    <td>{{ word.lang_2 }}</td>
-                    <td>{{ word.translation_2 }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    </section>
-
-    <script>
-
-    </script>
 
 {% endblock %}
