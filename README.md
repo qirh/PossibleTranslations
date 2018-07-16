@@ -2,10 +2,10 @@
 
 ## Issues (Importance based on order)
 **Backend:**
-1. Need unit tests (API tests).
-2. Push notification to the front end in case an update happens to the DB.
-3. Add support for another translator (bing?).
-4. Serve HTTPS Domain [let's encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-16-04).
+1. Move to the new domain [possibletranslationsapi.com](possibletranslationsapi.com).
+2. Need unit tests (API tests).
+3. Push notification to the front end in case an update happens to the DB.
+4. Add support for another translator (bing?).
 5. API
   * Accept ~~Form Parameters~~ & JSON payloads.
   * Needs better documentation.
