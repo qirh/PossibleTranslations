@@ -378,19 +378,23 @@ def api_get_languages():
     except Exception as e:
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
+@app.route('/api/1.0/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@cross_origin()
+def api_options():
+    return make_response(jsonify({'Allow': 'GET, POST, PATCH, PUT, DELETE'}), 200)
 
 @app.route('/api/1.0/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 @cross_origin()
 def api_echo():
     if request.method == 'GET':
-        return make_response(jsonify({'ECHO': 'GET'}))
+        return make_response(jsonify({'ECHO': 'GET'}), 200)
     elif request.method == 'POST':
-        return make_response(jsonify({'ECHO': 'POST'}))
+        return make_response(jsonify({'ECHO': 'POST'}), 200)
     elif request.method == 'PATCH':
-        return make_response(jsonify({'ECHO': 'PATCH'}))
+        return make_response(jsonify({'ECHO': 'PATCH'}), 200)
     elif request.method == 'PUT':
-        return make_response(jsonify({'ECHO': 'PUT'}))
+        return make_response(jsonify({'ECHO': 'PUT'}), 200)
     elif request.method == 'DELETE':
-        return make_response(jsonify({'ECHO': 'DELETE'}))
+        return make_response(jsonify({'ECHO': 'DELETE'}), 200)
     else:
         return make_response(jsonify({'Error': 'unsupported method'}, {'methods supported': {'GET', 'POST', 'PATCH', 'PUT', 'DELETE'}}), 404)
