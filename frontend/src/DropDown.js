@@ -21,7 +21,7 @@ export default class DropDown extends Component {
     onHandleLanguageChange: func.isRequired
   }
   componentDidMount() {
-    fetch('http://PossibleTranslations.com/api/1.0/languages')
+    fetch('https://PossibleTranslationsAPI.com/api/1.0/languages')
       .then(res => res.json())
       .then(languages => this.setState({ languages })
     );
@@ -32,8 +32,6 @@ export default class DropDown extends Component {
     this.props.onHandleLanguageChange(e.target.value);
   }
   render() {
-    const { languages } = this.state;
-
     return (
       <select className="language-drop-down" value={this.state.language} onChange={this.handleLanguageChange}>
 

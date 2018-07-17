@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "49ceab52-782e-474b-a8b1-51f1d135d8ab",
 		"name": "Possible Translations",
-		"description": "Documenatation for PossibleTranslations.com. A website that detects the language of a sentence from user input and translates it using Google Translate.\n\nCurrently, only `HTTP` requests are supported, and the server is listening on port `80`. The API will respond to all requests without Authentication.",
+		"description": "Documenatation for PossibleTranslations.com. A website that detects the language of a sentence from user input and translates it using Google Translate.\n\nCurrently, only `HTTPS` requests will be responded to, and the server is listening on port `443`. The API will respond to all requests without Authentication.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -50,7 +50,7 @@
 					},
 					"response": [
 						{
-							"id": "4cc9986a-ffda-4e44-bb30-cf86bc6201f9",
+							"id": "af797205-a4ec-4e7a-8ddd-c92a3c09dabb",
 							"name": "Get Echo",
 							"originalRequest": {
 								"method": "GET",
@@ -60,12 +60,12 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "possibletranslations.com:80/api/1.0/echo",
+									"raw": "https://possibletranslationsapi.com/api/1.0/echo",
 									"host": [
-										"possibletranslations",
+										"possibletranslationsapi",
 										"com"
 									],
-									"port": "80",
+
 									"path": [
 										"api",
 										"1.0",
@@ -120,7 +120,7 @@
 					},
 					"response": [
 						{
-							"id": "a8740c9b-d60a-4fb5-85d4-93287a6aa832",
+							"id": "420789f6-2b4a-4240-ad83-abba88d143e9",
 							"name": "Echo Post",
 							"originalRequest": {
 								"method": "POST",
@@ -130,12 +130,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "possibletranslations.com:80/api/1.0/echo",
+									"raw": "https://possibletranslationsapi.com/api/1.0/echo",
 									"host": [
-										"possibletranslations",
+										"possibletranslationsapi",
 										"com"
 									],
-									"port": "80",
 									"path": [
 										"api",
 										"1.0",
@@ -190,7 +189,7 @@
 					},
 					"response": [
 						{
-							"id": "e0efd563-16e6-4a4d-981b-5b5b92de8a25",
+							"id": "fd486d5c-ae1d-4692-bf54-0c766972a194",
 							"name": "Echo Put",
 							"originalRequest": {
 								"method": "PUT",
@@ -200,12 +199,12 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "possibletranslations.com:80/api/1.0/echo",
+									"raw": "https://possibletranslationsapi.com/api/1.0/echo",
 									"host": [
-										"possibletranslations",
+										"possibletranslationsapi",
 										"com"
 									],
-									"port": "80",
+
 									"path": [
 										"api",
 										"1.0",
@@ -260,7 +259,7 @@
 					},
 					"response": [
 						{
-							"id": "dd1541f0-72a7-42ad-8908-b49ca70c2852",
+							"id": "d9b1e3dc-c564-4392-9250-c8af35324b2f",
 							"name": "Echo Delete",
 							"originalRequest": {
 								"method": "DELETE",
@@ -270,12 +269,12 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "possibletranslations.com:80/api/1.0/echo",
+									"raw": "https://possibletranslationsapi.com/api/1.0/echo",
 									"host": [
-										"possibletranslations",
+										"possibletranslationsapi",
 										"com"
 									],
-									"port": "80",
+
 									"path": [
 										"api",
 										"1.0",
@@ -354,26 +353,22 @@
 			},
 			"response": [
 				{
-					"id": "5e3faba9-4863-4647-b38a-984b764ae8a6",
+					"id": "eb82d246-389f-446d-9845-9ba7e92d5ea3",
 					"name": "All entries",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"url": {
-							"raw": "possibletranslations.com:80/api/1.0/q",
+							"raw": "https://possibletranslationsapi.com/api/1.0",
 							"host": [
-								"possibletranslations",
+								"possibletranslationsapi",
 								"com"
 							],
-							"port": "80",
+
 							"path": [
 								"api",
-								"1.0",
-								"q"
+								"1.0"
 							]
 						}
 					},
@@ -430,23 +425,20 @@
 			},
 			"response": [
 				{
-					"id": "c5578d8d-ddc3-43d2-9590-f9f731112cda",
-					"name": "An entry",
+					"id": "3a97a07c-438c-4f3f-8812-8d0e934056eb",
+					"name": "Entry by specifying word",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
+						"body": {},
 						"url": {
-							"raw": "http://possibletranslations.com:80/api/1.0/q?word=joe",
+							"raw": "https://possibletranslationsapi.com/api/1.0/q?word=joe",
 							"protocol": "http",
 							"host": [
-								"possibletranslations",
+								"possibletranslationsapi",
 								"com"
 							],
-							"port": "80",
+
 							"path": [
 								"api",
 								"1.0",
@@ -507,12 +499,12 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "possibletranslations.com:80/api/1.0/q?word=mike&target_lang=fr",
+					"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=fr",
 					"host": [
-						"possibletranslations",
+						"possibletranslationsapi",
 						"com"
 					],
-					"port": "80",
+
 					"path": [
 						"api",
 						"1.0",
@@ -533,7 +525,7 @@
 			},
 			"response": [
 				{
-					"id": "037b5373-b760-4ffd-83f6-bdf59c424743",
+					"id": "805ec6ab-44b4-444e-88ed-289c74408847",
 					"name": "Post an entry",
 					"originalRequest": {
 						"method": "POST",
@@ -543,12 +535,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "possibletranslations.com:80/api/1.0/q?word=mike&target_lang=fr",
+							"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=fr",
 							"host": [
-								"possibletranslations",
+								"possibletranslationsapi",
 								"com"
 							],
-							"port": "80",
+
 							"path": [
 								"api",
 								"1.0",
@@ -613,12 +605,12 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "possibletranslations.com:80/api/1.0/q?word=mike&lang=de",
+					"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mike&lang=de",
 					"host": [
-						"possibletranslations",
+						"possibletranslationsapi",
 						"com"
 					],
-					"port": "80",
+
 					"path": [
 						"api",
 						"1.0",
@@ -639,7 +631,7 @@
 			},
 			"response": [
 				{
-					"id": "5b6c3542-c2ba-431b-a41a-7d9448058c5c",
+					"id": "c38e020c-f6dc-42e9-962b-08506cc1e4a6",
 					"name": "Edit an entry",
 					"originalRequest": {
 						"method": "PUT",
@@ -649,12 +641,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "possibletranslations.com:80/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
+							"raw": "https://possibletranslationsapi.com/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
 							"host": [
-								"possibletranslations",
+								"possibletranslationsapi",
 								"com"
 							],
-							"port": "80",
+
 							"path": [
 								"api",
 								"1.0",
@@ -723,12 +715,12 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "possibletranslations.com:80/api/1.0/q?word=mikey&target_lang=en",
+					"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mikey&target_lang=en",
 					"host": [
-						"possibletranslations",
+						"possibletranslationsapi",
 						"com"
 					],
-					"port": "80",
+
 					"path": [
 						"api",
 						"1.0",
@@ -749,7 +741,7 @@
 			},
 			"response": [
 				{
-					"id": "26dd554f-592f-459c-9734-df9bb22dcca3",
+					"id": "6470ebd8-30d2-45e5-9241-17dc690a8d7f",
 					"name": "Delete an entry",
 					"originalRequest": {
 						"method": "DELETE",
@@ -759,12 +751,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "possibletranslations.com:80/api/1.0/q?word=mikey&target_lang=en",
+							"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mikey&target_lang=en",
 							"host": [
-								"possibletranslations",
+								"possibletranslationsapi",
 								"com"
 							],
-							"port": "80",
+
 							"path": [
 								"api",
 								"1.0",
@@ -829,12 +821,12 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "possibletranslations.com:80/api/1.0/languages",
+					"raw": "https://possibletranslationsapi.com/api/1.0/languages",
 					"host": [
-						"possibletranslations",
+						"possibletranslationsapi",
 						"com"
 					],
-					"port": "80",
+
 					"path": [
 						"api",
 						"1.0",
@@ -844,7 +836,7 @@
 			},
 			"response": [
 				{
-					"id": "2ede1a3f-2c33-47b9-9779-28e152460616",
+					"id": "e36b81f8-59f5-4dc7-9a86-3a15ef2d2a61",
 					"name": "All supported languages",
 					"originalRequest": {
 						"method": "GET",
@@ -854,12 +846,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "possibletranslations.com:80/api/1.0/languages",
+							"raw": "https://possibletranslationsapi.com/api/1.0/languages",
 							"host": [
-								"possibletranslations",
+								"possibletranslationsapi",
 								"com"
 							],
-							"port": "80",
+
 							"path": [
 								"api",
 								"1.0",

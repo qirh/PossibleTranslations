@@ -21,7 +21,7 @@ export default class SubmitWord extends Component {
 
   buttonPress = () => {
     this.setState({ loading: true })
-    fetch('http://PossibleTranslations.com/api/1.0/q?word=' + this.state.word + '&target_lang=' + this.state.language,
+    fetch('https://PossibleTranslationsAPI.com/api/1.0/q?word=' + this.state.word + '&target_lang=' + this.state.language,
       {method: 'POST'})
     .then(response => this.props.onButtonPress())
     .then(response => this.clearItems())

@@ -20,7 +20,7 @@ export default class App extends Component {
 
 
   getData () {
-    fetch('http://PossibleTranslations.com/api/1.0')
+    fetch('https://PossibleTranslationsAPI.com/api/1.0')
       .then(res => res.json())
       .then(function(words){
         words.reverse();
