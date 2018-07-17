@@ -11,7 +11,7 @@ h1, h2, th {
 h1 {
   font-size: 1.50rem;
 }
-p, body, input, button, option, select {
+p, body, input, button, option, select, .export-button {
   font-size: 1rem;
 }
 .ReactTable {
@@ -23,7 +23,7 @@ p, body, input, button, option, select {
   width: 100%;
   text-align: center;
 }
-button {
+button, .export-button {
   border: none;
   text-align: center;
   text-decoration: none;
@@ -40,10 +40,12 @@ button {
     padding-bottom: 3px;
     padding-left: 8px;
     padding-right: 8px;
-    margin-right: 10px;
 }
 .submit-word-button {
     margin-right: 10px;
+}
+.export-button {
+  text-decoration: none;
 }
 .submit-word-main > *, .rt-th > *, h3, option, select {
   font-family: Muli, serif;

@@ -51,7 +51,7 @@ export default class SubmitWord extends Component {
           <input className="submit-word-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
           <DropDown onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
           <button className="submit-word-button" onClick={this.buttonPress}>Detect language and translate</button>
-          <CSVLink className="export-button" filename="PossibleTranslations.csv" data={this.props.wordsProp}>Export Data</CSVLink>
+          <CSVLink className="export-button" filename="PossibleTranslations.csv" data={this.props.wordsProp}>Export CSV</CSVLink>
         </div>
         <div className='sweet-loading'>
           <FadeLoader color={'#123abc'} loading={this.state.loading}></FadeLoader>
