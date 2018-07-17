@@ -15,7 +15,7 @@ p, body, input, button, option, select {
   font-size: 1rem;
 }
 .ReactTable {
-  height: 600px
+  height: 450px
 }
 .footer {
   left: 0;
@@ -31,15 +31,19 @@ button {
   cursor: pointer;
   border-radius: 4px;
 }
-.-btn, .submit-word-button {
+.-btn, .submit-word-button, .export-button {
   color: #FFFFFF !important;
   background-color: #0a699f !important;
 }
-.submit-word-button {
+.submit-word-button, .export-button {
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 8px;
     padding-right: 8px;
+    margin-right: 10px;
+}
+.submit-word-button {
+    margin-right: 10px;
 }
 .submit-word-main > *, .rt-th > *, h3, option, select {
   font-family: Muli, serif;

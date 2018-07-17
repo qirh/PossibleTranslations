@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 // Components
 import SubmitWord from './SubmitWord.js';
 
@@ -15,7 +14,6 @@ export default class App extends Component {
     this.state = {
       words: [],
     }
-    //this.getData = this.getData.bind(this);
   }
 
 
@@ -57,7 +55,7 @@ export default class App extends Component {
           <h3>Enter a sentence in the box below and choose a language to translate to. The website will query Google Translate to get a translation and list it in the table below</h3>
         </div>
 
-        <SubmitWord onButtonPress={this.refreshData} />
+        <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} />
 
         <ReactTable data={this.state.words} columns={columns} defaultPageSize={20} className="-striped -highlight" filterable
           defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>

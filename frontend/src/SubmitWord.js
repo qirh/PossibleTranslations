@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { func } from 'prop-types';
+import { func, array } from 'prop-types';
 import { FadeLoader } from 'react-spinners';
+import { CSVLink } from 'react-csv';
 
 // Components
 import DropDown from './DropDown.js';
@@ -14,10 +15,11 @@ export default class SubmitWord extends Component {
   }
   static propTypes = {
     onButtonPress: func.isRequired,
+    wordsProp: array.isRequired
   }
-  static defaultProps = {
-    onButtonPress: () => null,
-  }
+  // static defaultProps = {
+  //   onButtonPress: () => null,
+  // }
 
   buttonPress = () => {
     this.setState({ loading: true })
@@ -49,6 +51,7 @@ export default class SubmitWord extends Component {
           <input className="submit-word-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
           <DropDown onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
           <button className="submit-word-button" onClick={this.buttonPress}>Detect language and translate</button>
+          <CSVLink className="export-button" filename="PossibleTranslations.csv" data={this.props.wordsProp}>Export Data</CSVLink>
         </div>
         <div className='sweet-loading'>
           <FadeLoader color={'#123abc'} loading={this.state.loading}></FadeLoader>
