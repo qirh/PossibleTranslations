@@ -22,7 +22,7 @@ Repo for [Possible Translations](possibletranslations.com), a full stack website
     * Add ability to enter custom id.
 
 **Frontend:**
-1. Alex wants 2 screens!
+1. Show message when backend sends 404.
 2. Missing option to delete word from table.
 3. Missing option to edit word  from table.
 4. Is it mobile responsive ?
