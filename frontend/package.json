@@ -11,7 +11,8 @@
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4",
     "react-spinners": "^0.3.2",
-    "react-table": "^6.8.6"
+    "react-table": "^6.8.6",
+    "react-toastify": "^4.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

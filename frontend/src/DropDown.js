@@ -18,13 +18,13 @@ export default class DropDown extends Component {
     language: defaultLang
   }
   static propTypes = {
-    onHandleLanguageChange: func.isRequired
+    onHandleLanguageChange: func.isRequired,
+    //onLanguageFail: func.isRequired
   }
   componentDidMount() {
     fetch('https://PossibleTranslationsAPI.com/api/1.0/languages')
       .then(res => res.json())
-      .then(languages => this.setState({ languages })
-    );
+      .then(languages => this.setState({ languages }));
   }
   handleLanguageChange(e) {
     console.log("here --> ");

@@ -15,11 +15,10 @@ export default class SubmitWord extends Component {
   }
   static propTypes = {
     onButtonPress: func.isRequired,
-    wordsProp: array.isRequired
+    onNotifyPost: func.isRequired,
+    onNotifyPostError: func.isRequired,
+    wordsProp: array.isRequired,
   }
-  // static defaultProps = {
-  //   onButtonPress: () => null,
-  // }
 
   buttonPress = () => {
     this.setState({ loading: true })
@@ -42,6 +41,7 @@ export default class SubmitWord extends Component {
   clearItems() {
     this.setState({loading: false, language: "en"})
     this.refs.inputRef.value = "";
+    this.props.onNotifyPost
   }
 
   render() {

@@ -7,6 +7,10 @@ import SubmitWord from './SubmitWord.js';
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
 
+// React toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
 export default class App extends Component {
 
   constructor(props) {
@@ -15,6 +19,15 @@ export default class App extends Component {
       words: [],
     }
   }
+
+  notifyUpdate = () => toast.success("Data updated 🙈", { autoClose: 2000 });
+  notifyUpdateError = () => toast.error("Failed to update data", { autoClose: 7000 });
+  notifyPost = () => toast.success("Word translated 🙊", { autoClose: 2000 });
+  notifyPostError = () => toast.error("Failed to translate word", { autoClose: 7000 });
+  notifyLanguage = () => toast.success("Languages fetched 🙉", { autoClose: 2000 });
+  notifyLanguageError = () => toast.error("Failed to fetch languages", { autoClose: 7000 });
+
+
   getData () {
     fetch('https://PossibleTranslationsAPI.com/api/1.0')
       .then((response) => {
@@ -28,11 +41,12 @@ export default class App extends Component {
       .then(function(words){
         words.reverse();
         this.setState({ words })
+        this.notifyUpdate()
       }
       .bind(this))
       .catch(function(error) {
-        console.log(error);
-      });
+        this.notifyUpdate_error()
+      }.bind(this));
   }
   refreshData = () => {
     this.getData()
@@ -64,10 +78,12 @@ export default class App extends Component {
           <h3>Enter a sentence in the box below and choose a language to translate to. The website will query Google Translate to get a translation and list it in the table below</h3>
         </div>
 
-        <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} />
+        <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} />
 
         <ReactTable data={this.state.words} columns={columns} defaultPageSize={20} className="-striped -highlight" filterable
           defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
+
+        <ToastContainer />
 
       </div>
     );
