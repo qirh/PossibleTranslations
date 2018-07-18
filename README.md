@@ -1,6 +1,6 @@
 # PossibleTranslations [![MIT license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/qirh/pt/master/LICENSE)
 
-Repo for [Possible Translations](possibletranslations.com), a full stack website that takes user input, detects the language it's in and translates it. [API Documentation](https://documenter.getpostman.com/view/4826790/RWMCt9fH). [API Endpoint](https://possibletranslationsapi.com).
+Repo for [Possible Translations](https://possibletranslations.com), a full stack website that takes user input, detects the language it's in and translates it. [API Documentation](https://documenter.getpostman.com/view/4826790/RWMCt9fH). [API Endpoint](https://possibletranslationsapi.com).
 
 
 ### Issues (Importance based on order)
