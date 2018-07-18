@@ -24,9 +24,10 @@ export default class App extends Component {
   notifyUpdateError = () => toast.error("Failed to update data", { autoClose: 7000 });
   notifyPost = () => toast.success("Word translated 🙊", { autoClose: 2000 });
   notifyPostError = () => toast.error("Failed to translate word", { autoClose: 7000 });
+  /*
   notifyLanguage = () => toast.success("Languages fetched 🙉", { autoClose: 2000 });
   notifyLanguageError = () => toast.error("Failed to fetch languages", { autoClose: 7000 });
-
+  */
 
   getData () {
     fetch('https://PossibleTranslationsAPI.com/api/1.0')
