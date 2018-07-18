@@ -215,7 +215,11 @@ class CustomException(Exception):
 def add_word(form):
     DetectorFactory.seed = 0
     target_lang = TARGET_LANGUAGE
-    word = form.get("word")
+
+    word = form.get("word").strip()
+    if (len(word) < 1):
+        raise CustomException(404, "Word can't be less that 1 character")
+
     if (form.get("target_lang") != None):
         target_lang = form["target_lang"]
 
