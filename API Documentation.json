@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "49ceab52-782e-474b-a8b1-51f1d135d8ab",
+		"_postman_id": "b23fc75b-a94d-4a53-830a-71a52af857eb",
 		"name": "Possible Translations",
 		"description": "Documenatation for PossibleTranslations.com. A website that detects the language of a sentence from user input and translates it using Google Translate.\n\nCurrently, only `HTTPS` requests will be responded to, and the server is listening on port `443`. The API will respond to all requests without Authentication.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -42,15 +42,108 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"url": {
+						"body": {
+							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "http://possibletranslationsapi.com/api/1.0/echo",
+							"protocol": "http",
+							"host": [
+								"possibletranslationsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"1.0",
+								"echo"
+							]
 						},
 						"description": "Tester for the `GET` method."
 					},
 					"response": [
 						{
-							"id": "af797205-a4ec-4e7a-8ddd-c92a3c09dabb",
+							"id": "06616678-ab9d-4462-92ea-b525237212f7",
+							"name": "Options",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://possibletranslationsapi.com/api/1.0/options",
+									"protocol": "http",
+									"host": [
+										"possibletranslationsapi",
+										"com"
+									],
+									"path": [
+										"api",
+										"1.0",
+										"options"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Connection",
+									"value": "Upgrade, Keep-Alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "42",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jul 2018 13:19:12 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.33 (Ubuntu)",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "Upgrade",
+									"value": "h2",
+									"name": "Upgrade",
+									"description": "Custom header"
+								}
+							],
+							"cookie": [],
+							"body": "{\"Allow\":\"GET, POST, PATCH, PUT, DELETE\"}\n"
+						},
+						{
+							"id": "93fb40fd-d2fd-45da-831a-eddf7cb46ddb",
 							"name": "Get Echo",
 							"originalRequest": {
 								"method": "GET",
@@ -60,12 +153,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "https://possibletranslationsapi.com/api/1.0/echo",
+									"raw": "possibletranslationsapi.com/api/1.0/echo",
 									"host": [
 										"possibletranslationsapi",
 										"com"
 									],
-
 									"path": [
 										"api",
 										"1.0",
@@ -112,7 +204,10 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": ""
 						},
@@ -120,7 +215,7 @@
 					},
 					"response": [
 						{
-							"id": "420789f6-2b4a-4240-ad83-abba88d143e9",
+							"id": "9eb8fda4-3bfb-4109-9bca-5b4a654e6435",
 							"name": "Echo Post",
 							"originalRequest": {
 								"method": "POST",
@@ -130,7 +225,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "https://possibletranslationsapi.com/api/1.0/echo",
+									"raw": "possibletranslationsapi.com/api/1.0/echo",
 									"host": [
 										"possibletranslationsapi",
 										"com"
@@ -181,7 +276,10 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": ""
 						},
@@ -189,7 +287,7 @@
 					},
 					"response": [
 						{
-							"id": "fd486d5c-ae1d-4692-bf54-0c766972a194",
+							"id": "b58ee9b0-1cd6-4260-8391-b67bcfb242f0",
 							"name": "Echo Put",
 							"originalRequest": {
 								"method": "PUT",
@@ -199,12 +297,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "https://possibletranslationsapi.com/api/1.0/echo",
+									"raw": "possibletranslationsapi.com/api/1.0/echo",
 									"host": [
 										"possibletranslationsapi",
 										"com"
 									],
-
 									"path": [
 										"api",
 										"1.0",
@@ -251,7 +348,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": ""
 						},
@@ -259,7 +359,7 @@
 					},
 					"response": [
 						{
-							"id": "d9b1e3dc-c564-4392-9250-c8af35324b2f",
+							"id": "35c40d73-6827-4658-b2ce-940c10ec5d53",
 							"name": "Echo Delete",
 							"originalRequest": {
 								"method": "DELETE",
@@ -269,12 +369,11 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "https://possibletranslationsapi.com/api/1.0/echo",
+									"raw": "possibletranslationsapi.com/api/1.0/echo",
 									"host": [
 										"possibletranslationsapi",
 										"com"
 									],
-
 									"path": [
 										"api",
 										"1.0",
@@ -341,11 +440,121 @@
 			]
 		},
 		{
+			"name": "Avaliable API methods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://possibletranslationsapi.com/api/1.0/options",
+					"protocol": "http",
+					"host": [
+						"possibletranslationsapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"1.0",
+						"options"
+					]
+				},
+				"description": "Gets a spefic entry (sentence)."
+			},
+			"response": [
+				{
+					"id": "27669402-3bbc-4d65-b83d-9d452fc0d9e7",
+					"name": "Options",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://possibletranslationsapi.com/api/1.0/options",
+							"protocol": "http",
+							"host": [
+								"possibletranslationsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"1.0",
+								"options"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*",
+							"name": "Access-Control-Allow-Origin",
+							"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+						},
+						{
+							"key": "Connection",
+							"value": "Upgrade, Keep-Alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "42",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 18 Jul 2018 13:20:08 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5, max=100",
+							"name": "Keep-Alive",
+							"description": "Custom header"
+						},
+						{
+							"key": "Server",
+							"value": "Apache/2.4.33 (Ubuntu)",
+							"name": "Server",
+							"description": "A name for the server"
+						},
+						{
+							"key": "Upgrade",
+							"value": "h2",
+							"name": "Upgrade",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"body": "{\"Allow\":\"GET, POST, PATCH, PUT, DELETE\"}\n"
+				}
+			]
+		},
+		{
 			"name": "All entries",
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": ""
 				},
@@ -353,19 +562,21 @@
 			},
 			"response": [
 				{
-					"id": "eb82d246-389f-446d-9845-9ba7e92d5ea3",
+					"id": "c4745e30-299b-4511-929b-3889747649ee",
 					"name": "All entries",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "https://possibletranslationsapi.com/api/1.0",
+							"raw": "possibletranslationsapi.com/api/1.0",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
-
 							"path": [
 								"api",
 								"1.0"
@@ -417,7 +628,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": ""
 				},
@@ -425,20 +639,22 @@
 			},
 			"response": [
 				{
-					"id": "3a97a07c-438c-4f3f-8812-8d0e934056eb",
+					"id": "a3492eb2-f9c5-49ce-b3b3-4b86160fe0e0",
 					"name": "Entry by specifying word",
 					"originalRequest": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "https://possibletranslationsapi.com/api/1.0/q?word=joe",
+							"raw": "http://possibletranslationsapi.com/api/1.0/q?word=joe",
 							"protocol": "http",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
-
 							"path": [
 								"api",
 								"1.0",
@@ -497,14 +713,16 @@
 			"request": {
 				"method": "POST",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=fr",
+					"raw": "possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=fr",
 					"host": [
 						"possibletranslationsapi",
 						"com"
 					],
-
 					"path": [
 						"api",
 						"1.0",
@@ -525,7 +743,7 @@
 			},
 			"response": [
 				{
-					"id": "805ec6ab-44b4-444e-88ed-289c74408847",
+					"id": "04f0f9b4-bf59-44c4-9d6b-bbf4da5d1bb5",
 					"name": "Post an entry",
 					"originalRequest": {
 						"method": "POST",
@@ -535,12 +753,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=fr",
+							"raw": "possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=fr",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
-
 							"path": [
 								"api",
 								"1.0",
@@ -603,14 +820,16 @@
 			"request": {
 				"method": "PUT",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mike&lang=de",
+					"raw": "possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=de",
 					"host": [
 						"possibletranslationsapi",
 						"com"
 					],
-
 					"path": [
 						"api",
 						"1.0",
@@ -631,7 +850,7 @@
 			},
 			"response": [
 				{
-					"id": "c38e020c-f6dc-42e9-962b-08506cc1e4a6",
+					"id": "706f74a3-6a78-4df2-9f1b-8bdbc6aeef60",
 					"name": "Edit an entry",
 					"originalRequest": {
 						"method": "PUT",
@@ -641,12 +860,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://possibletranslationsapi.com/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
+							"raw": "possibletranslationsapi.com/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
-
 							"path": [
 								"api",
 								"1.0",
@@ -713,14 +931,16 @@
 			"request": {
 				"method": "DELETE",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mikey&target_lang=en",
+					"raw": "possibletranslationsapi.com/api/1.0/q?word=mikey&target_lang=en",
 					"host": [
 						"possibletranslationsapi",
 						"com"
 					],
-
 					"path": [
 						"api",
 						"1.0",
@@ -741,7 +961,7 @@
 			},
 			"response": [
 				{
-					"id": "6470ebd8-30d2-45e5-9241-17dc690a8d7f",
+					"id": "a5ae6905-2c5c-4a2d-bbdf-1e314d6446e8",
 					"name": "Delete an entry",
 					"originalRequest": {
 						"method": "DELETE",
@@ -751,12 +971,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://possibletranslationsapi.com/api/1.0/q?word=mikey&target_lang=en",
+							"raw": "possibletranslationsapi.com/api/1.0/q?word=mikey&target_lang=en",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
-
 							"path": [
 								"api",
 								"1.0",
@@ -819,14 +1038,16 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "https://possibletranslationsapi.com/api/1.0/languages",
+					"raw": "possibletranslationsapi.com/api/1.0/languages",
 					"host": [
 						"possibletranslationsapi",
 						"com"
 					],
-
 					"path": [
 						"api",
 						"1.0",
@@ -836,7 +1057,7 @@
 			},
 			"response": [
 				{
-					"id": "e36b81f8-59f5-4dc7-9a86-3a15ef2d2a61",
+					"id": "90492391-65a3-4c6e-bdc8-83e0fa57a0ef",
 					"name": "All supported languages",
 					"originalRequest": {
 						"method": "GET",
@@ -846,12 +1067,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "https://possibletranslationsapi.com/api/1.0/languages",
+							"raw": "possibletranslationsapi.com/api/1.0/languages",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
-
 							"path": [
 								"api",
 								"1.0",
