@@ -246,7 +246,7 @@ def add_word(form):
 @cross_origin()
 def error_page(custom=None):
     print("error_page(custom= " + str(custom))
-    return render_template('/404.html', title="404", custom=custom)
+    return make_response(jsonify({'Error': 'Illegal URI'}), 404)
 
 
 @app.route("/", methods=["GET"])
@@ -383,7 +383,7 @@ def api_get_languages():
 def api_options():
     return make_response(jsonify({'Allow': 'GET, POST, PATCH, PUT, DELETE'}), 200)
 
-@app.route('/api/1.0/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@app.route('/api/1.0/options', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 @cross_origin()
 def api_echo():
     if request.method == 'GET':
