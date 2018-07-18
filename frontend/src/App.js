@@ -15,15 +15,24 @@ export default class App extends Component {
       words: [],
     }
   }
-
-
   getData () {
     fetch('https://PossibleTranslationsAPI.com/api/1.0')
-      .then(res => res.json())
+      .then((response) => {
+        console.log(response);
+        console.log(response.ok);
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response.json();
+      })
       .then(function(words){
         words.reverse();
         this.setState({ words })
-      }.bind(this));
+      }
+      .bind(this))
+      .catch(function(error) {
+        console.log(error);
+      });
   }
   refreshData = () => {
     this.getData()
