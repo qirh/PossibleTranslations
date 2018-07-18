@@ -378,12 +378,12 @@ def api_get_languages():
     except Exception as e:
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
-@app.route('/api/1.0/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@app.route('/api/1.0/options', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 @cross_origin()
 def api_options():
     return make_response(jsonify({'Allow': 'GET, POST, PATCH, PUT, DELETE'}), 200)
 
-@app.route('/api/1.0/options', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@app.route('/api/1.0/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 @cross_origin()
 def api_echo():
     if request.method == 'GET':
