@@ -21,11 +21,25 @@ export default class SubmitWord extends Component {
   }
 
   buttonPress = () => {
-    this.setState({ loading: true })
     fetch('https://PossibleTranslationsAPI.com/api/1.0/q?word=' + this.state.word + '&target_lang=' + this.state.language,
       {method: 'POST'})
+    .then((response) => {
+      if (!response.ok) {
+        throw Error(response.statusText);
+      }
+      this.setState({ loading: true })
+      return response.json();
+    })
     .then(response => this.props.onButtonPress())
-    .then(response => this.clearItems())
+    .then(function(response){
+      this.clearItems();
+      this.props.onNotifyPost();
+    }
+    .bind(this))
+    .catch(function(error) {
+
+      this.props.onNotifyPostError();
+    }.bind(this));
   }
   handleKeyPress(text) {
     this.setState({
@@ -33,7 +47,6 @@ export default class SubmitWord extends Component {
     })
   }
   handleLanguageChange = (lang) => {
-    console.log("here2 --> ");
     this.setState(prevState => ({
       language: lang
     }));
@@ -41,7 +54,6 @@ export default class SubmitWord extends Component {
   clearItems() {
     this.setState({loading: false, language: "en"})
     this.refs.inputRef.value = "";
-    this.props.onNotifyPost
   }
 
   render() {

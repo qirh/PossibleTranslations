@@ -31,8 +31,6 @@ export default class App extends Component {
   getData () {
     fetch('https://PossibleTranslationsAPI.com/api/1.0')
       .then((response) => {
-        console.log(response);
-        console.log(response.ok);
         if (!response.ok) {
             throw Error(response.statusText);
         }
@@ -41,7 +39,6 @@ export default class App extends Component {
       .then(function(words){
         words.reverse();
         this.setState({ words })
-        this.notifyUpdate()
       }
       .bind(this))
       .catch(function(error) {
@@ -53,6 +50,7 @@ export default class App extends Component {
   }
   componentDidMount() {
     this.getData()
+    this.notifyUpdate()
   }
 
   render() {
