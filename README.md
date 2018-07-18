@@ -34,6 +34,6 @@ Repo for [Possible Translations](possibletranslations.com), a full stack website
 * Hosting: **Flask:** [DO droplet](https://possibletranslationsapi.com), **Frontend:** [AWS S3](http://possibletranslations.com.s3-website-us-east-1.amazonaws.com), **CDN:** [CloudFront](https://possibletranslations.com). **Domain names & routing:** Hover & Route 53
 * Database: PostgreSQL deployed on AWS RDS.
 * Backend: [Flask](http://flask.pocoo.org).
-* Frontend: [React](https://reactjs.org/) --> [React Table](https://react-table.js.org) & [React Spinners](https://www.npmjs.com/package/react-spinners) & [React CSV](https://www.npmjs.com/package/react-csv).
+* Frontend: [React](https://reactjs.org/) --> [React Table](https://react-table.js.org) & [React Spinners](https://www.npmjs.com/package/react-spinners) & [React CSV](https://www.npmjs.com/package/react-csv) & [React Toastify](https://github.com/fkhadra/react-toastify).
 * Language Detection: [langdetect](https://pypi.org/project/langdetect) & [textblob](https://textblob.readthedocs.io/en/dev).
 * Language Translation: [Google Translate API](https://cloud.google.com/translate/docs).
