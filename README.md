@@ -25,7 +25,7 @@
 4. Is it mobile responsive ?
 5. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
 6. Search should case insensitive.
-7. Spinner should be overlay.
+7. Auto deploy to S3 using [Travis CI](https://docs.travis-ci.com/user/deployment/s3/)
 
 ## Stack used
 * hosting: DO droplet for flask, AWS S3 for react
