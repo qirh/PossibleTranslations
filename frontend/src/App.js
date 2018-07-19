@@ -89,7 +89,7 @@ export default class App extends Component {
 
           <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} stateWidth={this.state.width} />
 
-          <ReactTable data={this.state.words} columns={columns} defaultPageSize={20} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
+          <ReactTable data={this.state.words} columns={columns} defaultPageSize={5} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value} showPageSizeOptions={false}/>
 
           <ToastContainer/>
 
@@ -122,7 +122,7 @@ export default class App extends Component {
 
           <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} stateWidth={this.state.width} />
 
-          <ReactTable data={this.state.words} columns={columns} defaultPageSize={20} className="-striped -highlight" filterable
+          <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable
             defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
           <ToastContainer/>

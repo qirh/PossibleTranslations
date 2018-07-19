@@ -59,7 +59,7 @@ export default class SubmitWord extends Component {
 
   render() {
 
-    if(this.props.stateWidth < 600) {
+    if(this.props.stateWidth < 900) {
       return (
         <div className="submit">
 
@@ -78,7 +78,7 @@ export default class SubmitWord extends Component {
       );
 
     }
-    else { //this.propsstateWidth >= 600
+    else { //this.propsstateWidth >= 900
       return (
         <div className="submit">
 

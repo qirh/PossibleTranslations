@@ -1,5 +1,4 @@
 /* Mobile First */
-
 * {
   font-family: Junge, serif;
 }
@@ -13,7 +12,7 @@ h1, h2, th {
 h1 {
   font-size: 1.50rem;
 }
-p, body, input, button, option, select, .submit-main-button-export {
+body, .-btn, .submit-main > * {
   font-size: 1rem;
 }
 
@@ -31,24 +30,24 @@ p, body, input, button, option, select, .submit-main-button-export {
 }
 .app-header {
   margin-top: 0;
-	height: 50px;
+	height: 3rem;
 	background-color: #0a699f;
   color: #FFFFFF;
-  border-radius: 8px;
+  border-radius: 0.3rem;
 }
 .app-header-title {
   white-space: nowrap;
 }
 .app-header-git {
-  width: 20px;
-  height: 20px;
-  margin-left: 10px;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 1rem;
 }
 .app-header-subtext {
   display: none;
 }
 .ReactTable {
-  height: 450px
+  height: 70vh;
 }
 
 /* SubmitWord.js */
@@ -57,37 +56,31 @@ p, body, input, button, option, select, .submit-main-button-export {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  font-size: 20px;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   width: 100%
 }
 .submit-main > *, .rt-th > *, h3, option, select {
   font-family: Muli, serif;
 }
-button, .-btn, .submit-main-button-find, .submit-main-button-export {
+.-btn, .submit-main-button-find, .submit-main-button-export {
   border: none;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 0.2rem;
   color: #FFFFFF !important;
   background-color: #0a699f !important;
 }
 .submit-main-input {
   width:40%;
-  border-radius: 6px;
-  border: 1px solid #0a699f;
+  border-radius: 0.3rem;
+  border: 0.05rem solid #0a699f;
 }
 .submit-main-button-find, .submit-main-button-export {
-  padding-top: 3px;
-  padding-bottom: 3px;
-  /*padding-left: 8px;
-  padding-right: 8px;*/
-}
-.submit-main-button-find {
-  /*margin-right: 10px;*/
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
 }
 .submit-main-button-export {
   text-decoration: none;
@@ -96,27 +89,30 @@ button, .-btn, .submit-main-button-find, .submit-main-button-export {
   padding-left: 50%;
 }
 
-/* DropDown.js
-.drop {
-  width: 200px;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}*/
-
 /* Desktop */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 900px) {
 
   /* App.js */
   .app-header {
-  	height: 100px;
+  	height: 6rem;
+    border-radius: 0.6rem;
   }
   .app-header-subtext {
     display: block;
   }
-  .app-header-git {
-    width: 30px;
-    height: 30px;
-    margin-left: 15px;
+  .ReactTable {
+    height: 70vh;
+  }
+
+  /* SubmitWord.js */
+  .submit-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    width: 100%
   }
   .submit-main-input {
     width: 32%;
@@ -131,6 +127,6 @@ button, .-btn, .submit-main-button-find, .submit-main-button-export {
     width: 10%;
   }
   .submit-main-input, .drop, .submit-main-button-find {
-    margin-right: 10px;
+    margin-right: 0.7rem;
   }
 }
