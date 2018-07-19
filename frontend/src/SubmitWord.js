@@ -66,11 +66,16 @@ export default class SubmitWord extends Component {
         <div className="submit">
 
           <div className="submit-main">
-            <input className="submit-main-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
 
-            <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language} submitStateWidth={this.props.stateWidth}></DropDown>
+            <div>
+              <input className="submit-main-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
 
-            <button className="submit-main-button-find" onClick={this.buttonPress}>Translate</button>
+              <button className="submit-main-button-find" onClick={this.buttonPress}>Translate</button>
+            </div>
+            <div><br></br></div>
+            <div>
+              <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language} submitStateWidth={this.props.stateWidth}></DropDown>
+            </div>
           </div>
 
           <div className='submit-sweet-loading'>

@@ -16,14 +16,6 @@ body > *, .-btn, .submit-main > * {
   font-size: 1rem;
 }
 
-/* index.html */
-.footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-}
-
 /* App.js */
 .app {
   text-align: center;
@@ -49,10 +41,15 @@ body > *, .-btn, .submit-main > * {
 .ReactTable {
   height: 70vh;
 }
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
 
 /* SubmitWord.js */
 .submit-main {
-  display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -62,6 +59,8 @@ body > *, .-btn, .submit-main > * {
 }
 .submit-main > *, .rt-th > *, h3, option, select {
   font-family: Muli, serif;
+}
+select {
 }
 .-btn, .submit-main-button-find, .submit-main-button-export {
   border: none;
@@ -74,15 +73,15 @@ body > *, .-btn, .submit-main > * {
   background-color: #0a699f !important;
 }
 .submit-main-input {
-  width:40%;
+  width:60%;
   border-radius: 0.3rem;
   border: 0.05rem solid #0a699f;
 }
 .drop {
-  width: 30%;
+  width: 40%;
 }
 .submit-main-button-find {
-  width: 15%;
+  width: 30%;
 }
 .submit-main-input, .drop {
   margin-right: 0.7rem;

@@ -89,6 +89,10 @@ export default class App extends Component {
 
           <ToastContainer></ToastContainer>
 
+          <div class="footer">
+            <p id="footer_text" title="powered by ☕">Made by <a href="https://saleh.alghusson.com">Saleh</a></p>
+          </div>
+
         </div>
       );
     }
@@ -120,6 +124,10 @@ export default class App extends Component {
             defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
           <ToastContainer></ToastContainer>
+
+          <div class="footer">
+            <p id="footer_text" title="powered by ☕">Connettiti con me <a href="mailto:saleh@alghusson.com">saleh@alghusson.com</a></p>
+          </div>
 
         </div>
       );

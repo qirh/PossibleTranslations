@@ -23,7 +23,7 @@ Repo for [Possible Translations](https://possibletranslations.com), a full stack
 
 **Frontend:**
 1. Show message when backend sends 404.
-2. Display mobile.
+2. Display mobile. (No arrow in dropdown menu)
 3. Display apostrophe correctly (thanks French).
 4. Add option to delete/edit word from table.
 5. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
