@@ -58,14 +58,19 @@ export default class SubmitWord extends Component {
 
   render() {
     return (
-      <div className="submit-word-container">
-        <div className="submit-word-main">
-          <input className="submit-word-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
-          <DropDown onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
-          <button className="submit-word-button" onClick={this.buttonPress}>Detect language and translate</button>
-          <CSVLink className="export-button" filename="PossibleTranslations.csv" data={this.props.wordsProp}>Export CSV</CSVLink>
+      <div className="submit">
+        <div className="submit-main">
+
+          <input className="submit-main-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
+
+          <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
+
+          <button className="submit-main-button-find" onClick={this.buttonPress}>Detect language and translate</button>
+
+          <CSVLink className="submit-main-button-export" filename="PossibleTranslations.csv" data={this.props.wordsProp}>Export CSV</CSVLink>
+
         </div>
-        <div className='sweet-loading'>
+        <div className='submit-sweet-loading'>
           <FadeLoader color={'#123abc'} loading={this.state.loading}></FadeLoader>
         </div>
       </div>

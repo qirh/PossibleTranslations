@@ -1,4 +1,5 @@
-/* All */
+/* Mobile First */
+
 * {
   font-family: Junge, serif;
 }
@@ -12,7 +13,7 @@ h1, h2, th {
 h1 {
   font-size: 1.50rem;
 }
-p, body, input, button, option, select, .export-button {
+p, body, input, button, option, select, .submit-main-button-export {
   font-size: 1rem;
 }
 
@@ -30,13 +31,13 @@ p, body, input, button, option, select, .export-button {
 }
 .app-header {
   margin-top: 0;
-	height: 90px;
+	height: 50px;
 	background-color: #0a699f;
   color: #FFFFFF;
   border-radius: 8px;
 }
 .app-header-title {
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 .app-header-git {
   width: 20px;
@@ -51,42 +52,7 @@ p, body, input, button, option, select, .export-button {
 }
 
 /* SubmitWord.js */
-button, .export-button {
-  border: none;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-  border-radius: 4px;
-}
-.-btn, .submit-word-button, .export-button {
-  color: #FFFFFF !important;
-  background-color: #0a699f !important;
-}
-.submit-word-button, .export-button {
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 8px;
-    padding-right: 8px;
-}
-.submit-word-button {
-    margin-right: 10px;
-}
-.export-button {
-  text-decoration: none;
-}
-.submit-word-main > *, .rt-th > *, h3, option, select {
-  font-family: Muli, serif;
-}
-
-/* DropDown.js */
-
-
-
-.language-drop-down {
-  width: 200px
-}
-.submit-word-main {
+.submit-main {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,38 +62,91 @@ button, .export-button {
   font-size: 20px;
   width: 100%
 }
-.submit-word-label {
-  margin-right: 1rem;
+.submit-main > *, .rt-th > *, h3, option, select {
+  font-family: Muli, serif;
 }
-.language-drop-down {
-  margin-left: 1rem;
-  margin-right: 1rem;
+button, .-btn, .submit-main-button-find, .submit-main-button-export {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #FFFFFF !important;
+  background-color: #0a699f !important;
 }
-.submit-word-input {
-  width:50%;
+.submit-main-input {
+  width:40%;
   border-radius: 6px;
   border: 1px solid #0a699f;
 }
-.sweet-loading {
+.submit-main-button-find, .submit-main-button-export {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  /*padding-left: 8px;
+  padding-right: 8px;*/
+}
+.submit-main-button-find {
+  /*margin-right: 10px;*/
+}
+.submit-main-button-export {
+  text-decoration: none;
+}
+.submit-sweet-loading {
   padding-left: 50%;
 }
-/* Mobile */
-@media only screen and (max-width: 599px) {
 
-}
+/* DropDown.js
+.drop {
+  width: 200px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}*/
+
 /* Tablets */
 @media only screen and (min-width: 600px) {
 
   /* App.js */
+  .app-header {
+  	height: 100px;
+  }
   .app-header-subtext {
     display: block;
+  }
+  .app-header-git {
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
   }
 }
 /* Desktop */
 @media only screen and (min-width: 900px) {
 
   /* App.js */
+  .app-header {
+  	height: 100px;
+  }
   .app-header-subtext {
     display: block;
+  }
+  .app-header-git {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+  }
+  .submit-main-input {
+    width: 32%;
+  }
+  .drop {
+    width: 20%;
+  }
+  .submit-main-button-find {
+    width: 30%;
+  }
+  .submit-main-button-export {
+    width: 10%;
+  }
+  .submit-main-input, .drop, .submit-main-button-find {
+    margin-right: 10px;
   }
 }

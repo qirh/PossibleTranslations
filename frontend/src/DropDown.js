@@ -33,7 +33,7 @@ export default class DropDown extends Component {
   }
   render() {
     return (
-      <select className="language-drop-down" value={this.state.language} onChange={this.handleLanguageChange}>
+      <select className="drop" value={this.state.language} onChange={this.handleLanguageChange}>
 
         {this.state.languages.map(function(l) {
           return <option key={l.language} value={l.language}>Translate to ({l.name})</option>;

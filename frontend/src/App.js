@@ -65,11 +65,12 @@ export default class App extends Component {
 
   render() {
 
+
     /* Mobile First */
+    
     const columns = [
       {Header: "Info", columns: [
-        {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
-        {Header: 'Language to Translate', accessor: 'target_lang', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
+        {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
       ]},
 
       {Header: "Guess #1", columns: [
@@ -77,15 +78,20 @@ export default class App extends Component {
         {Header: 'Translation', accessor: 'translation_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
       ]}
     ]
-    var subText = "meh"
-    console.log(this.state.width)
-    if(this.state.width >= 600 && this.state.width < 900){
-      console.log("1")
+    var subText = ""
+
+    /* Tablets */
+    if(this.state.width >= 600 && this.state.width < 900) {
       subText = "Enter a sentence in the box below and choose a language"
     }
+    /* Desktop */
     else if (this.state.width >= 900){
-      console.log("2")
+
       subText = "Enter a sentence in the box below and choose a language to translate to"
+      columns[0] = {Header: "Info", columns: [
+        {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+        {Header: 'Language to Translate', accessor: 'target_lang', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
+      ]},
       columns.push({Header: "Guess #2", columns: [
         {Header: 'Detected Language', accessor: 'lang_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
         {Header: 'Translation', accessor: 'translation_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}

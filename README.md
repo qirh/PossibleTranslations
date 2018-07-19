@@ -28,7 +28,8 @@ Repo for [Possible Translations](https://possibletranslations.com), a full stack
 4. Is it mobile responsive ?
 5. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
 6. Search should case insensitive.
-7. Auto deploy to S3 using [Travis CI](https://docs.travis-ci.com/user/deployment/s3/)
+7. Auto deploy to S3 using [Travis CI](https://docs.travis-ci.com/user/deployment/s3/).
+8. Add about page.
 
 ### Tech Stack
 * Hosting: **Flask:** [DO droplet](https://possibletranslationsapi.com), **Frontend:** [AWS S3](http://possibletranslations.com.s3-website-us-east-1.amazonaws.com), **CDN:** [CloudFront](https://possibletranslations.com). **Domain names & routing:** Hover & Route 53
