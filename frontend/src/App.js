@@ -23,7 +23,7 @@ export default class App extends Component {
   notifyUpdate = () => toast.success("Data updated 🙈", { autoClose: 2000 });
   notifyUpdateError = () => toast.error("Failed to update data", { autoClose: 7000 });
   notifyPost = () => toast.success("Word translated 🙊", { autoClose: 2000 });
-  notifyPostError = () => toast.error("Failed to translate word", { autoClose: 7000 });
+  notifyPostError = (text) => toast.error("Error: " + text, { autoClose: 7000 });
   /*
   notifyLanguage = () => toast.success("Languages fetched 🙉", { autoClose: 2000 });
   notifyLanguageError = () => toast.error("Failed to fetch languages", { autoClose: 7000 });
@@ -65,19 +65,15 @@ export default class App extends Component {
 
   render() {
 
-
     /* Mobile First */
-
     const columns = [
       {Header: "Input", columns: [
         {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
       ]},
-
       {Header: "Guess", columns: [
-        {Header: 'Guessed Language', accessor: 'lang_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+        {Header: 'Origin Language', accessor: 'lang_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
         {Header: 'Translation', accessor: 'translation_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
-      ]}
-    ]
+      ]}]
 
     if (this.state.width < 900) {
       return (
@@ -87,30 +83,28 @@ export default class App extends Component {
             <h1 className="app-header-title">Possible Translations <a href="https://github.com/qirh/pt"><img className="app-header-git" src={ git } title="Git Repo" alt="Git Repo"></img></a></h1>
           </div>
 
-          <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} stateWidth={this.state.width} />
+          <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} stateWidth={this.state.width}></SubmitWord>
 
           <ReactTable data={this.state.words} columns={columns} defaultPageSize={5} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value} showPageSizeOptions={false}/>
 
-          <ToastContainer/>
+          <ToastContainer></ToastContainer>
 
         </div>
       );
     }
     else { // this.state.width >= 900
-
       var subText = "Enter a sentence in the box below and choose a language to translate to"
       columns[0] = {Header: "Input", columns: [
         {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
-        {Header: 'Translate to', accessor: 'target_lang', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
-      ]}
+        {Header: 'Translate to', accessor: 'target_lang', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}]}
+
       columns[1] = {Header: "Guess #1", columns: [
         {Header: 'Guessed Language', accessor: 'lang_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
-        {Header: 'Translation', accessor: 'translation_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
-      ]}
+        {Header: 'Translation', accessor: 'translation_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}]}
+
       columns.push({Header: "Guess #2", columns: [
         {Header: 'Guessed Language', accessor: 'lang_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
-        {Header: 'Translation', accessor: 'translation_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
-      ]})
+        {Header: 'Translation', accessor: 'translation_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}]})
 
       return (
         <div className="app">
@@ -120,16 +114,15 @@ export default class App extends Component {
             <h3 className="app-header-subtext">{subText}</h3>
           </div>
 
-          <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} stateWidth={this.state.width} />
+          <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} stateWidth={this.state.width}></SubmitWord>
 
           <ReactTable data={this.state.words} columns={columns} defaultPageSize={10} className="-striped -highlight" filterable
             defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
 
-          <ToastContainer/>
+          <ToastContainer></ToastContainer>
 
         </div>
       );
     }
-
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { number, func, array } from 'prop-types';
+import { array, func, number } from 'prop-types';
 import { FadeLoader } from 'react-spinners';
 import { CSVLink } from 'react-csv';
 
@@ -26,22 +26,24 @@ export default class SubmitWord extends Component {
       {method: 'POST'})
     .then((response) => {
       if (!response.ok) {
-        throw Error(response.statusText);
+        throw response.json();
       }
       this.setState({ loading: true })
       return response.json();
     })
     .then(response => this.props.onButtonPress())
-    .then(function(response){
+    .then(function(response) {
       this.clearItems();
       this.props.onNotifyPost();
     }
     .bind(this))
     .catch(function(error) {
-
-      this.props.onNotifyPostError();
+      error.then((response) => {
+          this.props.onNotifyPostError(response.Error);
+       });
     }.bind(this));
   }
+
   handleKeyPress(text) {
     this.setState({
       word: text.target.value
@@ -66,26 +68,26 @@ export default class SubmitWord extends Component {
           <div className="submit-main">
             <input className="submit-main-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
 
-            <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
+            <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language} submitStateWidth={this.props.stateWidth}></DropDown>
 
-            <button className="submit-main-button-find" onClick={this.buttonPress}>Detect language and translate</button>
+            <button className="submit-main-button-find" onClick={this.buttonPress}>Translate</button>
           </div>
 
           <div className='submit-sweet-loading'>
             <FadeLoader color={'#123abc'} loading={this.state.loading}></FadeLoader>
           </div>
+
         </div>
       );
-
     }
-    else { //this.propsstateWidth >= 900
+    else { //this.props.stateWidth >= 900
       return (
         <div className="submit">
 
           <div className="submit-main">
             <input className="submit-main-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
 
-            <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
+            <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language} submitStateWidth={this.props.stateWidth}></DropDown>
 
             <button className="submit-main-button-find" onClick={this.buttonPress}>Detect language and translate</button>
 
@@ -95,10 +97,9 @@ export default class SubmitWord extends Component {
           <div className='submit-sweet-loading'>
             <FadeLoader color={'#123abc'} loading={this.state.loading}></FadeLoader>
           </div>
+
         </div>
       );
     }
-
-
   }
 }

@@ -12,7 +12,7 @@ h1, h2, th {
 h1 {
   font-size: 1.50rem;
 }
-body, .-btn, .submit-main > * {
+body > *, .-btn, .submit-main > * {
   font-size: 1rem;
 }
 
@@ -77,6 +77,15 @@ body, .-btn, .submit-main > * {
   width:40%;
   border-radius: 0.3rem;
   border: 0.05rem solid #0a699f;
+}
+.drop {
+  width: 30%;
+}
+.submit-main-button-find {
+  width: 15%;
+}
+.submit-main-input, .drop {
+  margin-right: 0.7rem;
 }
 .submit-main-button-find, .submit-main-button-export {
   padding-top: 0.2rem;
