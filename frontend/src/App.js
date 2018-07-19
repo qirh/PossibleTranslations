@@ -80,7 +80,7 @@ export default class App extends Component {
         <div className="app">
 
           <div className="app-header">
-            <h1 className="app-header-title">Possible Translations <a href="https://github.com/qirh/pt"><img className="app-header-git" src={ git } title="Git Repo" alt="Git Repo"></img></a></h1>
+            <h1 className="app-header-title">Possible Translations</h1>
           </div>
 
           <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} stateWidth={this.state.width}></SubmitWord>
@@ -90,7 +90,7 @@ export default class App extends Component {
           <ToastContainer></ToastContainer>
 
           <div class="footer">
-            <p id="footer_text" title="powered by ☕">Made by <a href="https://saleh.alghusson.com">Saleh</a></p>
+            <p id="footer_text" title="powered by ☕">Made by <a href="https://saleh.alghusson.com">Saleh</a><a href="https://github.com/qirh/pt"><img className="app-header-git" src={ git } title="Git Repo" alt="Git Repo"></img></a></p>
           </div>
 
         </div>
@@ -114,7 +114,7 @@ export default class App extends Component {
         <div className="app">
 
           <div className="app-header">
-            <h1 className="app-header-title">Possible Translations <a href="https://github.com/qirh/pt"><img className="app-header-git" src={ git } title="Git Repo" alt="Git Repo"></img></a></h1>
+            <h1 className="app-header-title">Possible Translations</h1>
             <h3 className="app-header-subtext">{subText}</h3>
           </div>
 
@@ -126,7 +126,7 @@ export default class App extends Component {
           <ToastContainer></ToastContainer>
 
           <div class="footer">
-            <p id="footer_text" title="powered by ☕">Connettiti con me <a href="mailto:saleh@alghusson.com">saleh@alghusson.com</a></p>
+            <p id="footer_text" title="powered by ☕">Connettiti con me <a href="mailto:saleh@alghusson.com">saleh@alghusson.com</a><a href="https://github.com/qirh/pt"><img className="app-header-git" src={ git } title="Git Repo" alt="Git Repo"></img></a></p>
           </div>
 
         </div>
