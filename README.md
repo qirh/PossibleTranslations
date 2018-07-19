@@ -23,9 +23,9 @@ Repo for [Possible Translations](https://possibletranslations.com), a full stack
 
 **Frontend:**
 1. Show message when backend sends 404.
-2. Missing option to delete word from table.
-3. Missing option to edit word  from table.
-4. Is it mobile responsive ?
+2. Display mobile.
+3. Display apostrophe correctly (thanks French).
+4. Add option to delete/edit word from table.
 5. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
 6. Search should case insensitive.
 7. Auto deploy to S3 using [Travis CI](https://docs.travis-ci.com/user/deployment/s3/).

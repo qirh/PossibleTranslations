@@ -103,24 +103,8 @@ button, .-btn, .submit-main-button-find, .submit-main-button-export {
   margin-right: 1rem;
 }*/
 
-/* Tablets */
-@media only screen and (min-width: 600px) {
-
-  /* App.js */
-  .app-header {
-  	height: 100px;
-  }
-  .app-header-subtext {
-    display: block;
-  }
-  .app-header-git {
-    width: 25px;
-    height: 25px;
-    margin-left: 15px;
-  }
-}
 /* Desktop */
-@media only screen and (min-width: 900px) {
+@media only screen and (min-width: 600px) {
 
   /* App.js */
   .app-header {

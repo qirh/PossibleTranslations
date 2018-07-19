@@ -67,55 +67,69 @@ export default class App extends Component {
 
 
     /* Mobile First */
-    
+
     const columns = [
-      {Header: "Info", columns: [
+      {Header: "Input", columns: [
         {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
       ]},
 
-      {Header: "Guess #1", columns: [
-        {Header: 'Detected Language', accessor: 'lang_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+      {Header: "Guess", columns: [
+        {Header: 'Guessed Language', accessor: 'lang_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
         {Header: 'Translation', accessor: 'translation_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
       ]}
     ]
-    var subText = ""
 
-    /* Tablets */
-    if(this.state.width >= 600 && this.state.width < 900) {
-      subText = "Enter a sentence in the box below and choose a language"
-    }
-    /* Desktop */
-    else if (this.state.width >= 900){
+    if (this.state.width < 900) {
+      return (
+        <div className="app">
 
-      subText = "Enter a sentence in the box below and choose a language to translate to"
-      columns[0] = {Header: "Info", columns: [
-        {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
-        {Header: 'Language to Translate', accessor: 'target_lang', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
-      ]},
-      columns.push({Header: "Guess #2", columns: [
-        {Header: 'Detected Language', accessor: 'lang_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
-        {Header: 'Translation', accessor: 'translation_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
-      ]})
-    }
-    return (
-      <div className="app">
-        <div className="app-header">
-          <h1 className="app-header-title">Possible Translations <a href="https://github.com/qirh/pt"><img className="app-header-git" src={ git } title="Git Repo" alt="Git Repo"></img></a></h1>
+          <div className="app-header">
+            <h1 className="app-header-title">Possible Translations <a href="https://github.com/qirh/pt"><img className="app-header-git" src={ git } title="Git Repo" alt="Git Repo"></img></a></h1>
+          </div>
 
-          <h3 className="app-header-subtext">{subText}</h3>
+          <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} stateWidth={this.state.width} />
 
+          <ReactTable data={this.state.words} columns={columns} defaultPageSize={20} className="-striped -highlight" filterable defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
+
+          <ToastContainer/>
 
         </div>
+      );
+    }
+    else { // this.state.width >= 900
 
-        <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} />
+      var subText = "Enter a sentence in the box below and choose a language to translate to"
+      columns[0] = {Header: "Input", columns: [
+        {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+        {Header: 'Translate to', accessor: 'target_lang', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
+      ]}
+      columns[1] = {Header: "Guess #1", columns: [
+        {Header: 'Guessed Language', accessor: 'lang_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+        {Header: 'Translation', accessor: 'translation_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
+      ]}
+      columns.push({Header: "Guess #2", columns: [
+        {Header: 'Guessed Language', accessor: 'lang_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+        {Header: 'Translation', accessor: 'translation_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
+      ]})
 
-        <ReactTable data={this.state.words} columns={columns} defaultPageSize={20} className="-striped -highlight" filterable
-          defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
+      return (
+        <div className="app">
 
-        <ToastContainer />
+          <div className="app-header">
+            <h1 className="app-header-title">Possible Translations <a href="https://github.com/qirh/pt"><img className="app-header-git" src={ git } title="Git Repo" alt="Git Repo"></img></a></h1>
+            <h3 className="app-header-subtext">{subText}</h3>
+          </div>
 
-      </div>
-    )
+          <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} stateWidth={this.state.width} />
+
+          <ReactTable data={this.state.words} columns={columns} defaultPageSize={20} className="-striped -highlight" filterable
+            defaultFilterMethod={(filter, row) => String(row[filter.id]) === filter.value}/>
+
+          <ToastContainer/>
+
+        </div>
+      );
+    }
 
   }
 }

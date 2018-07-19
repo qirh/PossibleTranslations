@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { func, array } from 'prop-types';
+import { number, func, array } from 'prop-types';
 import { FadeLoader } from 'react-spinners';
 import { CSVLink } from 'react-csv';
 
@@ -18,6 +18,7 @@ export default class SubmitWord extends Component {
     onNotifyPost: func.isRequired,
     onNotifyPostError: func.isRequired,
     wordsProp: array.isRequired,
+    stateWidth: number.isRequired
   }
 
   buttonPress = () => {
@@ -57,23 +58,47 @@ export default class SubmitWord extends Component {
   }
 
   render() {
-    return (
-      <div className="submit">
-        <div className="submit-main">
 
-          <input className="submit-main-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
+    if(this.props.stateWidth < 600) {
+      return (
+        <div className="submit">
 
-          <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
+          <div className="submit-main">
+            <input className="submit-main-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
 
-          <button className="submit-main-button-find" onClick={this.buttonPress}>Detect language and translate</button>
+            <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
 
-          <CSVLink className="submit-main-button-export" filename="PossibleTranslations.csv" data={this.props.wordsProp}>Export CSV</CSVLink>
+            <button className="submit-main-button-find" onClick={this.buttonPress}>Detect language and translate</button>
+          </div>
 
+          <div className='submit-sweet-loading'>
+            <FadeLoader color={'#123abc'} loading={this.state.loading}></FadeLoader>
+          </div>
         </div>
-        <div className='submit-sweet-loading'>
-          <FadeLoader color={'#123abc'} loading={this.state.loading}></FadeLoader>
+      );
+
+    }
+    else { //this.propsstateWidth >= 600
+      return (
+        <div className="submit">
+
+          <div className="submit-main">
+            <input className="submit-main-input" ref="inputRef" type="text" name="wordInput" placeholder="  Sentence to translate" onChange={this.handleKeyPress.bind(this)}></input>
+
+            <DropDown className="submit-main-drop" onHandleLanguageChange={this.handleLanguageChange} defaultValue={this.state.language}></DropDown>
+
+            <button className="submit-main-button-find" onClick={this.buttonPress}>Detect language and translate</button>
+
+            <CSVLink className="submit-main-button-export" filename="PossibleTranslations.csv" data={this.props.wordsProp}>Export CSV</CSVLink>
+          </div>
+
+          <div className='submit-sweet-loading'>
+            <FadeLoader color={'#123abc'} loading={this.state.loading}></FadeLoader>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+
+
   }
 }
