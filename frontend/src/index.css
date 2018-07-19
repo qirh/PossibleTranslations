@@ -1,3 +1,4 @@
+/* All */
 * {
   font-family: Junge, serif;
 }
@@ -14,15 +15,34 @@ h1 {
 p, body, input, button, option, select, .export-button {
   font-size: 1rem;
 }
-.ReactTable {
-  height: 450px
-}
+
+/* index.html */
 .footer {
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
 }
+
+/* App.js */
+.app {
+  text-align: center;
+}
+.app-header {
+  margin-top: 0;
+	height: 90px;
+	background-color: #0a699f;
+  color: #FFFFFF;
+  border-radius: 8px;
+}
+.app-header-subtext {
+  display: none;
+}
+.ReactTable {
+  height: 450px
+}
+
+/* SubmitWord.js */
 button, .export-button {
   border: none;
   text-align: center;
@@ -50,18 +70,13 @@ button, .export-button {
 .submit-word-main > *, .rt-th > *, h3, option, select {
   font-family: Muli, serif;
 }
-.words-app {
-  text-align: center;
-}
-.Select {
+
+/* DropDown.js */
+
+
+
+.language-drop-down {
   width: 200px
-}
-.words-header {
-  margin-top: 0;
-	height: 90px;
-	background-color: #0a699f;
-  color: #FFFFFF;
-  border-radius: 8px;
 }
 .submit-word-main {
   display: flex;
@@ -90,10 +105,21 @@ button, .export-button {
 }
 /* Mobile */
 @media only screen and (max-width: 599px) {
+
 }
 /* Tablets */
 @media only screen and (min-width: 600px) {
+
+  /* App.js */
+  .app-header-subtext {
+    display: block;
+  }
 }
 /* Desktop */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 900px) {
+
+  /* App.js */
+  .app-header-subtext {
+    display: block;
+  }
 }

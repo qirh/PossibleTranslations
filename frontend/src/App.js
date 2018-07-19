@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-
 // Components
 import SubmitWord from './SubmitWord.js';
+import git from './github.svg'
 
 // React table https://react-table.js.org/
 import ReactTable from "react-table";
 import 'react-table/react-table.css'
-
 // React toast
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -17,6 +16,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       words: [],
+      width: window.innerWidth,
     }
   }
 
@@ -39,7 +39,7 @@ export default class App extends Component {
       })
       .then(function(words){
         words.reverse();
-        this.setState({ words })
+        this.setState({ words: words })
       }
       .bind(this))
       .catch(function(error) {
@@ -51,10 +51,21 @@ export default class App extends Component {
   }
   componentDidMount() {
     this.getData()
-    this.notifyUpdate()
+    //this.notifyUpdate()
+  }
+  componentWillMount() {
+    window.addEventListener('resize', this.handleWindowSizeChange);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange);
+  }
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth });
   }
 
   render() {
+
+    /* Mobile First */
     const columns = [
       {Header: "Info", columns: [
         {Header: 'Sentence', accessor: 'word', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
@@ -64,17 +75,29 @@ export default class App extends Component {
       {Header: "Guess #1", columns: [
         {Header: 'Detected Language', accessor: 'lang_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
         {Header: 'Translation', accessor: 'translation_1', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
-      ]},
-      {Header: "Guess #2", columns: [
-        {Header: 'Detected Language', accessor: 'lang_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
-        {Header: 'Translation', accessor: 'translation_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
       ]}
     ]
+    var subText = "meh"
+    console.log(this.state.width)
+    if(this.state.width >= 600 && this.state.width < 900){
+      console.log("1")
+      subText = "Enter a sentence in the box below and choose a language"
+    }
+    else if (this.state.width >= 900){
+      console.log("2")
+      subText = "Enter a sentence in the box below and choose a language to translate to"
+      columns.push({Header: "Guess #2", columns: [
+        {Header: 'Detected Language', accessor: 'lang_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)},
+        {Header: 'Translation', accessor: 'translation_2', filterMethod: (filter, row) => row[filter.id].startsWith(filter.value)}
+      ]})
+    }
     return (
-      <div className="words-app">
-        <div className="words-header">
+      <div className="app">
+        <div className="app-header">
           <h1>Possible Translations</h1>
-          <h3>Enter a sentence in the box below and choose a language to translate to. The website will query Google Translate to get a translation and list it in the table below</h3>
+          <h3 className="app-header-subtext">{subText}</h3>
+          <a href="https://github.com/qirh/pt"><img src={git} title="Git link" alt="Git link"></img></a>
+
         </div>
 
         <SubmitWord onButtonPress={this.refreshData} wordsProp={this.state.words} onNotifyPost={this.notifyPost} onNotifyPostError={this.notifyPostError} />
@@ -85,6 +108,7 @@ export default class App extends Component {
         <ToastContainer />
 
       </div>
-    );
+    )
+
   }
 }
