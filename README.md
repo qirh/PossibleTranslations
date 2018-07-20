@@ -22,14 +22,13 @@ Repo for [Possible Translations](https://possibletranslations.com), a full stack
     * Add ability to enter custom id.
 
 **Frontend:**
-1. Show message when backend sends 404.
-2. Display mobile. (No arrow in dropdown menu)
-3. Display apostrophe correctly (thanks French).
-4. Add option to delete/edit word from table.
-5. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
-6. Search should case insensitive.
-7. Auto deploy to S3 using [Travis CI](https://docs.travis-ci.com/user/deployment/s3/).
-8. Add about page.
+1. Fix mobile display. (No arrow in dropdown menu)
+2. Display apostrophe correctly in table.
+3. Add option to delete/edit word from table.
+4. Is it [PWA](https://developers.google.com/web/progressive-web-apps/) ?
+5. Search should case insensitive.
+6. Auto deploy to S3 using [Travis CI](https://docs.travis-ci.com/user/deployment/s3/).
+7. Add about page.
 
 ### Tech Stack
 * Hosting: **Flask:** [DO droplet](https://possibletranslationsapi.com), **Frontend:** [AWS S3](http://possibletranslations.com.s3-website-us-east-1.amazonaws.com), **CDN:** [CloudFront](https://possibletranslations.com). **Domain names & routing:** Hover & Route 53
