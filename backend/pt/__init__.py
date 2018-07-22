@@ -10,7 +10,7 @@ from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
 
-from models import db
+from models import db, WordTranslations
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')    # default config
@@ -311,15 +311,20 @@ def api_delete():
 def api_get():
 
     try:
+        print("2")
         if(request.values.to_dict()):
             words = find_all_words(request.values.to_dict())
         else:
+            print("4")
             words = WordTranslations.query.all()
+            print("5")
+        print("1")
         response = jsonify([w.serialize() for w in words])
         return make_response(response, 200)
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
+        print(e)
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
