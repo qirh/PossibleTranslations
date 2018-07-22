@@ -13,6 +13,7 @@ commands.txt
 GoogleService.json
 config-db.cfg
 pt.wsgi
+backend/pt.wsgi
 
 # Distribution / packaging
 .Python
