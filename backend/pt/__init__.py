@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 from flask import Flask, request, render_template, jsonify, make_response
@@ -10,7 +10,9 @@ from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
 
+import os, sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 from models import db, WordTranslations
+
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')    # default config
