@@ -43,7 +43,7 @@ export default class App extends Component {
       }
       .bind(this))
       .catch(function(error) {
-        this.notifyUpdate_error()
+        this.notifyUpdateError()
       }.bind(this));
   }
   refreshData = () => {
