@@ -210,7 +210,6 @@ def error_page(custom=None):
 
 
 @app.route("/", methods=["GET"])
-@app.route("/index", methods=["GET"])
 @cross_origin()
 def index():
     update_languages()
@@ -222,8 +221,7 @@ def index():
         if request.form:
             words.append(add_word(request.form))
 
-        return make_response(
-            render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 200)
+        return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 200)
     except:
         return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 422)
 
@@ -236,8 +234,8 @@ def index():
 # Both kinds of data --> request.values
 
 # Edits one entry at a time (needs word + target_lang + new_target_lang)
-@app.route ('/api/1.0', methods=['PUT'])
-@app.route ('/api/1.0/q', methods=['PUT'])
+@app.route ('/api/v1', methods=['PUT'])
+@app.route ('/api/v1/q', methods=['PUT'])
 @cross_origin()
 def api_put():
 
@@ -266,8 +264,8 @@ def api_put():
 
 
 # Posts one entry at a time (needs word + target_lang)
-@app.route ('/api/1.0', methods=['POST'])
-@app.route ('/api/1.0/q', methods=['POST'])
+@app.route ('/api/v1', methods=['POST'])
+@app.route ('/api/v1/q', methods=['POST'])
 @cross_origin()
 def api_post():
 
@@ -284,7 +282,7 @@ def api_post():
 
 
 # Deletes one entry at a time (requires word or target_lang or id). Will only delete only if one entry exists
-@app.route ('/api/1.0/q', methods=['DELETE'])
+@app.route ('/api/v1/q', methods=['DELETE'])
 @cross_origin()
 def api_delete():
     try:
@@ -307,8 +305,8 @@ def api_delete():
 
 
 # Gets specific entries or all entries
-@app.route ('/api/1.0', methods=['GET'])
-@app.route ('/api/1.0/q', methods=['GET'])
+@app.route ('/api/v1', methods=['GET'])
+@app.route ('/api/v1/q', methods=['GET'])
 @cross_origin()
 def api_get():
 
@@ -326,7 +324,7 @@ def api_get():
 
 
 # Gets supported languages
-@app.route ('/api/1.0/languages', methods=['GET'])
+@app.route ('/api/v1/languages', methods=['GET'])
 @cross_origin()
 def api_get_languages():
     try:
@@ -338,12 +336,12 @@ def api_get_languages():
     except Exception as e:
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
-@app.route('/api/1.0/options', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@app.route('/api/v1/options', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 @cross_origin()
 def api_options():
     return make_response(jsonify({'Allow': 'GET, POST, PATCH, PUT, DELETE'}), 200)
 
-@app.route('/api/1.0/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@app.route('/api/v1/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 @cross_origin()
 def api_echo():
     if request.method == 'GET':
