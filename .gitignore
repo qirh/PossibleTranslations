@@ -9,9 +9,10 @@ commands.txt
 # C extensions
 *.so
 
-GoogleService.json
 
+GoogleService.json
 config-dev.cfg
+*.wsgi
 
 # Distribution / packaging
 .Python
