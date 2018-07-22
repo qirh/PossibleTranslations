@@ -20,7 +20,7 @@ export default class DropDown extends Component {
     onHandleLanguageChange: func.isRequired
   }
   componentDidMount() {
-    fetch('https://PossibleTranslationsAPI.com/api/1.0/languages')
+    fetch('https://PossibleTranslationsAPI.com/api/v1/languages')
       .then(res => res.json())
       .then(languages => this.setState({ languages }));
   }

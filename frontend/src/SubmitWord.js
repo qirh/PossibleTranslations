@@ -22,7 +22,7 @@ export default class SubmitWord extends Component {
   }
 
   buttonPress = () => {
-    fetch('https://PossibleTranslationsAPI.com/api/1.0/q?word=' + this.state.word + '&target_lang=' + this.state.language,
+    fetch('https://PossibleTranslationsAPI.com/api/v1/q?word=' + this.state.word + '&target_lang=' + this.state.language,
       {method: 'POST'})
     .then((response) => {
       if (!response.ok) {

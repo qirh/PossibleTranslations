@@ -30,7 +30,7 @@ export default class App extends Component {
   */
 
   getData () {
-    fetch('https://PossibleTranslationsAPI.com/api/1.0')
+    fetch('https://PossibleTranslationsAPI.com/api/v1')
       .then((response) => {
         if (!response.ok) {
             throw Error(response.statusText);
