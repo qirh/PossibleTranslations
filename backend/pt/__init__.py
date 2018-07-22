@@ -205,25 +205,14 @@ def add_word(form):
 @app.errorhandler(404)
 @cross_origin()
 def error_page(custom=None):
-    print("error_page(custom= " + str(custom))
+    print("error_page: \n'" + str(custom) + "'")
     return make_response(jsonify({'Error': 'Illegal URI'}), 404)
 
 
 @app.route("/", methods=["GET"])
 @cross_origin()
 def index():
-    update_languages()
-    try:
-        words = WordTranslations.query.all()
-    except:
-        return make_response(render_template('/index.html', title="Possible Translations", words=[], langs=AVALIABLE_LANGUAGES), 422)
-    try:
-        if request.form:
-            words.append(add_word(request.form))
-
-        return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 200)
-    except:
-        return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 422)
+    return make_response(render_template('/index.html', title="PT API"), 200)
 
 
 #########################################

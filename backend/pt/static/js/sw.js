@@ -1,14 +1,15 @@
-const version = "0.7";
+const version = "1.0";
 const cacheName = 'pt-${version}';
 
 self.addEventListener('install', e => {
   console.log('ServiceWorker registerd');
-  const timeStamp = Date.now();
   e.waitUntil(
     caches.open(cacheName).then(cache => {
       return cache.addAll([
-        '/templates/404.html?timestamp=${timeStamp}',
-        '/templates/index.html?timestamp=${timeStamp}',
+        '/',
+        '/static/icons/icon.png',
+        '/static/css/reset.css',
+        '/static/css/style.css'
       ])
           .then(() => self.skipWaiting());
     })

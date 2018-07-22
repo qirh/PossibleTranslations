@@ -14,13 +14,14 @@
 
         <link rel="manifest" href="/static/json/manifest.json">
 
+        <!-- CSS -->
         <link rel="stylesheet" href="/static/css/reset.css">
         <link href="https://fonts.googleapis.com/css?family=Junge" rel="stylesheet">
-        <!-- Bootstrap CDN -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <link href="/static/css/style.css" type="text/css" rel="stylesheet">
         {% block css %} {% endblock %}
 
+        <!-- JS -->
         <script>
             if('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/static/js/sw.js')
