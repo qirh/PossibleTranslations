@@ -47,7 +47,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://possibletranslationsapi.com/api/1.0/echo",
+							"raw": "http://possibletranslationsapi.com/api/v1/echo",
 							"protocol": "http",
 							"host": [
 								"possibletranslationsapi",
@@ -55,7 +55,7 @@
 							],
 							"path": [
 								"api",
-								"1.0",
+								"v1",
 								"echo"
 							]
 						},
@@ -73,7 +73,7 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "http://possibletranslationsapi.com/api/1.0/options",
+									"raw": "http://possibletranslationsapi.com/api/v1/options",
 									"protocol": "http",
 									"host": [
 										"possibletranslationsapi",
@@ -81,7 +81,7 @@
 									],
 									"path": [
 										"api",
-										"1.0",
+										"v1",
 										"options"
 									]
 								}
@@ -153,14 +153,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "possibletranslationsapi.com/api/1.0/echo",
+									"raw": "possibletranslationsapi.com/api/v1/echo",
 									"host": [
 										"possibletranslationsapi",
 										"com"
 									],
 									"path": [
 										"api",
-										"1.0",
+										"v1",
 										"echo"
 									]
 								}
@@ -225,14 +225,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "possibletranslationsapi.com/api/1.0/echo",
+									"raw": "possibletranslationsapi.com/api/v1/echo",
 									"host": [
 										"possibletranslationsapi",
 										"com"
 									],
 									"path": [
 										"api",
-										"1.0",
+										"v1",
 										"echo"
 									]
 								}
@@ -297,14 +297,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "possibletranslationsapi.com/api/1.0/echo",
+									"raw": "possibletranslationsapi.com/api/v1/echo",
 									"host": [
 										"possibletranslationsapi",
 										"com"
 									],
 									"path": [
 										"api",
-										"1.0",
+										"v1",
 										"echo"
 									]
 								}
@@ -369,14 +369,14 @@
 									"raw": ""
 								},
 								"url": {
-									"raw": "possibletranslationsapi.com/api/1.0/echo",
+									"raw": "possibletranslationsapi.com/api/v1/echo",
 									"host": [
 										"possibletranslationsapi",
 										"com"
 									],
 									"path": [
 										"api",
-										"1.0",
+										"v1",
 										"echo"
 									]
 								}
@@ -449,7 +449,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://possibletranslationsapi.com/api/1.0/options",
+					"raw": "http://possibletranslationsapi.com/api/v1/options",
 					"protocol": "http",
 					"host": [
 						"possibletranslationsapi",
@@ -457,7 +457,7 @@
 					],
 					"path": [
 						"api",
-						"1.0",
+						"v1",
 						"options"
 					]
 				},
@@ -475,7 +475,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://possibletranslationsapi.com/api/1.0/options",
+							"raw": "http://possibletranslationsapi.com/api/v1/options",
 							"protocol": "http",
 							"host": [
 								"possibletranslationsapi",
@@ -483,7 +483,7 @@
 							],
 							"path": [
 								"api",
-								"1.0",
+								"v1",
 								"options"
 							]
 						}
@@ -572,14 +572,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "possibletranslationsapi.com/api/1.0",
+							"raw": "possibletranslationsapi.com/api/v1",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
 							"path": [
 								"api",
-								"1.0"
+								"v1"
 							]
 						}
 					},
@@ -649,7 +649,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://possibletranslationsapi.com/api/1.0/q?word=joe",
+							"raw": "http://possibletranslationsapi.com/api/v1/q?word=joe",
 							"protocol": "http",
 							"host": [
 								"possibletranslationsapi",
@@ -657,7 +657,7 @@
 							],
 							"path": [
 								"api",
-								"1.0",
+								"v1",
 								"q"
 							],
 							"query": [
@@ -718,14 +718,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=fr",
+					"raw": "possibletranslationsapi.com/api/v1/q?word=mike&target_lang=fr",
 					"host": [
 						"possibletranslationsapi",
 						"com"
 					],
 					"path": [
 						"api",
-						"1.0",
+						"v1",
 						"q"
 					],
 					"query": [
@@ -753,14 +753,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=fr",
+							"raw": "possibletranslationsapi.com/api/v1/q?word=mike&target_lang=fr",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
 							"path": [
 								"api",
-								"1.0",
+								"v1",
 								"q"
 							],
 							"query": [
@@ -825,14 +825,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "possibletranslationsapi.com/api/1.0/q?word=mike&target_lang=de",
+					"raw": "possibletranslationsapi.com/api/v1/q?word=mike&target_lang=de",
 					"host": [
 						"possibletranslationsapi",
 						"com"
 					],
 					"path": [
 						"api",
-						"1.0",
+						"v1",
 						"q"
 					],
 					"query": [
@@ -860,14 +860,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "possibletranslationsapi.com/api/1.0/q?word=joe&target_lang=fr&new_target_lang=he",
+							"raw": "possibletranslationsapi.com/api/v1/q?word=joe&target_lang=fr&new_target_lang=he",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
 							"path": [
 								"api",
-								"1.0",
+								"v1",
 								"q"
 							],
 							"query": [
@@ -936,14 +936,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "possibletranslationsapi.com/api/1.0/q?word=mikey&target_lang=en",
+					"raw": "possibletranslationsapi.com/api/v1/q?word=mikey&target_lang=en",
 					"host": [
 						"possibletranslationsapi",
 						"com"
 					],
 					"path": [
 						"api",
-						"1.0",
+						"v1",
 						"q"
 					],
 					"query": [
@@ -971,14 +971,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "possibletranslationsapi.com/api/1.0/q?word=mikey&target_lang=en",
+							"raw": "possibletranslationsapi.com/api/v1/q?word=mikey&target_lang=en",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
 							"path": [
 								"api",
-								"1.0",
+								"v1",
 								"q"
 							],
 							"query": [
@@ -1043,14 +1043,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "possibletranslationsapi.com/api/1.0/languages",
+					"raw": "possibletranslationsapi.com/api/v1/languages",
 					"host": [
 						"possibletranslationsapi",
 						"com"
 					],
 					"path": [
 						"api",
-						"1.0",
+						"v1",
 						"languages"
 					]
 				}
@@ -1067,14 +1067,14 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "possibletranslationsapi.com/api/1.0/languages",
+							"raw": "possibletranslationsapi.com/api/v1/languages",
 							"host": [
 								"possibletranslationsapi",
 								"com"
 							],
 							"path": [
 								"api",
-								"1.0",
+								"v1",
 								"languages"
 							]
 						}
