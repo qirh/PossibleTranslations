@@ -11,7 +11,7 @@ commands.txt
 
 
 GoogleService.json
-config-dev.cfg
+config-db.cfg
 *.wsgi
 
 # Distribution / packaging
