@@ -11,6 +11,8 @@ commands.txt
 
 GoogleService.json
 
+config-dev.cfg
+
 # Distribution / packaging
 .Python
 env/

@@ -13,13 +13,12 @@ from google.cloud import translate
 from models import db
 
 app = Flask(__name__)
+app.config.from_pyfile('config.cfg')    # default config
+app.config.from_pyfile('config-dev.cfg')    # dev config + has db link, not tracked by git
+
+
 CORS(app)
 app.url_map.strict_slashes = False
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://saleh:400700we@wordsaws.clzvkffnzrmz.us-east-1.rds.amazonaws.com:5432/words_db'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@localhost:5432/words_db'
-app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 db.app = app
 db.init_app(app)
