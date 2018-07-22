@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, request, render_template, jsonify, make_response
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_cors import CORS, cross_origin
 
@@ -11,64 +10,21 @@ from textblob import TextBlob
 from langdetect import detect_langs, DetectorFactory
 from google.cloud import translate
 
+from models import db, WordTranslations
+
 app = Flask(__name__)
+app.config.from_pyfile('config.cfg')    # default config
+app.config.from_pyfile('config-dev.cfg')    # dev config + has db link, not tracked by git
+
+
 CORS(app)
 app.url_map.strict_slashes = False
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://saleh:400700we@wordsaws.clzvkffnzrmz.us-east-1.rds.amazonaws.com:5432/words_db'
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://sal7:400700we@localhost:5432/words_db'
-app.config['SQLALCHEMY_MIGRATE_REPO'] = 'db_repository'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-
-db = SQLAlchemy(app)
+db.app = app
+db.init_app(app)
 migrate = Migrate(app, db)
 TARGET_LANGUAGE = 'en'
 AVALIABLE_LANGUAGES = []
-
-#########################################
-################# MODEL #################
-#########################################
-class WordTranslations(db.Model):
-    __tablename__ = 'words'
-    __table_args__ = (db.UniqueConstraint('word', 'target_lang'),)
-
-    word_id = db.Column(db.Integer, primary_key=True)
-    word = db.Column(db.String(5000), nullable=False)
-    target_lang = db.Column(db.String(20), nullable=False)
-    lang_1 = db.Column(db.String(20), nullable=False)
-    lang_2 = db.Column(db.String(20), nullable=False)
-    lang_3 = db.Column(db.String(20), nullable=False)
-    translation_1 = db.Column(db.String(5000), nullable=False)
-    translation_2 = db.Column(db.String(5000), nullable=False)
-    translation_3 = db.Column(db.String(5000), nullable=False)
-
-
-    def __init__(self, word, target_lang, lang_1, translation_1, lang_2=None, translation_2=None, lang_3=None, translation_3=None):
-        self.word = word
-        self.target_lang = target_lang
-        self.lang_1 = lang_1
-        self.lang_2 = lang_2
-        self.lang_3 = lang_3
-        self.translation_1 = translation_1
-        self.translation_2 = translation_2
-        self.translation_3 = translation_3
-
-    def __repr__(self):
-        return '<Word: {}. target_lang: {}. lang_1: {}. translation_1: {}>'.format(self.word, self.target_lang, self.lang_1, self.translation_1)
-
-    def serialize(self):
-        return {
-            'word_id': self.word_id,
-            'word': self.word,
-            'target_lang': self.target_lang,
-            'lang_1': self.lang_1,
-            'lang_2': self.lang_2,
-            'lang_3': self.lang_3,
-            'translation_1': self.translation_1,
-            'translation_2': self.translation_2,
-            'translation_3': self.translation_3,
-        }
-
 
 def drop():
     db.reflect()
@@ -249,27 +205,14 @@ def add_word(form):
 @app.errorhandler(404)
 @cross_origin()
 def error_page(custom=None):
-    print("error_page(custom= " + str(custom))
+    print("error_page: \n'" + str(custom) + "'")
     return make_response(jsonify({'Error': 'Illegal URI'}), 404)
 
 
 @app.route("/", methods=["GET"])
-@app.route("/index", methods=["GET"])
 @cross_origin()
 def index():
-    update_languages()
-    try:
-        words = WordTranslations.query.all()
-    except:
-        return make_response(render_template('/index.html', title="Possible Translations", words=[], langs=AVALIABLE_LANGUAGES), 422)
-    try:
-        if request.form:
-            words.append(add_word(request.form))
-
-        return make_response(
-            render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 200)
-    except:
-        return make_response(render_template('/index.html', title="Possible Translations", words=words, langs=AVALIABLE_LANGUAGES), 422)
+    return make_response(render_template('/index.html', title="PT API"), 200)
 
 
 #########################################
@@ -280,8 +223,8 @@ def index():
 # Both kinds of data --> request.values
 
 # Edits one entry at a time (needs word + target_lang + new_target_lang)
-@app.route ('/api/1.0', methods=['PUT'])
-@app.route ('/api/1.0/q', methods=['PUT'])
+@app.route ('/api/v1', methods=['PUT'])
+@app.route ('/api/v1/q', methods=['PUT'])
 @cross_origin()
 def api_put():
 
@@ -310,8 +253,8 @@ def api_put():
 
 
 # Posts one entry at a time (needs word + target_lang)
-@app.route ('/api/1.0', methods=['POST'])
-@app.route ('/api/1.0/q', methods=['POST'])
+@app.route ('/api/v1', methods=['POST'])
+@app.route ('/api/v1/q', methods=['POST'])
 @cross_origin()
 def api_post():
 
@@ -328,7 +271,7 @@ def api_post():
 
 
 # Deletes one entry at a time (requires word or target_lang or id). Will only delete only if one entry exists
-@app.route ('/api/1.0/q', methods=['DELETE'])
+@app.route ('/api/v1/q', methods=['DELETE'])
 @cross_origin()
 def api_delete():
     try:
@@ -351,26 +294,31 @@ def api_delete():
 
 
 # Gets specific entries or all entries
-@app.route ('/api/1.0', methods=['GET'])
-@app.route ('/api/1.0/q', methods=['GET'])
+@app.route ('/api/v1', methods=['GET'])
+@app.route ('/api/v1/q', methods=['GET'])
 @cross_origin()
 def api_get():
 
     try:
+        print("2")
         if(request.values.to_dict()):
             words = find_all_words(request.values.to_dict())
         else:
+            print("4")
             words = WordTranslations.query.all()
+            print("5")
+        print("1")
         response = jsonify([w.serialize() for w in words])
         return make_response(response, 200)
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
+        print(e)
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
 # Gets supported languages
-@app.route ('/api/1.0/languages', methods=['GET'])
+@app.route ('/api/v1/languages', methods=['GET'])
 @cross_origin()
 def api_get_languages():
     try:
@@ -382,12 +330,12 @@ def api_get_languages():
     except Exception as e:
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
-@app.route('/api/1.0/options', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@app.route('/api/v1/options', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 @cross_origin()
 def api_options():
     return make_response(jsonify({'Allow': 'GET, POST, PATCH, PUT, DELETE'}), 200)
 
-@app.route('/api/1.0/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
+@app.route('/api/v1/echo', methods = ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 @cross_origin()
 def api_echo():
     if request.method == 'GET':
