@@ -17,7 +17,7 @@ from models import db, WordTranslations
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')    # default config
 app.config.from_pyfile('config-db.cfg')    # secret config with db link, not included in VC
-app.config.from_pyfile('config-dev.cfg')    # dev config
+#app.config.from_pyfile('config-dev.cfg')    # dev config
 
 
 CORS(app)
