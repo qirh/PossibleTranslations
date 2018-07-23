@@ -4,8 +4,7 @@ Repo for [Possible Translations](https://possibletranslations.com), a full stack
 
 
 ### Issues (Importance based on order)
-1. remove wsgi.
-2. add conf files.
+1. remove wsgi file.
 3. public.
 **Flask:**
 1. Push notification to the front end in case an update happens to the DB.
