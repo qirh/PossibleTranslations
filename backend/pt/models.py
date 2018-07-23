@@ -10,7 +10,7 @@ db = SQLAlchemy()
 ################# MODEL #################
 #########################################
 class WordTranslations(db.Model):
-    __tablename__ = 'words'
+    __tablename__ = 'words_table'
     __table_args__ = (db.UniqueConstraint('word', 'target_lang'),)
 
     word_id = db.Column(db.Integer, primary_key=True)
