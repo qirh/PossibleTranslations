@@ -145,7 +145,6 @@ def find_word(filters):
         search_dict['word'] = filters.pop('word')
     else:
         raise CustomException(404, 'Missing word field')
-    print(search_dict)
     try:
         words = WordTranslations.query.filter_by(**search_dict).all()
     except Exception:
@@ -196,7 +195,7 @@ def add_word(form):
         db.session.commit()
         return w
     except exc.IntegrityError as e:
-        print("exc.IntegrityError: " + str(e))
+        print("add_word exc.IntegrityError: " + str(e))
         db.session().rollback()
         raise exc.IntegrityError
 
@@ -237,7 +236,7 @@ def api_put():
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
-        print(e)
+        print("api_put ERROR: " + e)
         return make_response(jsonify({'Error': 'unknown error'}), 404)
     try:
         db.session.delete(word)
@@ -247,7 +246,7 @@ def api_put():
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
     except exc.IntegrityError as e:
-        print("exc.IntegrityError: " + str(e))
+        print("api_put exc.IntegrityError: " + str(e))
         db.session().rollback()
         return make_response(jsonify({'Error': 'DB Integrity Error'}), 404)
 
@@ -260,7 +259,6 @@ def api_put():
 @app.route ('/api/v1/q', methods=['POST'])
 @cross_origin()
 def api_post():
-
     try:
         find_word(request.values.to_dict())
         word = add_word(request.values.to_dict())
@@ -269,7 +267,7 @@ def api_post():
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
-        print(e)
+        print("api_post Exception: " + e)
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
@@ -283,7 +281,7 @@ def api_delete():
             db.session.delete(word)
             db.session.commit()
         except exc.IntegrityError as e:
-            print("exc.IntegrityError: " + str(e))
+            print("api_delete exc.IntegrityError: " + str(e))
             db.session().rollback()
             return make_response(jsonify({'Error': 'DB Integrity Error'}), 404)
 
@@ -292,7 +290,7 @@ def api_delete():
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
-        print(e)
+        print("api_delete Exception: " + e)
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
@@ -301,22 +299,17 @@ def api_delete():
 @app.route ('/api/v1/q', methods=['GET'])
 @cross_origin()
 def api_get():
-
     try:
-        print("2")
         if(request.values.to_dict()):
             words = find_all_words(request.values.to_dict())
         else:
-            print("4")
             words = WordTranslations.query.all()
-            print("5")
-        print("1")
         response = jsonify([w.serialize() for w in words])
         return make_response(response, 200)
     except CustomException as e:
         return make_response(jsonify({'Error': e.message}), e.number)
     except Exception as e:
-        print(e)
+        print("api_get Exception" + e)
         return make_response(jsonify({'Error': 'unknown error'}), 404)
 
 
