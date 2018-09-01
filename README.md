@@ -18,18 +18,10 @@ Repo for PossibleTranslations, a full stack website that takes user input, detec
 
 
 ### Issues (Importance based on order)
-**Flask:**
-1. Push notification to the front end in case an update happens to the DB.
-2. Need unit tests (API tests).
-3. Add support for another translator (bing?).
 
 **API:**
-1. Be able to accept JSON payloads.
-2. Needs better documentation.
-3. Needs auth (JWT).
 4. Method Specific:
   * Put
-    * Should be able to edit without need to insert old language if there is only one entry.
     * Currently put does not edit a row, but rather deletes it and inserts a new one.
     * Add ability to edit word without changing the language.
   * Post
