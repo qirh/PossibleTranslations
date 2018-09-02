@@ -15,23 +15,3 @@ Repo for PossibleTranslations, a full stack website that takes user input, detec
 * Frontend: [React](https://reactjs.org/) --> [React Table](https://react-table.js.org) & [React Spinners](https://www.npmjs.com/package/react-spinners) & [React CSV](https://www.npmjs.com/package/react-csv) & [React Toastify](https://github.com/fkhadra/react-toastify).
 * Language Detection: [langdetect](https://pypi.org/project/langdetect) & [textblob](https://textblob.readthedocs.io/en/dev).
 * Language Translation: [Google Translate API](https://cloud.google.com/translate/docs).
-
-
-### Issues (Importance based on order)
-
-**API:**
-4. Method Specific:
-  * Put
-    * Currently put does not edit a row, but rather deletes it and inserts a new one.
-    * Add ability to edit word without changing the language.
-  * Post
-    * Add ability to enter custom id.
-
-**Frontend:**
-1. Apostrophe does not display correctly.
-2. Add option to delete/edit word from table.
-3. Cell should be able to display long text.
-3. Make it [PWA](https://developers.google.com/web/progressive-web-apps).
-4. Search should case insensitive.
-5. Auto deploy to S3 using [Travis CI](https://docs.travis-ci.com/user/deployment/s3/).
-6. Add about page. [Routing](https://medium.com/@krithix/multi-page-website-with-react-in-2017-f6f2af326526).
