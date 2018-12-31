@@ -42,7 +42,7 @@ db.session.commit()
 ##############################################
 def get_langs(word):
     """
-    returns a list of the 3 most probable languages. the last two elemnts might be None
+    returns a list of the 3 most probable languages. the last two elements might be None
     TextBlob return 1 language. langdetect return a list of languages.
 
     if TextBlob == langdetect[0]
