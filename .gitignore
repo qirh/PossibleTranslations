@@ -2,6 +2,7 @@
 *.wsgi
 GoogleService.json
 config-db.cfg
+config-dev.cfg
 # --
 __pycache__
 *.pyc
