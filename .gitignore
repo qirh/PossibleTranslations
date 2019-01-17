@@ -1,5 +1,4 @@
 # project
-*.wsgi
 GoogleService.json
 config-db.cfg
 config-dev.cfg
