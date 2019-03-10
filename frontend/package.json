@@ -5,11 +5,12 @@
   "dependencies": {
     "add": "^2.0.6",
     "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
     "match-sorter": "^2.3.0",
     "react": "^16.6.1",
     "react-csv": "^1.0.18",
     "react-dom": "^16.6.1",
-    "react-scripts": "^2.1.1",
+    "react-scripts": "^2.1.8",
     "react-spinners": "^0.3.2",
     "react-table": "^6.8.6",
     "react-toastify": "^4.4.0"
