@@ -2,7 +2,7 @@
 
 Repo for PossibleTranslations, a full stack website that takes user input, detects the language it's in and translates it.
 
-**Website: [PossibleTranslations.com](PossibleTranslations.com)**
+**Website: [PossibleTranslations.com](https://PossibleTranslations.com)**
 
 **API Endpoint: [PossibleTranslationsAPI.com](https://possibletranslationsapi.com)**
 
