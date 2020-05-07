@@ -1,5 +1,7 @@
 # PossibleTranslations [![MIT license](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/qirh/pt/master/LICENSE)
 
+**update may 2020:** website has been taken down
+
 Repo for PossibleTranslations, a full stack website that takes user input, detects the language it's in and translates it.
 
 **Website: [PossibleTranslations.com](https://PossibleTranslations.com)**
